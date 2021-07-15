@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ReactNativeBosh",
-    "slug": "ReactNativeBosh",
-    "version": "1.0.0",
+    "name": "unnamed-eco-app",
+    "slug": "unnamed-eco-app",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
