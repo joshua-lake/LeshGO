@@ -11,28 +11,29 @@ git clone https://github.com/bosh-code/unnamed-eco-app.git
 cd unnamed-eco-app
 ```
 
-Use npm to install `expo-cli` globally if you have not already
+Use npm to install `expo-cli` and `yarn` globally if you have not already
 
 ```shell
 npm i expo-cli -g
+npm i yarn -g
 ```
 
 Then use npm to install dependencies
 
 ```shell
-npm install
+yarn install
 ```
 
 ## Usage
 
 To start the development server on your machine use the `start` script
 ```shell
-npm run start
+yarn run start
 ```
 
-To shut down nicely, use the `eject` script
+To shut down nicely, use the `eject` script or `CTRL + C`
 ```shell
-npm run eject
+yarn run eject
 ```
 
 # Details
