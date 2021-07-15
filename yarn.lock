@@ -5352,7 +5352,7 @@ react-native-maps-directions@^1.8.0:
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
 
-react-native-maps@^0.28.0:
+react-native-maps@0.28.0:
   version "0.28.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.28.0.tgz#1913dd4977652ddfc317d39c7cb7d78a8e513784"
   integrity sha512-F+k5ZT9hhl+iXR1H+5ZcoHOEB5lPu9gCIwtA4lI/LoI9nfa9xFvr1vMiLIv44jzeGNzbE3+/R81IpcNDMJ5uDg==
@@ -6699,6 +6699,11 @@ yargs@^15.1.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+yarn@^1.22.10:
+  version "1.22.10"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.10.tgz#c99daa06257c80f8fa2c3f1490724e394c26b18c"
+  integrity sha512-IanQGI9RRPAN87VGTF7zs2uxkSyQSrSPsju0COgbsKQOOXr5LtcVPeyXWgwVa0ywG3d8dg6kSYKGBuYK021qeA==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
