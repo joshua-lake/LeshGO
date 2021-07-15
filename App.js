@@ -2,15 +2,21 @@ import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
-import Maps from './src/components/maps'
+import Maps from './src/components/Maps'
+import Selectors from './src/components/Selectors/Selectors'
+import Results from './src/components/Results/Results'
 
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Demo route</Text>
+      <Selectors/>
 
+      <Text style={styles.titleText}>Demo route</Text>
       <Maps/>
+
+      <Results/>
+
 
       <StatusBar style="auto"/>
     </View>
