@@ -17,6 +17,8 @@ function Walk () {
 const StyledText = styled.Text`
   color: green;
   font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 `
 
 export default Walk

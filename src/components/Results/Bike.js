@@ -17,6 +17,7 @@ function Bike () {
 const StyledText = styled.Text`
   color: green;
   font-size: 30px;
+  margin-bottom: 30px;
 `
 
 export default Bike

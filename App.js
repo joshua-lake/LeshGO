@@ -26,7 +26,7 @@ const App = () => {
 
 const StyledView = styled.View`
   flex: 1;
-  background-color: red;
+  background-color: pink;
   alignItems: center;
   justifyContent: center;
 `
