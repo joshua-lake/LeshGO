@@ -1,25 +1,38 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, ScrollView, StyleSheet, Text, View , LogBox } from 'react-native'
 
 import Maps from './src/components/Maps'
-import Selectors from './src/components/Selectors'
 import Results from './src/components/Results'
-
+import GooglePlacesInput from './src/components/Selectors/GooglePlacesInput'
 
 const App = () => {
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    console.log(origin)
+    console.log(destination)
+  }, [])
+
+  const [origin, setOrigin] = useState({})
+  const [destination, setDestination] = useState({})
+
   return (
-    <View style={styles.container}>
-      <Selectors/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView keyboardShouldPersistTaps='always'>
+        <View style={styles.container}>
 
-      <Text style={styles.titleText}>Demo route</Text>
-      <Maps/>
+          <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
+          <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
 
-      <Results/>
+          <Text style={styles.titleText}>Demo route</Text>
+          <Maps origin={origin} destination={destination}/>
 
+          <Results/>
 
-      <StatusBar style="auto"/>
-    </View>
+          <StatusBar style="auto"/>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -30,13 +43,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  map: {
-    width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height / 1.5,
-    borderRadius: 20,
-  },
-
   titleText: {
     marginTop: 16,
     paddingVertical: 8,
