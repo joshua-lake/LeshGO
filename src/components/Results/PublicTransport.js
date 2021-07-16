@@ -2,11 +2,13 @@ import React from 'react'
 
 import { View, Text } from 'react-native'
 
-function PublicTransport () {
+function PublicTransport (props) {
   return (
     <View>
       <Text>
-        PUBLIC TRANSPORT
+      Public Transport:
+        Distance:{props.data.distanceKM}KM
+        Time:{props.data.durationMIN}Mins
       </Text>
     </View>
   )

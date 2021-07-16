@@ -6,7 +6,6 @@ import FromLocation from './FromLocation'
 import Vehicle from './Vehicle'
 
 function Selectors (props) {
-  console.log('props', props)
 return (
   <View>
     <ToLocation/>

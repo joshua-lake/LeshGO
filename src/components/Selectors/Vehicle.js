@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, Text } from 'react-native'
-// import { Picker } from 'react-native-woodpicker'
 import RNPickerSelect from 'react-native-picker-select';
 
 

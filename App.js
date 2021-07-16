@@ -19,7 +19,7 @@ console.log('app vehicle type', vehicleType)
       <Text style={styles.titleText}>Demo route</Text>
       <Maps/>
 
-      <Results/>
+      <Results vehicleType={vehicleType}/>
 
 
       <StatusBar style="auto"/>
