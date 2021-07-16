@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "expo": "~42.0.1",

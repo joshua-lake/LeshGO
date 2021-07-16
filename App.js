@@ -8,6 +8,7 @@ import Results from './src/components/Results'
 
 
 const App = () => {
+
   return (
     <View style={styles.container}>
       <Selectors/>
