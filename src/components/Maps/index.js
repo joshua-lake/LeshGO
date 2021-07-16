@@ -1,22 +1,33 @@
-import React, { useState, useEffect }from 'react'
+import React, { useEffect, useState } from 'react'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import { Dimensions, StyleSheet } from 'react-native'
+import { getGeoLocation } from '../../api/geolocation'
+import { API_KEY } from '../../api'
 
-
-const HARDorigin = { latitude: -36.874935, longitude: 174.748596 }
-const incomingDestination = "10 Marlborough street, mt eden" //  "9 gardner rd epsom" 8 morgan st newmarket { latitude: -36.9040097, longitude: 174.710000 }
+const defaultOrigin = { latitude: -36.874935, longitude: 174.748596 }
+const defaultDestination = { latitude: -36.9040097, longitude: 174.760000 }
+// const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's api key -- actually james'...
 const transportMode = "WALKING" // DRIVING BICYCLING TRANSIT WALKING
-const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's api key -- actually james'...
 
 
-
-const Maps = () => {
+const Maps = (props) => {
+  const [geoLocation, setGeoLocation] = useState({})
+  const [origin, setOrigin] = useState(defaultOrigin)
+  const [destination, setDestination] = useState(defaultDestination)
+  
   const [mapRouteData, setRouteData] = useState({})
-  const [destination, setDestination] = useState('')
 
   useEffect(() => {
-    setDestination(incomingDestination)
+    async function fetchData () {
+      setGeoLocation(await getGeoLocation())
+    }
+
+    setOrigin(props.origin)
+    setDestination(props.destination)
+    console.log('origin: ', origin);
+    console.log('destination: ', origin);
+    fetchData()
   }, [])
 
   function setIncomingRouteData (data) {
@@ -31,29 +42,27 @@ const Maps = () => {
   }
   // console.log(mapRouteData);
 
-
   return (
 
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"
-        latitude: -36.872036,
-        longitude: 174.763428,
-        latitudeDelta: 0.0722,
-        longitudeDelta: 0.0421,
-      }}>
-        <MapView.Marker coordinate={mapRouteData.returnedOrigin} />
-        <MapView.Marker coordinate={mapRouteData.returnedDestination} />
-        <MapViewDirections onReady={result => setIncomingRouteData(result)}
-          origin={HARDorigin}
-          destination={destination}
-          apikey={GOOGLE_MAPS_APIKEY}
+    <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"
+      latitude: -36.872036,
+      longitude: 174.763428,
+      latitudeDelta: 0.0722,
+      longitudeDelta: 0.0421,
+    }}>
+      <MapView.Marker coordinate={`${origin.latitude},${origin.longitude}`}/>
+      <MapView.Marker coordinate={`${destination.latitude},${destination.longitude}`}/>
+      <MapViewDirections onReady={result => setIncomingRouteData(result)}
+          origin={`${origin.latitude},${origin.longitude}`}
+          destination={`${destination.latitude},${destination.longitude}`}
+          apikey={API_KEY}
           mode={transportMode}
           timePrecision="now"
           showsUserLocation
           strokeWidth={3}
           // strokeColor="green"
           />
-        
-      </MapView>
+    </MapView>
 
   )
 }
@@ -61,7 +70,7 @@ const Maps = () => {
 const styles = StyleSheet.create({
   map: {
     width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height / 1.5,
+    height: Dimensions.get('window').height / 2,
     borderRadius: 20,
   },
 })

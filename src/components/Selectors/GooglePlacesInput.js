@@ -40,7 +40,7 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
           console.log('on press!')
           const {lat: latitude, lng: longitude} = details.geometry.location
           updateState({latitude, longitude})
-          console.log(JSON.stringify([latitude, longitude]))
+          console.log(JSON.stringify({latitude, longitude}))
         }}
         getDefaultValue={() => ''}
         query={{
