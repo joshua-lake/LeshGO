@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text } from 'react-native'
+// import { Picker } from 'react-native-woodpicker'
+import RNPickerSelect from 'react-native-picker-select';
 
-function Vehicle () {
+
+function Vehicle (props) {
+
+  const vehicles = {
+    car: {
+      name: 'Car',
+      eco: 'high'
+    },
+    ute: {
+      name: 'Ute',
+      eco: 'high'
+    },
+    motorbike: {
+      name: 'Motorbike',
+      eco: 'high'
+    }
+  }
+
 return (
   <View>
-    <Text>
-      Vehicle
-    </Text>
+    <Text>Select type of Vehicle:</Text>
+
+  <RNPickerSelect
+  onValueChange={(value) => props.setVehicleType(value)}
+  items={[
+    { label: vehicles.car.name, value: vehicles.car.name },
+    { label: vehicles.ute.name, value: vehicles.ute.name },
+    { label: vehicles.motorbike.name, value: vehicles.motorbike.name },
+  ]}
+/>
   </View>
 )
 }

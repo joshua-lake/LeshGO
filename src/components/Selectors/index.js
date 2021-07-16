@@ -5,12 +5,13 @@ import ToLocation from './ToLocation'
 import FromLocation from './FromLocation'
 import Vehicle from './Vehicle'
 
-function Selectors () {
+function Selectors (props) {
+  console.log('props', props)
 return (
   <View>
     <ToLocation/>
     <FromLocation/>
-    <Vehicle/>
+    <Vehicle setVehicleType={props.setVehicleType}/>
   </View>
 )
 }

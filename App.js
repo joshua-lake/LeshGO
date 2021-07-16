@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import React, { useState } from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
 import Maps from './src/components/Maps'
@@ -8,9 +8,13 @@ import Results from './src/components/Results'
 
 
 const App = () => {
+
+const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
+console.log('app vehicle type', vehicleType)
+
   return (
     <View style={styles.container}>
-      <Selectors/>
+      <Selectors setVehicleType={setVehicleType}/>
 
       <Text style={styles.titleText}>Demo route</Text>
       <Maps/>
