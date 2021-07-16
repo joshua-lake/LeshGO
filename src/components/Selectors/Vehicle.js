@@ -7,7 +7,7 @@ function Vehicle () {
 return (
   <View>
     <StyledText>
-      Vehicle
+      Vehicle:
     </StyledText>
   </View>
 )
@@ -15,6 +15,7 @@ return (
 
 const StyledText = styled.Text`
   color: blue;
+  font-size: 30px;
 `
 
 export default Vehicle

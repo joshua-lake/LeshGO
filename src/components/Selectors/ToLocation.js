@@ -6,7 +6,7 @@ function ToLocation () {
 return (
   <View>
     <StyledText>
-      To Location
+      To Location:
     </StyledText>
   </View>
 )
@@ -14,6 +14,7 @@ return (
 
 const StyledText = styled.Text`
   color: blue;
+  font-size: 30px;
 `
 
 export default ToLocation
