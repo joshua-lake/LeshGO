@@ -8,15 +8,24 @@ import { API_KEY } from '../../api'
 const defaultOrigin = { latitude: -36.874935, longitude: 174.748596 }
 const defaultDestination = { latitude: -36.9040097, longitude: 174.760000 }
 // const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's api key -- actually james'...
-const transportMode = "WALKING" // DRIVING BICYCLING TRANSIT WALKING
-
+const transportMode = 'WALKING' // DRIVING BICYCLING TRANSIT WALKING
 
 const Maps = (props) => {
   const [geoLocation, setGeoLocation] = useState({})
-  const [origin, setOrigin] = useState(defaultOrigin)
-  const [destination, setDestination] = useState(defaultDestination)
-  
+  const [origin, setOrigin] = useState({})
+  const [destination, setDestination] = useState({})
+
   const [mapRouteData, setRouteData] = useState({})
+
+  let oMarker = null
+  let dMarker = null
+
+  if (origin.latitude) {
+    oMarker = <MapView.Marker coordinate={origin}/>
+  }
+  if (destination.latitude) {
+    dMarker = <MapView.Marker coordinate={destination}/>
+  }
 
   useEffect(() => {
     async function fetchData () {
@@ -25,8 +34,8 @@ const Maps = (props) => {
 
     setOrigin(props.origin)
     setDestination(props.destination)
-    console.log('origin: ', origin);
-    console.log('destination: ', origin);
+    console.log('origin: ', origin)
+    console.log('destination: ', origin)
     fetchData()
   }, [])
 
@@ -40,8 +49,9 @@ const Maps = (props) => {
       durationMIN: data.duration
     })
   }
-  // console.log(mapRouteData);
 
+  // console.log(mapRouteData);
+  console.log(dMarker)
   return (
 
     <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"
@@ -50,18 +60,20 @@ const Maps = (props) => {
       latitudeDelta: 0.0722,
       longitudeDelta: 0.0421,
     }}>
-      <MapView.Marker coordinate={`${origin.latitude},${origin.longitude}`}/>
-      <MapView.Marker coordinate={`${destination.latitude},${destination.longitude}`}/>
+      {oMarker}
+      {dMarker}
+      {/* <MapView.Marker coordinate={origin}/> */}
+      {/* <MapView.Marker coordinate={destination}/> */}
       <MapViewDirections onReady={result => setIncomingRouteData(result)}
-          origin={`${origin.latitude},${origin.longitude}`}
-          destination={`${destination.latitude},${destination.longitude}`}
-          apikey={API_KEY}
-          mode={transportMode}
-          timePrecision="now"
-          showsUserLocation
-          strokeWidth={3}
-          // strokeColor="green"
-          />
+                         origin={`${origin.latitude},${origin.longitude}`}
+                         destination={`${destination.latitude},${destination.longitude}`}
+                         apikey={API_KEY}
+                         mode={transportMode}
+                         timePrecision="now"
+                         showsUserLocation
+                         strokeWidth={3}
+        // strokeColor="green"
+      />
     </MapView>
 
   )
