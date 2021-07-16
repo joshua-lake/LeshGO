@@ -1,14 +1,19 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import styled from 'styled-components/native'
+import { View } from 'react-native'
 
 function ToLocation () {
 return (
   <View>
-    <Text>
+    <StyledText>
       To Location
-    </Text>
+    </StyledText>
   </View>
 )
 }
+
+const StyledText = styled.Text`
+  color: blue;
+`
 
 export default ToLocation

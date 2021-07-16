@@ -1,14 +1,20 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import styled from 'styled-components/native'
+import { View } from 'react-native'
+
 
 function Vehicle () {
 return (
   <View>
-    <Text>
+    <StyledText>
       Vehicle
-    </Text>
+    </StyledText>
   </View>
 )
 }
+
+const StyledText = styled.Text`
+  color: blue;
+`
 
 export default Vehicle

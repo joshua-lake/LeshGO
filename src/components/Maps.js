@@ -1,7 +1,7 @@
 import React from 'react'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
-import { Dimensions, StyleSheet } from 'react-native'
+// import styled from 'styled-components/native'
 
 
 const origin = { latitude: -36.874935, longitude: 174.748596 }
@@ -11,7 +11,7 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's a
 const Maps = () => {
   return (
 
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{
+      <MapView provider={PROVIDER_GOOGLE} initialRegion={{
         latitude: -36.872036,
         longitude: 174.763428,
         latitudeDelta: 0.0722,
@@ -31,12 +31,10 @@ const Maps = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  map: {
-    width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height / 1.5,
-    borderRadius: 20,
-  },
-})
+// const StyledMap = styled.View`
+// width: auto;
+// height: auto;
+// borderRadius: 20;
+// `
 
 export default Maps

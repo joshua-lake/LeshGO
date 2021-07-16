@@ -1,15 +1,19 @@
 import React from 'react'
-
-import { View, Text } from 'react-native'
+import styled from 'styled-components/native'
+import { View } from 'react-native'
 
 function Bike () {
   return (
     <View>
-      <Text>
+      <StyledText>
         BIKING
-      </Text>
+      </StyledText>
     </View>
   )
 }
+
+const StyledText = styled.Text`
+  color: green;
+`
 
 export default Bike
