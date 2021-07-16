@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
-import Maps from './src/components/Maps'
-import Selectors from './src/components/Selectors'
+import Maps from './src/components/Maps/'
+import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
 
 
