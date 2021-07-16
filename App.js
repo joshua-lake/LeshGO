@@ -3,8 +3,8 @@ import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
 import Maps from './src/components/Maps'
-import Selectors from './src/components/Selectors/Selectors'
-import Results from './src/components/Results/Results'
+import Selectors from './src/components/Selectors'
+import Results from './src/components/Results'
 
 
 const App = () => {
