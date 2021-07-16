@@ -3,20 +3,19 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { ScrollView, SafeAreaView } from 'react-native'
 
-// import Maps from './src/components/Maps'
+import Maps from './src/components/Maps'
 import Selectors from './src/components/Selectors'
 import Results from './src/components/Results'
 
 
 const App = () => {
   return (
-    // <SafeAreaView style={{marginHistory: 20}}>
+    
     <SafeAreaView>
     <ScrollView>
     <StyledView>
        <Selectors/>
-       {/* <Maps/> */}
-    <PlaceholderImage source={require('./assets/cat.jpg')}/>
+       <Maps/>
       <Results/>
       <StatusBar style="auto"/> 
     </StyledView>
@@ -31,8 +30,6 @@ const StyledView = styled.View`
   alignItems: center;
   justifyContent: center;
 `
-const PlaceholderImage = styled.Image`
-  flex: 1;
-`
+
 
 export default App

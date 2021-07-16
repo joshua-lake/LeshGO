@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { View } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 function ToLocation () {
 return (
   <View>
     <StyledText>
-      To Location:
+    <Icon name="search" size={30} color="#900" />
+      To Location: Your House
     </StyledText>
   </View>
 )
