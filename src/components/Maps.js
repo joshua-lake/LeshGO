@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import { Dimensions, StyleSheet } from 'react-native'
+import { getGeoLocation } from '../api/geolocation'
+import { API_KEY } from '../api'
 
 
 const origin = { latitude: -36.874935, longitude: 174.748596 }
 const destination = { latitude: -36.9040097, longitude: 174.760000 }
-const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's api key -- actually james'...
+// const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's api key -- actually james'...
 
 const Maps = () => {
+  const [geoLocation, setGeoLocation] = useState({})
+
+  useEffect(() => {
+    async function fetchData () {
+      setGeoLocation(await getGeoLocation())
+    }
+    fetchData()
+  }, [])
+
   return (
 
       <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{
@@ -22,7 +33,7 @@ const Maps = () => {
         <MapViewDirections
           origin={origin}
           destination={destination}
-          apikey={GOOGLE_MAPS_APIKEY}
+          apikey={API_KEY}
           showsUserLocation
           strokeWidth={3}
           strokeColor="green"/>

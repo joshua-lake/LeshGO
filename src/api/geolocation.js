@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-const API_KEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ'
+import { API_KEY } from '../api'
 
 const instance = axios.create({
   baseURL: 'https://www.googleapis.com/geolocation/v1/geolocate',
@@ -10,8 +9,8 @@ const instance = axios.create({
 
 export const getGeoLocation = async () => {
   try {
-    const { data } = await instance.get(`?key=${API_KEY}`)
-    return data
+    const { data: { location: {lat: latitude, lng: longitude} } } = await instance.post(`?key=${API_KEY}`)
+    return {latitude, longitude}
   } catch (error) {
     return {
       error: error.message
