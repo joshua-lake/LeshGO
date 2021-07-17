@@ -13,7 +13,8 @@ function Drive () {
 }
 
 const StyledText = styled.Text`
-  color: green;
+color: white;
+font-size: 25;
 `
 
 export default Drive

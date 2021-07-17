@@ -13,7 +13,8 @@ function Bike () {
 }
 
 const StyledText = styled.Text`
-  color: green;
+color: black;
+font-size: 25;
 `
 
 export default Bike

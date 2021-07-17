@@ -14,7 +14,8 @@ return (
 }
 
 const StyledText = styled.Text`
-  color: blue;
+  color: black;
+  font-size: 25;
 `
 
 export default Vehicle

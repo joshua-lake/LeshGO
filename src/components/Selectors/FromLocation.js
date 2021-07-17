@@ -6,14 +6,15 @@ function FromLocation () {
 return (
   <View>
     <StyledText>
-      From Location
+      Where are you coming from...
     </StyledText>
   </View>
 )
 }
 
 const StyledText = styled.Text`
-  color: blue;
+color: black;
+font-size: 25;
 `
 
 export default FromLocation
