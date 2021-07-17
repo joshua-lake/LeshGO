@@ -5,26 +5,23 @@ import styled from 'styled-components/native'
 import ToLocation from './ToLocation'
 import FromLocation from './FromLocation'
 import Vehicle from './Vehicle'
-// import GooglePlacesInput from './GooglePlacesInput'
+import GooglePlacesInput from './GooglePlacesInput'
 
-function Selectors () {
+function Selectors (props) {
 return (
   <StyledView>
     <StyledTo>
+     <GooglePlacesInput placeHolderText={"To..."}/>
      <ToLocation/>
     </StyledTo>
     <StyledFrom>
+     <GooglePlacesInput placeHolderText={"From..."}/>
      <FromLocation/>
     </StyledFrom>
     <StyledVehicle>
-     <Vehicle/>
+    <Vehicle setVehicleType={props.setVehicleType}/>
     </StyledVehicle>
   </StyledView>
-  // <View>
-  //   <GooglePlacesInput placeHolderText={"From..."}/>
-  //   <GooglePlacesInput placeHolderText={"To..."}/>
-  //   <Vehicle/>
-  // </View>
 )
 }
 

@@ -9,6 +9,10 @@ import Results from './src/components/Results'
 import GooglePlacesInput from './src/components/Selectors/GooglePlacesInput'
 
 const App = () => {
+
+const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
+console.log('app vehicle type', vehicleType)
+
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     console.log(origin)
@@ -53,6 +57,9 @@ const StyledView = styled.View`
 `
           // <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
           // <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
+                // <Selectors setVehicleType={setVehicleType}/>
+                // <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
+                // <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
 
 const StyledSelector = styled.View`
 flex: 2;
@@ -62,6 +69,7 @@ width: 100%;
 `
           // <Text style={styles.titleText}>Demo route</Text>
           // <Maps origin={origin} destination={destination}/>
+          // <Results vehicleType={vehicleType}/>
 
 const StyledMap = styled.View`
 flex: 2;
