@@ -10,14 +10,15 @@ import GooglePlacesInput from './GooglePlacesInput'
 function Selectors (props) {
 return (
   <StyledView>
-    <StyledTo>
-     <GooglePlacesInput placeHolderText={"To..."}/>
-     <ToLocation/>
-    </StyledTo>
+
     <StyledFrom>
-     <GooglePlacesInput placeHolderText={"From..."}/>
+     <GooglePlacesInput placeHolderText={"Where are you coming from?"} updateState={props.setOrigin}/>
      <FromLocation/>
     </StyledFrom>
+    <StyledTo>
+     <GooglePlacesInput placeHolderText={"Where are you going?"} updateState={props.setDestination}/>
+     <ToLocation/>
+    </StyledTo>
     <StyledVehicle>
     <Vehicle setVehicleType={props.setVehicleType}/>
     </StyledVehicle>

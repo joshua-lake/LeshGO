@@ -8,8 +8,8 @@ function FromLocation () {
 return (
   <View>
     <StyledText>
-    <Icon name="search" size={30} color="#900" />
-      From Location: My House
+    {/* <Icon name="search" size={30} color="#900" /> */}
+      {/* From Location: My House */}
     </StyledText>
   </View>
 )
