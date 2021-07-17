@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import ToLocation from './ToLocation'
 import FromLocation from './FromLocation'
 import Vehicle from './Vehicle'
+// import GooglePlacesInput from './GooglePlacesInput'
 
 function Selectors () {
 return (
@@ -19,10 +20,13 @@ return (
      <Vehicle/>
     </StyledVehicle>
   </StyledView>
+  // <View>
+  //   <GooglePlacesInput placeHolderText={"From..."}/>
+  //   <GooglePlacesInput placeHolderText={"To..."}/>
+  //   <Vehicle/>
+  // </View>
 )
 }
-
-export default Selectors
 
 const StyledView = styled.View`
   flex: 1;
@@ -53,3 +57,5 @@ background-color: green;
 padding: 5%;
 width: 100%;
 `
+
+export default Selectors
