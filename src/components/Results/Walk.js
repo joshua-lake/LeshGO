@@ -2,13 +2,11 @@ import React from 'react'
 
 import { View, Text } from 'react-native'
 
-function Walk (props) {
+function Walk () {
   return (
     <View>
       <Text>
-        Walking:
-        Distance:{props.data.distanceKM}KM
-        Time:{props.data.durationMIN}Mins
+        WALKING
       </Text>
     </View>
   )

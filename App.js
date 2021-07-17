@@ -3,22 +3,26 @@ import React, { useEffect, useState } from 'react'
 import { LogBox, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 
 import Maps from './src/components/Maps/'
-import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
 import GooglePlacesInput from './src/components/Selectors/GooglePlacesInput'
 
 const App = () => {
-
-  const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
 
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
 
   const [markers, setMarkers] = useState([])
 
+  const [mapRouteData, setRouteData] = useState({
+    walking: {},
+    driving: {},
+    transit: {},
+    bicyclng: {}
+  })
+
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
-    setMarkers([{ coord: origin}, { coord: destination}])
+    setMarkers([{ coord: origin }, { coord: destination }])
   }, [origin, destination])
 
   return (
@@ -26,14 +30,12 @@ const App = () => {
       <ScrollView keyboardShouldPersistTaps="always">
         <View style={styles.container}>
 
-          {/* <Selectors setVehicleType={setVehicleType}/> */}
           <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
           <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
 
           <Text style={styles.titleText}>Demo route</Text>
-           <Maps markers={markers}/>
-          <Results vehicleType={vehicleType}/>
-
+          <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin} destination={destination}/>
+          <Results/>
 
           <StatusBar style="auto"/>
         </View>

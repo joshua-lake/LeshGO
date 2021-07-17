@@ -2,13 +2,11 @@ import React from 'react'
 
 import { View, Text } from 'react-native'
 
-function Bike (props) {
+function Bike () {
   return (
     <View>
       <Text>
-      Cycling:
-        Distance:{props.data.distanceKM}KM
-        Time:{props.data.durationMIN}Mins
+        BIKING
       </Text>
     </View>
   )
