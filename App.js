@@ -1,29 +1,44 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState } from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, ScrollView, StyleSheet, Text, View , LogBox } from 'react-native'
 
-import Maps from './src/components/Maps'
-import Selectors from './src/components/Selectors'
+import Maps from './src/components/Maps/'
+import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
-
+import GooglePlacesInput from './src/components/Selectors/GooglePlacesInput'
 
 const App = () => {
 
 const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
 console.log('app vehicle type', vehicleType)
 
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+    console.log(origin)
+    console.log(destination)
+  }, [])
+
+  const [origin, setOrigin] = useState({})
+  const [destination, setDestination] = useState({})
+
   return (
-    <View style={styles.container}>
-      <Selectors setVehicleType={setVehicleType}/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView keyboardShouldPersistTaps='always'>
+        <View style={styles.container}>
 
-      <Text style={styles.titleText}>Demo route</Text>
-      <Maps/>
+          <Selectors setVehicleType={setVehicleType}/>
+          <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
+          <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
 
-      <Results vehicleType={vehicleType}/>
+          <Results vehicleType={vehicleType}/>
+          <Text style={styles.titleText}>Demo route</Text>
+          <Maps origin={origin} destination={destination}/>
 
 
-      <StatusBar style="auto"/>
-    </View>
+          <StatusBar style="auto"/>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -34,13 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  map: {
-    width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height / 1.5,
-    borderRadius: 20,
-  },
-
   titleText: {
     marginTop: 16,
     paddingVertical: 8,
