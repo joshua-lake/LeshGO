@@ -10,12 +10,24 @@ import GooglePlacesInput from './src/components/Selectors/GooglePlacesInput'
 const App = () => {
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-    console.log(origin)
-    console.log(destination)
+    console.log("origin: ", origin)
+    console.log("destination: ", destination)
   }, [])
 
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
+ 
+
+
+  const [mapRouteData, setRouteData] = useState({
+    walking: {},
+    driving: {},
+    transit: {},
+    bicyclng: {}
+
+  })
+
+  // console.log('in app: ', mapRouteData);  
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -26,7 +38,7 @@ const App = () => {
           <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
 
           <Text style={styles.titleText}>Demo route</Text>
-          <Maps origin={origin} destination={destination}/>
+          <Maps origin={origin} destination={destination} setRouteData={setRouteData} mapRouteData={mapRouteData}/>
 
           <Results/>
 

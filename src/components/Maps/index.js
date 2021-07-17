@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
-import { Dimensions, StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet, ViewPropTypes } from 'react-native'
 import { getGeoLocation } from '../../api/geolocation'
 import { API_KEY } from '../../api'
 
@@ -15,7 +15,15 @@ const Maps = (props) => {
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
 
-  const [mapRouteData, setRouteData] = useState({})
+  const [walkingData, setWalkingData] = useState()
+  const [drivingData, setDrivingData] = useState()
+  const [transitData, setTransitData] = useState()
+  const [bicyclingData, setBicyclingData] = useState()
+
+  const {mapRouteData, setRouteData} = props
+
+  
+
 
   let oMarker = null
   let dMarker = null
@@ -34,24 +42,68 @@ const Maps = (props) => {
 
     setOrigin(props.origin)
     setDestination(props.destination)
-    console.log('origin: ', origin)
-    console.log('destination: ', origin)
+    // console.log('origin: ', origin)
+    // console.log('destination: ', origin)
     fetchData()
-  }, [])
 
-  function setIncomingRouteData (data) {
-    // console.log(data)
+    async function addStates() {
+      setRouteData({
+        walkingData,
+        drivingData,
+        transitData,
+        bicyclingData
+      })
+    }
+    addStates()
+  }, [bicyclingData, drivingData, transitData, walkingData])
+
+  
+    function handleWalkingData (data) {
     const lastCoord = data.coordinates.length - 1
-    setRouteData({
-      returnedOrigin: data.coordinates[0], // lat long object
-      returnedDestination: data.coordinates[lastCoord], // lat long object
-      distanceKM: data.distance,
-      durationMIN: data.duration
-    })
+    setWalkingData({
+        returnedOrigin: data.coordinates[0], // lat long object
+        returnedDestination: data.coordinates[lastCoord], // lat long object
+        distanceKM: data.distance,
+        durationMIN: data.duration
+      }
+      
+    )
+  }
+  
+    function handleDrivingData (data) {
+    const lastCoord = data.coordinates.length - 1
+    setDrivingData({
+        returnedOrigin: data.coordinates[0], // lat long object
+        returnedDestination: data.coordinates[lastCoord], // lat long object
+        distanceKM: data.distance,
+        durationMIN: data.duration
+      })
   }
 
+    function handleTransitData (data) {
+    const lastCoord = data.coordinates.length - 1
+    setTransitData({
+        returnedOrigin: data.coordinates[0], // lat long object
+        returnedDestination: data.coordinates[lastCoord], // lat long object
+        distanceKM: data.distance,
+        durationMIN: data.duration
+      })
+  }
+
+    function handleBicyclingData (data) {
+    // console.log("bike data: ", data);
+    const lastCoord = data.coordinates.length - 1
+    setBicyclingData({
+        returnedOrigin: data.coordinates[0], // lat long object
+        returnedDestination: data.coordinates[lastCoord], // lat long object
+        distanceKM: data.distance,
+        durationMIN: data.duration
+      })
+  }
+  // console.log("mapRouteData: ", mapRouteData)
+
   // console.log(mapRouteData);
-  console.log(dMarker)
+  // console.log(dMarker)
   return (
 
     <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"
@@ -64,15 +116,45 @@ const Maps = (props) => {
       {dMarker}
       {/* <MapView.Marker coordinate={origin}/> */}
       {/* <MapView.Marker coordinate={destination}/> */}
-      <MapViewDirections onReady={result => setIncomingRouteData(result)}
-                         origin={`${origin.latitude},${origin.longitude}`}
-                         destination={`${destination.latitude},${destination.longitude}`}
+      <MapViewDirections onReady={result => handleWalkingData(result)}
+                         origin={defaultOrigin}// {`${origin.latitude},${origin.longitude}`}
+                         destination={defaultDestination}// {`${destination.latitude},${destination.longitude}`}
                          apikey={API_KEY}
-                         mode={transportMode}
+                         mode="WALKING"
                          timePrecision="now"
                          showsUserLocation
-                         strokeWidth={3}
-        // strokeColor="green"
+                         strokeWidth={6}
+                         strokeColor="green"
+      /> 
+      <MapViewDirections onReady={result => handleDrivingData(result)}
+                        origin={defaultOrigin}// {`${origin.latitude},${origin.longitude}`}
+                        destination={defaultDestination}// {`${destination.latitude},${destination.longitude}`}
+                        apikey={API_KEY}
+                        mode="DRIVING"
+                        timePrecision="now"
+                        showsUserLocation
+                        strokeWidth={3}
+                        strokeColor="blue"
+      />
+      <MapViewDirections onReady={result => handleTransitData(result)}
+                        origin={defaultOrigin}// {`${origin.latitude},${origin.longitude}`}
+                        destination={defaultDestination}// {`${destination.latitude},${destination.longitude}`}
+                        apikey={API_KEY}
+                        mode="TRANSIT"
+                        timePrecision="now"
+                        showsUserLocation
+                        strokeWidth={3}
+                        strokeColor="red"
+      />
+      <MapViewDirections onReady={result => handleBicyclingData(result)}
+                        origin={defaultOrigin}// {`${origin.latitude},${origin.longitude}`}
+                        destination={defaultDestination}// {`${destination.latitude},${destination.longitude}`}
+                        apikey={API_KEY}
+                        mode="BICYCLING"
+                        timePrecision="now"
+                        showsUserLocation
+                        strokeWidth={3}
+                        strokeColor="yellow"
       />
     </MapView>
 

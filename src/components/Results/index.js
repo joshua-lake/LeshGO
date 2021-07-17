@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View } from 'react-native'
 
 import Walk from './Walk'
@@ -7,6 +7,8 @@ import Drive from './Drive'
 import PublicTransport from './PublicTransport'
 
 function Results () {
+ 
+
   return (
   <View>
     <Walk/>
