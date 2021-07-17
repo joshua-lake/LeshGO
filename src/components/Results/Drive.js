@@ -3,12 +3,10 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 function Drive (props) {
-  console.log(props)
-
   return (
     <View>
       <Text>
-      {props.vehicleType 
+      {props.vehicleType
       ? props.vehicleType
       : 'Please select vehicle type'}:
         Distance:{props.data.distanceKM}KM
