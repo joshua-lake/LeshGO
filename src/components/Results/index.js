@@ -7,6 +7,7 @@ import Drive from './Drive'
 import PublicTransport from './PublicTransport'
 
 function Results (props) {
+  
 const tempData = {
   walk: {
     distanceKM: 10,

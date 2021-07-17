@@ -30,9 +30,9 @@ console.log('app vehicle type', vehicleType)
           <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
           <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
 
-          <Results vehicleType={vehicleType}/>
           <Text style={styles.titleText}>Demo route</Text>
           <Maps origin={origin} destination={destination}/>
+          <Results vehicleType={vehicleType}/>
 
 
           <StatusBar style="auto"/>
