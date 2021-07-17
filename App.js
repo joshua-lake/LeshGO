@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import styled from 'styled-components/native'
+import { ScrollView, SafeAreaView } from 'react-native'
 
 import Maps from './src/components/Maps'
 import Selectors from './src/components/Selectors'
@@ -9,6 +10,9 @@ import Results from './src/components/Results'
 
 const App = () => {
   return (
+    
+    <SafeAreaView>
+    <ScrollView>
     <StyledView>
       <StyledSelector>
        <Selectors/>
@@ -21,13 +25,15 @@ const App = () => {
       </StyledResult>
       <StatusBar style="auto"/> 
     </StyledView>
+    </ScrollView>
+   </SafeAreaView>
   )
 }
 
 const StyledView = styled.View`
   flex: 1;
   flex-direction: column;
-  background-color: red;
+  background-color: pink;
   alignItems: center;
   justifyContent: center;
   padding-top: 8%;
@@ -54,5 +60,6 @@ alignItems: center;
 justifyContent: center;
 width: 100%;
 `
+
 
 export default App
