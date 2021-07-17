@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, LogBox } from 'react-native'
 
+
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
@@ -41,16 +42,16 @@ console.log('app vehicle type', vehicleType)
   )
 }
 
+// flex: 1;
+// flex-direction: column;
 const StyledView = styled.View`
-flex: 1;
-flex-direction: column;
 background-color: pink;
 alignItems: center;
 justifyContent: center;
 `
 
+// flex: 2;
 const StyledSelector = styled.View`
-flex: 2;
 alignItems: center;
 justifyContent: center;
 width: 100%;

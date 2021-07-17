@@ -2,11 +2,13 @@ import React from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const GooglePlacesInput = ({placeHolderText, updateState}) => {
   return (
     <ScrollView keyboardShouldPersistTaps="always">
-       <GooglePlacesAutocomplete
+      <Icon name="search" size={10} color="#900" />
+       <GooglePlacesAutocomplete 
         placeholder={placeHolderText}
         styles={{
           container: {
@@ -25,7 +27,7 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
           textInputContainer: {
           },
           textInput: {
-            backgroundColor: '#F9F5F4',
+            backgroundColor: 'orange',
             borderRadius: 20,
           }
         }}
@@ -59,5 +61,6 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
     </ScrollView>
   )
 }
+
 
 export default GooglePlacesInput

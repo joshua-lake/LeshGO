@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 function FromLocation () {
@@ -18,7 +18,6 @@ return (
 const StyledText = styled.Text`
   color: blue;
   font-size: 30px;
-  margin-bottom: 30px;
 `
 
 
