@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
-    setMarkers([{ latlng: origin}, { latlng: destination}])
+    setMarkers([{ coord: origin}, { coord: destination}])
   }, [origin, destination])
 
   return (
