@@ -10,6 +10,8 @@ import PublicTransport from './PublicTransport'
 function Results (props) {
   const {setSelectedRoute} = props
 
+  // console.log('props', props.vehicleType.name)
+
 
   const undefinedData = {
 
@@ -49,7 +51,7 @@ function Results (props) {
 
       <StyledDrive>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
+          <Drive data={props} undefinedData={undefinedData} />
         </Pressable>
       </StyledDrive>
 

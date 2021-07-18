@@ -9,7 +9,9 @@ import Results from './src/components/Results'
 
 const App = () => {
 
-  const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
+  const [vehicleType, setVehicleType] = useState() // <== Value of vehicle type, coming from selectors/vehicle
+
+  console.log('vehicleType', vehicleType)
 
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested'])

@@ -5,14 +5,18 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
   const { distance, duration } = props.undefinedData.drive
+  // console.log('drive', props.vehicleType)
+
+  console.log('drive vehicle name', props.data.vehicleType.name)
+
 
   return (
     props.data.mapRouteData.drivingData
     ? <View>
         <StyledText>
           <Icon name="car" size={30} color="#900"/>
-          {props.vehicleType
-            ? props.vehicleType
+          {props.data.vehicleType.name
+            ? props.data.vehicleType.name
             : 'Please select vehicle type'}:
           Distance:{props.data.mapRouteData.drivingData.distanceKM}KM
           Time:{props.data.mapRouteData.drivingData.durationMIN}Mins
@@ -22,13 +26,14 @@ function Drive (props) {
     : <View>
         <StyledText>
           <Icon name="car" size={30} color="#900" />
-          {props.vehicleType
-            ? props.vehicleType
-            : 'Please select vehicle type'}:
+          {/* {props.data.vehicleType.name
+            ? props.data.vehicleType.name
+            : 'Please select vehicle type'}: */}
             Distance:{distance}
             Time:{duration}
         </StyledText>
     </View>
+    // <View></View>
   )
 
 }
