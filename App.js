@@ -14,10 +14,10 @@ const LOCATION_TASK_NAME = 'background-location-task'
 const App = () => {
 
   const requestPermissions = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync()
+    const { status } = await Location.requestBackgroundPermissionsAsync()
     if (status === 'granted') {
       await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-        accuracy: Location.Accuracy.Balanced,
+        accuracy: Location.Accuracy.BestForNavigation,
       })
     }
   }
