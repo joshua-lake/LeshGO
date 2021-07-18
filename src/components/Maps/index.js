@@ -81,9 +81,8 @@ const Maps = (props) => {
 
 const styles = StyleSheet.create({
   map: {
-    width: Dimensions.get('window').width - 20,
-    height: Dimensions.get('window').height / 4,
-    // borderRadius: 20,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height / 3.8,
   },
 })
 
