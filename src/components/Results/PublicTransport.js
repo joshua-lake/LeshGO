@@ -18,8 +18,7 @@ function PublicTransport (props) {
 
 const StyledText = styled.Text`
   color: green;
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 20px;
 `
 
 export default PublicTransport

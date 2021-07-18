@@ -1,25 +1,43 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
   return (
-    <View>
-      <StyledText>
+    <StyledView>
+      <StyledIcon>
       <Icon name="bike" size={30} color="#900" />
-      Cycling:
-        Distance:{props.data.distanceKM}KM
-        Time:{props.data.durationMIN}Mins
+      </StyledIcon>
+      <FlexText>
+      <StyledText>
+        Distance: {props.data.distanceKM}KM
       </StyledText>
-    </View>
+      <StyledText>
+        Time: {props.data.durationMIN}Mins
+      </StyledText>
+      </FlexText>
+    </StyledView>
   )
 }
 
 const StyledText = styled.Text`
   color: green;
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 20px;
+`
+
+const StyledView = styled.View`
+flex: 1;
+flex-direction: row;
+alignItems: center;
+`
+
+const FlexText = styled.View`
+flex: 4;
+flex-direction: column;
+`
+
+const StyledIcon = styled.View`
+flex: 1
 `
 
 export default Bike

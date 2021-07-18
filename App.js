@@ -23,7 +23,7 @@ console.log('app vehicle type', vehicleType)
   const [destination, setDestination] = useState({})
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: 'purple' }}>
     <ScrollView keyboardShouldPersistTaps='always'>
     <StyledView>
       <StyledSelector>
@@ -37,21 +37,22 @@ console.log('app vehicle type', vehicleType)
       </StyledResult>
       <StatusBar style="auto"/> 
     </StyledView>
-    </ScrollView>
-   </SafeAreaView>
+  </ScrollView>
+  </SafeAreaView>
   )
 }
 
-// flex: 1;
-// flex-direction: column;
+
 const StyledView = styled.View`
-background-color: pink;
+flex: 1;
+flex-direction: column;
+background-color: grey;
 alignItems: center;
 justifyContent: center;
 `
 
-// flex: 2;
 const StyledSelector = styled.View`
+flex: 2;
 alignItems: center;
 justifyContent: center;
 width: 100%;

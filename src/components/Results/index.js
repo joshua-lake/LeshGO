@@ -56,29 +56,25 @@ const StyledView = styled.View`
 
 const StyledWalk = styled.View`
 flex: 1;
-background-color: pink;
-padding: 5%;
+background-color: gold;
 width: 100%;
 `
 
 const StyledBike = styled.View`
 flex: 1;
 background-color: yellow;
-padding: 5%;
 width: 100%;
 `
 
 const StyledDrive = styled.View`
 flex: 1;
 background-color: black;
-padding: 5%;
 width: 100%;
 `
 
 const StyledPublicTransport = styled.View`
 flex: 1;
-background-color: white;
-padding: 5%;
+background-color: violet;
 width: 100%;
 `
 
