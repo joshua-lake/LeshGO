@@ -4,14 +4,16 @@ import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
+  const { distance, duration } = props.undefinedData.walk
   return (
-    props.data.distanceKM
-    ? <View>
+    props.data.mapRouteData.walkingData
+    ? 
+    <View>
         <StyledText>
           <Icon name="walking" size={30} color="#900" />
           Walking:
-            Distance:{props.data.distanceKM}KM
-            Time:{props.data.durationMIN}Mins
+            Distance:{props.data.mapRouteData.walkingData.distanceKM}KM
+            Time:{props.data.mapRouteData.walkingData.durationMIN}Mins
         </StyledText>
       </View>
 
@@ -19,8 +21,8 @@ function Walk (props) {
         <StyledText>
           <Icon name="walking" size={30} color="#900" />
           Walking:
-            Distance:{props.data.distance}
-            Time:{props.data.duration}
+            Distance:{distance}
+            Time:{duration}
         </StyledText>
       </View>
   )

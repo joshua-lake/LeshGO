@@ -8,93 +8,44 @@ import PublicTransport from './PublicTransport'
 
 function Results (props) {
 
-// props.mapRouteData && const { mapRouteData: { walkingData } } = props : null
-
-// props.mapRouteData && console.log('map data: ', props.mapRouteData)
-
-// // const { mapRouteData: { walkingData } } = props
-// // console.log(walkingData.distanceKM)
-
-// const walkingData = props.mapRouteData.walkingData
-// console.log('HERE', walkingData)
-
 props.mapRouteData.walkingData && console.log('MRD', props.mapRouteData)
-
-
-
-
-
-  const tempData = {
-    walk: {
-      distanceKM: 1,
-      durationMIN: 6
-    },
-    bike: {
-      distanceKM: 10,
-      durationMIN: 20
-    },
-    drive: {
-      distanceKM: 10,
-      durationMIN: 15
-    },
-    publicTransport: {
-      distanceKM: 10,
-      durationMIN: 20
-    }
-  }
 
   const undefinedData = {
 
-    walk: {
+    walk: { // <=== hard coded default display data
       distance: 'please enter',
       duration: 'please enter'
     },
     bike: {
-      distanceKM: 'please enter',
-      durationMIN: 'please enter'
+      distance: 'please enter',
+      duration: 'please enter'
     },
     drive: {
-      distanceKM: 'please enter',
-      durationMIN: 'please enter'
+      distance: 'please enter',
+      duration: 'please enter'
     },
     publicTransport: {
-      distanceKM: 'please enter',
-      durationMIN: 'please enter'
+      distance: 'please enter',
+      duration: 'please enter'
     }
 
   }
 
   return (
-    props.mapRouteData.walkingData
-    ? <StyledView>
+    <StyledView>
       <StyledWalk>
-        <Walk data={props.mapRouteData.walkingData}/>
+        <Walk data={props} undefinedData={undefinedData}/>
       </StyledWalk>
       <StyledBike>
-        <Bike data={tempData.bike}/>
+        <Bike data={props} undefinedData={undefinedData}/>
       </StyledBike>
       <StyledDrive>
-        <Drive vehicleType={props.vehicleType} data={tempData.drive}/>
+        <Drive data={props} undefinedData={undefinedData}/>
       </StyledDrive>
       <StyledPublicTransport>
-        <PublicTransport data={tempData.publicTransport}/>
+        <PublicTransport data={props} undefinedData={undefinedData}/>
       </StyledPublicTransport>
     </StyledView>
-
-    : <StyledView>
-    <StyledWalk>
-      <Walk data={undefinedData.walk}/>
-    </StyledWalk>
-    <StyledBike>
-      <Bike data={undefinedData.bike}/>
-    </StyledBike>
-    <StyledDrive>
-      <Drive vehicleType={props.vehicleType} data={undefinedData.drive}/>
-    </StyledDrive>
-    <StyledPublicTransport>
-      <PublicTransport data={undefinedData.publicTransport}/>
-    </StyledPublicTransport>
-  </StyledView>
   )
 }
 
