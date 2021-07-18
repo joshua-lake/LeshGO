@@ -14,8 +14,7 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
          <StyledText>
-            Vehicle Type
-            {props.vehicleType} 
+            Vehicle Type: {props.vehicleType} 
             {/* ? props.vehicleType
             : 'Please select vehicle type'}: */}
          </StyledText>
