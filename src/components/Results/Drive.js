@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
   const { distance, duration } = props.undefinedData.drive
+  const { setTwoDecimals } = props
 
   return (
     props.data.mapRouteData.drivingData
@@ -19,10 +20,10 @@ function Drive (props) {
             : 'Please select vehicle type'}: */}
          </StyledText>
          <StyledText>
-            Distance: {props.data.mapRouteData.drivingData.distanceKM}KM
+            Distance: {setTwoDecimals(props.data.mapRouteData.drivingData.distanceKM)}KM
          </StyledText>
          <StyledText>
-            Time: {props.data.mapRouteData.drivingData.durationMIN} mins
+            Time: {setTwoDecimals(props.data.mapRouteData.drivingData.durationMIN)} mins
          </StyledText>
         </FlexText>
       </StyledView>

@@ -10,6 +10,9 @@ import PublicTransport from './PublicTransport'
 function Results (props) {
   const {setSelectedRoute} = props
 
+  function setTwoDecimals( value ){
+    return +parseFloat(value).toFixed( 2 );
+  }
 
   const undefinedData = {
 
@@ -36,25 +39,25 @@ function Results (props) {
     <StyledView>
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData}/>
+          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData}/>
+          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
+          <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType} setTwoDecimals={setTwoDecimals}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData}/>
+          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
         </Pressable>
         </StyledContent>
     </StyledView>
