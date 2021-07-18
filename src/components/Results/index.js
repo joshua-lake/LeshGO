@@ -8,10 +8,26 @@ import PublicTransport from './PublicTransport'
 
 function Results (props) {
 
+// props.mapRouteData && const { mapRouteData: { walkingData } } = props : null
+
+// props.mapRouteData && console.log('map data: ', props.mapRouteData)
+
+// // const { mapRouteData: { walkingData } } = props
+// // console.log(walkingData.distanceKM)
+
+// const walkingData = props.mapRouteData.walkingData
+// console.log('HERE', walkingData)
+
+props.mapRouteData.walkingData && console.log('MRD', props.mapRouteData)
+
+
+
+
+
   const tempData = {
     walk: {
-      distanceKM: 10,
-      durationMIN: 50
+      distanceKM: 1,
+      durationMIN: 6
     },
     bike: {
       distanceKM: 10,
@@ -27,10 +43,32 @@ function Results (props) {
     }
   }
 
+  const undefinedData = {
+
+    walk: {
+      distance: 'please enter',
+      duration: 'please enter'
+    },
+    bike: {
+      distanceKM: 'please enter',
+      durationMIN: 'please enter'
+    },
+    drive: {
+      distanceKM: 'please enter',
+      durationMIN: 'please enter'
+    },
+    publicTransport: {
+      distanceKM: 'please enter',
+      durationMIN: 'please enter'
+    }
+
+  }
+
   return (
-    <StyledView>
+    props.mapRouteData.walkingData
+    ? <StyledView>
       <StyledWalk>
-        <Walk data={tempData.walk}/>
+        <Walk data={props.mapRouteData.walkingData}/>
       </StyledWalk>
       <StyledBike>
         <Bike data={tempData.bike}/>
@@ -42,6 +80,21 @@ function Results (props) {
         <PublicTransport data={tempData.publicTransport}/>
       </StyledPublicTransport>
     </StyledView>
+
+    : <StyledView>
+    <StyledWalk>
+      <Walk data={undefinedData.walk}/>
+    </StyledWalk>
+    <StyledBike>
+      <Bike data={undefinedData.bike}/>
+    </StyledBike>
+    <StyledDrive>
+      <Drive vehicleType={props.vehicleType} data={undefinedData.drive}/>
+    </StyledDrive>
+    <StyledPublicTransport>
+      <PublicTransport data={undefinedData.publicTransport}/>
+    </StyledPublicTransport>
+  </StyledView>
   )
 }
 
