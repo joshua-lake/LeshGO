@@ -23,6 +23,7 @@ const App = () => {
 
   const [markers, setMarkers] = useState([])
 
+  const [selectedRoute, setSelectedRoute] = useState()
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},
@@ -43,7 +44,7 @@ const App = () => {
             <Selectors setVehicleType={setVehicleType} setOrigin={setOrigin} setDestination={setDestination}/>
           </StyledSelector>
           <StyledMap>
-            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin} destination={destination}/>
+            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin} destination={destination} selectedRoute={selectedRoute}/>
           </StyledMap>
           <StyledResult>
             <Results vehicleType={vehicleType}/>
