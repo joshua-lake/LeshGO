@@ -8,38 +8,40 @@ import PublicTransport from './PublicTransport'
 
 function Results (props) {
 
-  const tempData = {
-    walk: {
-      distanceKM: 10,
-      durationMIN: 50
+  const undefinedData = {
+
+    walk: { // <=== hard coded default display data
+      distance: 'please enter',
+      duration: 'please enter'
     },
     bike: {
-      distanceKM: 10,
-      durationMIN: 20
+      distance: 'please enter',
+      duration: 'please enter'
     },
     drive: {
-      distanceKM: 10,
-      durationMIN: 15
+      distance: 'please enter',
+      duration: 'please enter'
     },
     publicTransport: {
-      distanceKM: 10,
-      durationMIN: 20
+      distance: 'please enter',
+      duration: 'please enter'
     }
+
   }
 
   return (
     <StyledView>
       <StyledWalk>
-        <Walk data={tempData.walk}/>
+        <Walk data={props} undefinedData={undefinedData}/>
       </StyledWalk>
       <StyledBike>
-        <Bike data={tempData.bike}/>
+        <Bike data={props} undefinedData={undefinedData}/>
       </StyledBike>
       <StyledDrive>
-        <Drive vehicleType={props.vehicleType} data={tempData.drive}/>
+        <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
       </StyledDrive>
       <StyledPublicTransport>
-        <PublicTransport data={tempData.publicTransport}/>
+        <PublicTransport data={props} undefinedData={undefinedData}/>
       </StyledPublicTransport>
     </StyledView>
   )

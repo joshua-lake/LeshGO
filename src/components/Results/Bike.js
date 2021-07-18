@@ -4,15 +4,27 @@ import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
+  const { distance, duration } = props.undefinedData.bike
   return (
-    <View>
-      <StyledText>
-        <Icon name="bike" size={30} color="#900"/>
-        Cycling:
-        Distance:{props.data.distanceKM}KM
-        Time:{props.data.durationMIN}Mins
-      </StyledText>
-    </View>
+    props.data.mapRouteData.bicyclingData
+    
+    ? <View>
+        <StyledText>
+          <Icon name="bike" size={30} color="#900"/>
+          Cycling:
+          Distance:{props.data.mapRouteData.bicyclingData.distanceKM}KM
+          Time:{props.data.mapRouteData.bicyclingData.durationMIN}Mins
+        </StyledText>
+      </View>
+    
+    : <View>
+    <StyledText>
+      <Icon name="bike" size={30} color="#900" />
+      Cycling:
+        Distance:{distance}
+        Time:{duration}
+    </StyledText>
+  </View>
   )
 }
 
