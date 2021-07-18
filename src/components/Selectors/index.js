@@ -6,53 +6,57 @@ import styled from 'styled-components/native'
 import Vehicle from './Vehicle'
 import GooglePlacesInput from './GooglePlacesInput'
 
-function Selectors (props) {
-  return (
-    <StyledView>
+const Selectors = ({ currentLocation, setDestination, setOrigin, setVehicleType }) => (
+  <StyledView>
 
-      <StyledFrom>
-        <GooglePlacesInput placeHolderText={'Where are you coming from?'} updateState={props.setOrigin}/>
-        {/* <FromLocation/> */}
-      </StyledFrom>
-      <StyledTo>
-        <GooglePlacesInput placeHolderText={'Where are you going?'} updateState={props.setDestination}/>
-        {/* <ToLocation/> */}
-      </StyledTo>
-      <StyledVehicle>
-        <Vehicle setVehicleType={props.setVehicleType}/>
-      </StyledVehicle>
-    </StyledView>
-  )
-}
-
+    <StyledFrom>
+      <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
+                         updateState={setOrigin} isOrigin={true}/>
+      {/* <FromLocation/> */}
+    </StyledFrom>
+    <StyledTo>
+      <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you going?'}
+                         updateState={setDestination} isOrigin={false}/>
+      {/* <ToLocation/> */}
+    </StyledTo>
+    <StyledVehicle>
+      <Vehicle setVehicleType={setVehicleType}/>
+    </StyledVehicle>
+  </StyledView>
+)
 const StyledView = styled.View`
-  flex: 1;
-  flex-direction: column;
-  background-color: red;
-  alignItems: center;
-  justifyContent: center;
-  width: 100%;
+flex: 1;
+flex-direction: column;
+background-color: #F0FFF0;
+alignItems: center;
+width: 100%;
+justifyContent: center;
 `
 
 const StyledTo = styled.View`
-  flex: 1;
-  background-color: yellow;
-  padding: 5%;
-  width: 100%;
+flex: 1;
+alignItems: center;
+width: 100%;
+paddingTop: 2%
 `
 
 const StyledFrom = styled.View`
-  flex: 1;
-  background-color: pink;
-  padding: 5%;
-  width: 100%;
+flex: 1;
+alignItems: center;
+width: 100%;
+paddingTop: 2%
 `
 
 const StyledVehicle = styled.View`
-  flex: 1;
-  background-color: green;
-  padding: 5%;
-  width: 100%;
+flex: 1;
+backgroundColor: #F0FFF0;
+padding-top: 2%;
+padding-bottom: 6%;
+padding-left: 4%;
+padding-right: 4%;
+width: 100%;
+alignItems: center;
+justifyContent: center;
 `
 
 export default Selectors

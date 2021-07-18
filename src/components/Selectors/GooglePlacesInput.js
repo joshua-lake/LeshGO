@@ -2,11 +2,18 @@ import React from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
-const GooglePlacesInput = ({ placeHolderText, updateState }) => {
+const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin }) => {
+  const current = isOrigin ? {
+    description: 'Current Location',
+    geometry: { location: { lat: currentLocation.latitude, lng: currentLocation.longitude } }
+  } : null
+
   return (
     <ScrollView keyboardShouldPersistTaps="always">
-      <GooglePlacesAutocomplete
+      {/* <Icon name="search" size={10} color='pink'/> */}
+       <GooglePlacesAutocomplete 
         placeholder={placeHolderText}
         styles={{
           container: {
@@ -24,7 +31,7 @@ const GooglePlacesInput = ({ placeHolderText, updateState }) => {
           },
           textInputContainer: {},
           textInput: {
-            backgroundColor: '#F9F5F4',
+            backgroundColor: '#FAF0E6',
             borderRadius: 20,
           }
         }}
@@ -39,6 +46,9 @@ const GooglePlacesInput = ({ placeHolderText, updateState }) => {
           const { lat: latitude, lng: longitude } = details.geometry.location
           updateState({ latitude, longitude })
         }}
+
+        predefinedPlaces={[current]}
+
         getDefaultValue={() => ''}
         query={{
           key: API_KEY,
@@ -46,15 +56,12 @@ const GooglePlacesInput = ({ placeHolderText, updateState }) => {
           region: 'NZ'
         }}
         nearbyPlacesAPI="GooglePlacesSearch"
-        GooglePlacesSearchQuery={{
-          rankby: 'distance',
-          types: 'gym'
-        }}
         filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']}
         debounce={200}
       />
     </ScrollView>
   )
 }
+
 
 export default GooglePlacesInput

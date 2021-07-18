@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'styled-components/native'
 import { View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import styled from 'styled-components/native'
 
 import RNPickerSelect from 'react-native-picker-select'
 
@@ -47,11 +46,8 @@ function Vehicle (props) {
   }
 
   return (
-    <View>
-      <StyledText>
-        <Icon name="search" size={30} color="#900"/>
-        Select type of Vehicle:
-      </StyledText>
+    <View style={{ backgroundColor: '#FAF0E6', borderRadius: 20, height: '100%', width: '104%', justifyContent: 'center' }}>
+        {/* <Ionicons name="chevron-down" size={32} color="pink" /> */}
       <RNPickerSelect
         onValueChange={(value) => props.setVehicleType(value)}
         items={[
@@ -70,10 +66,9 @@ function Vehicle (props) {
   )
 }
 
-const StyledText = styled.Text`
-  color: blue;
-  font-size: 30px;
-  margin-bottom: 30px;
-`
+// const VehicleView = styled.View`
+// display: flex;
+// flex-direction: row;
+// `
 
 export default Vehicle

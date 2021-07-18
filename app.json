@@ -17,7 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ],
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "unnamed-eco-app can access your location to fill the starting point.",
+        "NSLocationAlwaysUsageDescription": "unnamed-eco-app can access your location to fill the starting point.",
+        "NSLocationWhenInUseUsageDescription": "unnamed-eco-app can access your location to fill the starting point."
+      }
     },
     "android": {
       "adaptiveIcon": {

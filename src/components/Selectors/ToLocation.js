@@ -16,7 +16,6 @@ function ToLocation () {
 const StyledText = styled.Text`
   color: blue;
   font-size: 30px;
-  margin-bottom: 30px;
 `
 
 export default ToLocation
