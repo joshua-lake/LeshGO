@@ -65,8 +65,8 @@ justifyContent: center;
 `
 
 const Image = styled.Image`
-height: 60px;
-width: 60px;
+height: 95%;
+width: 95%;
 `
 
 

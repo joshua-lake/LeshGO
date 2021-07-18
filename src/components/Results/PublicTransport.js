@@ -68,8 +68,8 @@ justifyContent: center;
 `
 
 const Image = styled.Image`
-height: 30px;
-width: 30px;
+height: 45%;
+width: 40%;
 `
 
 export default PublicTransport

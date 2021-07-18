@@ -64,8 +64,8 @@ alignItems: center;
 justifyContent: center;
 `
 const Image = styled.Image`
-height: 40px;
-width: 40px;
+height: 65%;
+width: 65%;
 `
 
 
