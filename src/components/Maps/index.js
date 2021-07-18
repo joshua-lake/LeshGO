@@ -4,20 +4,16 @@ import MapViewDirections from 'react-native-maps-directions'
 import { Dimensions, StyleSheet } from 'react-native'
 import { API_KEY } from '../../api'
 
-const defaultOrigin = { latitude: -36.874935, longitude: 174.748596 }
-const defaultDestination = { latitude: -36.9040097, longitude: 174.760000 }
-// const GOOGLE_MAPS_APIKEY = 'AIzaSyCZdxO0PKO0pHQZOxD5zqAA4KcwPi1ypSQ' // bosh's api key -- actually james'...
-const transportMode = 'WALKING' // DRIVING BICYCLING TRANSIT WALKING
-
 const Maps = (props) => {
   const [walkingData, setWalkingData] = useState()
   const [drivingData, setDrivingData] = useState()
   const [transitData, setTransitData] = useState()
   const [bicyclingData, setBicyclingData] = useState()
-  console.log('orig:', props.origin)
-  console.log('dest:', props.destination)
 
   const { mapRouteData, setRouteData } = props
+
+  const showRoute = Object.prototype.hasOwnProperty.call(props.origin, 'latitude') &&
+    Object.prototype.hasOwnProperty.call(props.destination, 'latitude')
 
   useEffect(() => {
     async function addStates () {
@@ -83,44 +79,44 @@ const Maps = (props) => {
         marker.coord.latitude !== undefined &&
         <Marker
           key={index}
-          coordinate={marker.coord} />
+          coordinate={marker.coord}/>
       ))}
-      {(props.destination !== {} && props.origin !== {}) && <MapViewDirections onReady={result => handleWalkingData(result)}
-                                                             origin={props.origin}
-                                                             destination={props.destination}
-                                                             apikey={API_KEY}
-                                                             mode="WALKING"
-                                                             timePrecision="now"
-                                                             showsUserLocation
-                                                             strokeWidth={6}
-                                                             strokeColor="green" />}
-      {(props.destination !== {} && props.origin !== {}) && <MapViewDirections onReady={result => handleDrivingData(result)}
-                                                             origin={props.origin}
-                                                             destination={props.destination}
-                                                             apikey={API_KEY}
-                                                             mode="DRIVING"
-                                                             timePrecision="now"
-                                                             showsUserLocation
-                                                             strokeWidth={3}
-                                                             strokeColor="blue" />}
-      {(props.destination !== {} && props.origin !== {}) && <MapViewDirections onReady={result => handleTransitData(result)}
-                                                             origin={props.origin}
-                                                             destination={props.destination}
-                                                             apikey={API_KEY}
-                                                             mode="TRANSIT"
-                                                             timePrecision="now"
-                                                             showsUserLocation
-                                                             strokeWidth={3}
-                                                             strokeColor="red" />}
-      {(props.destination !== {} && props.origin !== {}) && <MapViewDirections onReady={result => handleBicyclingData(result)}
-                                                             origin={props.origin}
-                                                             destination={props.destination}
-                                                             apikey={API_KEY}
-                                                             mode="BICYCLING"
-                                                             timePrecision="now"
-                                                             showsUserLocation
-                                                             strokeWidth={3}
-                                                             strokeColor="yellow" />}
+      {showRoute && <MapViewDirections onReady={result => handleWalkingData(result)}
+                                       origin={props.origin}
+                                       destination={props.destination}
+                                       apikey={API_KEY}
+                                       mode="WALKING"
+                                       timePrecision="now"
+                                       showsUserLocation
+                                       strokeWidth={6}
+                                       strokeColor="green"/>}
+      {showRoute && <MapViewDirections onReady={result => handleDrivingData(result)}
+                                       origin={props.origin}
+                                       destination={props.destination}
+                                       apikey={API_KEY}
+                                       mode="DRIVING"
+                                       timePrecision="now"
+                                       showsUserLocation
+                                       strokeWidth={3}
+                                       strokeColor="blue"/>}
+      {showRoute && <MapViewDirections onReady={result => handleTransitData(result)}
+                                       origin={props.origin}
+                                       destination={props.destination}
+                                       apikey={API_KEY}
+                                       mode="TRANSIT"
+                                       timePrecision="now"
+                                       showsUserLocation
+                                       strokeWidth={3}
+                                       strokeColor="red"/>}
+      {showRoute && <MapViewDirections onReady={result => handleBicyclingData(result)}
+                                       origin={props.origin}
+                                       destination={props.destination}
+                                       apikey={API_KEY}
+                                       mode="BICYCLING"
+                                       timePrecision="now"
+                                       showsUserLocation
+                                       strokeWidth={3}
+                                       strokeColor="yellow"/>}
     </MapView>
   )
 }
