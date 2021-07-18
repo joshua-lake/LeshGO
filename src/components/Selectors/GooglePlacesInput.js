@@ -4,7 +4,12 @@ import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
 // import Icon from 'react-native-vector-icons/FontAwesome'
 
-const GooglePlacesInput = ({placeHolderText, updateState}) => {
+const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin }) => {
+  const current = isOrigin ? {
+    description: 'Current Location',
+    geometry: { location: { lat: currentLocation.latitude, lng: currentLocation.longitude } }
+  } : null
+
   return (
     <ScrollView keyboardShouldPersistTaps="always">
       {/* <Icon name="search" size={10} color='pink'/> */}
@@ -24,8 +29,7 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
             elevation: 3,
             zIndex: 100,
           },
-          textInputContainer: {
-          },
+          textInputContainer: {},
           textInput: {
             backgroundColor: '#FAF0E6',
             borderRadius: 20,
@@ -39,11 +43,12 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
         fetchDetails={true}
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
-          console.log('on press!')
-          const {lat: latitude, lng: longitude} = details.geometry.location
-          updateState({latitude, longitude})
-          console.log(JSON.stringify({latitude, longitude}))
+          const { lat: latitude, lng: longitude } = details.geometry.location
+          updateState({ latitude, longitude })
         }}
+
+        predefinedPlaces={[current]}
+
         getDefaultValue={() => ''}
         query={{
           key: API_KEY,
@@ -51,13 +56,9 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
           region: 'NZ'
         }}
         nearbyPlacesAPI="GooglePlacesSearch"
-        GooglePlacesSearchQuery={{
-          rankby: 'distance',
-          types: 'gym'
-        }}
         filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']}
         debounce={200}
-       />
+      />
     </ScrollView>
   )
 }

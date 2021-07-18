@@ -3,31 +3,51 @@ import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
-  console.log(props)
+  const { distance, duration } = props.undefinedData.drive
 
   return (
-    <StyledView>  
-      <StyledIcon>    
-       <Icon name="car" size={30} />
-      </StyledIcon>
-      <FlexText>
-       <StyledText>
-        Vehicle Type
-        {props.vehicleType} 
-        {/* ? props.vehicleType
-        : 'Please select vehicle type'}: */}
-       </StyledText>
-       <StyledText>
-        Distance: {props.data.distanceKM}KM
-       </StyledText>
-       <StyledText>
-        Time: {props.data.durationMIN} Mins
-       </StyledText>
-      </FlexText>
-    </StyledView>
+    props.data.mapRouteData.drivingData
+
+    ? <StyledView>
+        <StyledIcon>    
+          <Icon name="car" size={30} />
+        </StyledIcon>
+        <FlexText>
+         <StyledText>
+            Vehicle Type
+            {props.vehicleType} 
+            {/* ? props.vehicleType
+            : 'Please select vehicle type'}: */}
+         </StyledText>
+         <StyledText>
+            Distance: {props.data.mapRouteData.drivingData.distanceKM}KM
+         </StyledText>
+         <StyledText>
+            Time: {props.data.mapRouteData.drivingData.durationMIN} mins
+         </StyledText>
+        </FlexText>
+      </StyledView>
+
+    : <StyledView>
+              <StyledIcon>    
+          <Icon name="car" size={30} />
+        </StyledIcon>
+        <FlexText>
+         <StyledText>
+            Vehicle Type
+            {props.vehicleType} 
+            {/* ? props.vehicleType
+            : 'Please select vehicle type'}: */}
+         </StyledText>
+         <StyledText>
+         Distance:{distance}
+         </StyledText>
+         <StyledText>
+         Time:{duration}
+         </StyledText>
+        </FlexText>
+      </StyledView>
   )
-
-
 }
 
 

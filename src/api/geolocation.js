@@ -9,8 +9,8 @@ const instance = axios.create({
 
 export const getGeoLocation = async () => {
   try {
-    const { data: { location: {lat: latitude, lng: longitude} } } = await instance.post(`?key=${API_KEY}`)
-    return {latitude, longitude}
+    const { data: { location: { lat: latitude, lng: longitude } } } = await instance.post(`?key=${API_KEY}`)
+    return { latitude, longitude }
   } catch (error) {
     return {
       error: error.message

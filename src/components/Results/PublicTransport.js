@@ -3,20 +3,37 @@ import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 function PublicTransport (props) {
+  const { distance, duration } = props.undefinedData.publicTransport
   return (
-    <StyledView>
-     <StyledIcon>    
-      <Icon name="bus" size={30} />
-     </StyledIcon>
-     <FlexText>
-      <StyledText>
-       Distance: {props.data.distanceKM}KM
-      </StyledText>
-      <StyledText>
-       Time: {props.data.durationMIN} Mins
-      </StyledText>
-     </FlexText>
-    </StyledView>
+    props.data.mapRouteData.transitData
+
+    ? <StyledView>
+        <StyledIcon>    
+          <Icon name="bus" size={30} />
+        </StyledIcon>
+        <FlexText>
+          <StyledText>
+            Distance: {props.data.mapRouteData.transitData.distanceKM}KM
+          </StyledText>
+          <StyledText>
+            Time: {props.data.mapRouteData.transitData.durationMIN} mins
+          </StyledText>
+        </FlexText>
+      </StyledView>
+
+    : <StyledView>
+        <StyledIcon>    
+          <Icon name="bus" size={30} />
+        </StyledIcon>
+        <FlexText>
+          <StyledText>
+            Distance:{distance}
+          </StyledText>
+          <StyledText>
+            Time:{duration}
+          </StyledText>
+        </FlexText>
+      </StyledView>
   )
 }
 

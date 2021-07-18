@@ -3,20 +3,37 @@ import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
+  const { distance, duration } = props.undefinedData.walk
   return (
-    <StyledView>
-      <StyledIcon>    
-       <Icon name="walking" size={30} />
-      </StyledIcon>
-      <FlexText>
-        <StyledText>
-        Distance: {props.data.distanceKM}KM
-        </StyledText>
-        <StyledText>
-        Time: {props.data.durationMIN} Mins
-        </StyledText>
-      </FlexText>
-    </StyledView>
+    props.data.mapRouteData.walkingData
+
+    ? <StyledView>
+        <StyledIcon>    
+          <Icon name="walking" size={30} />
+        </StyledIcon>
+        <FlexText>
+          <StyledText>
+              Distance: {props.data.mapRouteData.walkingData.distanceKM}KM
+          </StyledText>
+          <StyledText>
+              Time: {props.data.mapRouteData.walkingData.durationMIN} mins
+          </StyledText>
+        </FlexText>
+      </StyledView>
+
+    : <StyledView>
+        <StyledIcon>    
+          <Icon name="walking" size={30} />
+        </StyledIcon>
+        <FlexText>
+          <StyledText>
+            Distance:{distance}
+          </StyledText>
+          <StyledText>
+            Time:{duration}
+          </StyledText>
+        </FlexText>
+      </StyledView>
   )
 }
 

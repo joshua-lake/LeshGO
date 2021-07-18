@@ -1,4 +1,5 @@
 import React from 'react'
+import {Pressable} from 'react-native'
 import styled from 'styled-components/native'
 
 import Walk from './Walk'
@@ -7,40 +8,55 @@ import Drive from './Drive'
 import PublicTransport from './PublicTransport'
 
 function Results (props) {
-  
-const tempData = {
-  walk: {
-    distanceKM: 10,
-    durationMIN: 50
-  },
-  bike: {
-    distanceKM: 10,
-    durationMIN: 20
-  },
-  drive: {
-    distanceKM: 10,
-    durationMIN: 15
-  },
-  publicTransport: {
-    distanceKM: 10,
-    durationMIN: 20
+  const {setSelectedRoute} = props
+
+
+  const undefinedData = {
+
+    walk: { // <=== hard coded default display data
+      distance: 'please enter',
+      duration: 'please enter'
+    },
+    bike: {
+      distance: 'please enter',
+      duration: 'please enter'
+    },
+    drive: {
+      distance: 'please enter',
+      duration: 'please enter'
+    },
+    publicTransport: {
+      distance: 'please enter',
+      duration: 'please enter'
+    }
+
   }
-}
 
   return (
     <StyledView>
       <StyledContent>
-      <Walk data={tempData.walk}/>
-      </StyledContent>
+        <Pressable onPress={() => setSelectedRoute('walking')}>
+          <Walk data={props} undefinedData={undefinedData}/>
+        </Pressable>
+        </StyledContent>
+
       <StyledContent>
-      <Bike data={tempData.bike}/>
-      </StyledContent>
+        <Pressable onPress={() => setSelectedRoute('bicycling')}>
+          <Bike data={props} undefinedData={undefinedData}/>
+        </Pressable>
+        </StyledContent>
+
       <StyledContent>
-      <Drive vehicleType={props.vehicleType} data={tempData.drive}/>
-      </StyledContent>
+        <Pressable onPress={() => setSelectedRoute('driving')}>
+          <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
+        </Pressable>
+        </StyledContent>
+
       <StyledContent>
-      <PublicTransport data={tempData.publicTransport}/>
-      </StyledContent>
+        <Pressable onPress={() => setSelectedRoute('transit')}>
+          <PublicTransport data={props} undefinedData={undefinedData}/>
+        </Pressable>
+        </StyledContent>
     </StyledView>
   )
 }

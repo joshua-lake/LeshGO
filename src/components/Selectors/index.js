@@ -6,24 +6,24 @@ import styled from 'styled-components/native'
 import Vehicle from './Vehicle'
 import GooglePlacesInput from './GooglePlacesInput'
 
-function Selectors (props) {
-return (
+const Selectors = ({ currentLocation, setDestination, setOrigin, setVehicleType }) => (
   <StyledView>
 
     <StyledFrom>
-     <GooglePlacesInput placeHolderText={"Where are you coming from?"} updateState={props.setOrigin}/>
-     {/* <FromLocation/> */}
+      <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
+                         updateState={setOrigin} isOrigin={true}/>
+      {/* <FromLocation/> */}
     </StyledFrom>
     <StyledTo>
-     <GooglePlacesInput placeHolderText={"Where are you going?"} updateState={props.setDestination}/>
-     {/* <ToLocation/> */}
+      <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you going?'}
+                         updateState={setDestination} isOrigin={false}/>
+      {/* <ToLocation/> */}
     </StyledTo>
     <StyledVehicle>
-    <Vehicle setVehicleType={props.setVehicleType}/>
+      <Vehicle setVehicleType={setVehicleType}/>
     </StyledVehicle>
   </StyledView>
 )
-}
 const StyledView = styled.View`
 flex: 1;
 flex-direction: column;
