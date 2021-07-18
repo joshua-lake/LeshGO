@@ -10,7 +10,7 @@ const Maps = (props) => {
   const [transitData, setTransitData] = useState()
   const [bicyclingData, setBicyclingData] = useState()
 
-  const { mapRouteData, setRouteData } = props
+  const { setRouteData } = props
 
   const showRoute = Object.prototype.hasOwnProperty.call(props.origin, 'latitude') &&
     Object.prototype.hasOwnProperty.call(props.destination, 'latitude')
@@ -27,6 +27,7 @@ const Maps = (props) => {
 
     addStates()
   }, [bicyclingData, drivingData, transitData, walkingData])
+
 
   function handleWalkingData (data) {
     const lastCoord = data.coordinates.length - 1
@@ -68,6 +69,9 @@ const Maps = (props) => {
     })
   }
 
+  // for testing
+    const selectedRoute = 'bicycling'
+
   return (
     <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"
       latitude: -36.872036,
@@ -88,8 +92,8 @@ const Maps = (props) => {
                                        mode="WALKING"
                                        timePrecision="now"
                                        showsUserLocation
-                                       strokeWidth={6}
-                                       strokeColor="green"/>}
+                                       strokeWidth={3}
+                                       strokeColor={selectedRoute === 'walking' ? "red" : "transparent"}/>}
       {showRoute && <MapViewDirections onReady={result => handleDrivingData(result)}
                                        origin={props.origin}
                                        destination={props.destination}
@@ -98,7 +102,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor="blue"/>}
+                                       strokeColor={selectedRoute === 'driving' ? "red" : "transparent"}/>}
       {showRoute && <MapViewDirections onReady={result => handleTransitData(result)}
                                        origin={props.origin}
                                        destination={props.destination}
@@ -107,7 +111,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor="red"/>}
+                                       strokeColor={selectedRoute === 'transit' ? "red" : "transparent"}/>}
       {showRoute && <MapViewDirections onReady={result => handleBicyclingData(result)}
                                        origin={props.origin}
                                        destination={props.destination}
@@ -116,7 +120,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor="yellow"/>}
+                                       strokeColor={selectedRoute === 'bicycling' ? "red" : "transparent"}/>}
     </MapView>
   )
 }
