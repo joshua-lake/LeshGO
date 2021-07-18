@@ -3,7 +3,12 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
 
-const GooglePlacesInput = ({ placeHolderText, updateState }) => {
+const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin }) => {
+  const current = isOrigin ? {
+    description: 'Current Location',
+    geometry: { location: { lat: currentLocation.latitude, lng: currentLocation.longitude } }
+  } : null
+
   return (
     <ScrollView keyboardShouldPersistTaps="always">
       <GooglePlacesAutocomplete
@@ -39,6 +44,9 @@ const GooglePlacesInput = ({ placeHolderText, updateState }) => {
           const { lat: latitude, lng: longitude } = details.geometry.location
           updateState({ latitude, longitude })
         }}
+
+        predefinedPlaces={[current]}
+
         getDefaultValue={() => ''}
         query={{
           key: API_KEY,
@@ -46,10 +54,6 @@ const GooglePlacesInput = ({ placeHolderText, updateState }) => {
           region: 'NZ'
         }}
         nearbyPlacesAPI="GooglePlacesSearch"
-        GooglePlacesSearchQuery={{
-          rankby: 'distance',
-          types: 'gym'
-        }}
         filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']}
         debounce={200}
       />
