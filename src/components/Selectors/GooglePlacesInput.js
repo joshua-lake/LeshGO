@@ -2,7 +2,7 @@ import React from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 const GooglePlacesInput = ({placeHolderText, updateState}) => {
   return (
