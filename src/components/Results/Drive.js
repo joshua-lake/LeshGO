@@ -22,7 +22,9 @@ function Drive (props) {
     : <View>
         <StyledText>
           <Icon name="car" size={30} color="#900" />
-          Walking:
+          {props.vehicleType
+            ? props.vehicleType
+            : 'Please select vehicle type'}:
             Distance:{distance}
             Time:{duration}
         </StyledText>

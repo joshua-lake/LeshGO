@@ -20,7 +20,7 @@ function Bike (props) {
     : <View>
     <StyledText>
       <Icon name="bike" size={30} color="#900" />
-      Walking:
+      Cycling:
         Distance:{distance}
         Time:{duration}
     </StyledText>

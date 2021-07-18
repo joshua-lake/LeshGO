@@ -40,7 +40,7 @@ props.mapRouteData.walkingData && console.log('MRD', props.mapRouteData)
         <Bike data={props} undefinedData={undefinedData}/>
       </StyledBike>
       <StyledDrive>
-        <Drive data={props} undefinedData={undefinedData}/>
+        <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
       </StyledDrive>
       <StyledPublicTransport>
         <PublicTransport data={props} undefinedData={undefinedData}/>

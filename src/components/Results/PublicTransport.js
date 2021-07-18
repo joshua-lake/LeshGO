@@ -19,7 +19,7 @@ function PublicTransport (props) {
     : <View>
         <StyledText>
           <Icon name="bus" size={30} color="#900" />
-          Walking:
+          Public Transport:
             Distance:{distance}
             Time:{duration}
         </StyledText>
