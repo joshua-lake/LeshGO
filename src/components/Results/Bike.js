@@ -6,7 +6,7 @@ function Bike (props) {
   return (
     <StyledView>
       <StyledIcon>
-      <Icon name="bike" size={30} color="#900" />
+      <Icon name="bike" size={30} />
       </StyledIcon>
       <FlexText>
       <StyledText>
@@ -22,7 +22,6 @@ function Bike (props) {
 
 const StyledText = styled.Text`
   flex: 1;
-  color: green;
   font-size: 20px;
 `
 

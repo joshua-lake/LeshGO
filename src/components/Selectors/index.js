@@ -50,8 +50,11 @@ paddingTop: 2%
 const StyledVehicle = styled.View`
 flex: 1;
 backgroundColor: #F0FFF0;
-padding: 5%;
-width: 50%;
+padding-top: 2%;
+padding-bottom: 6%;
+padding-left: 4%;
+padding-right: 4%;
+width: 100%;
 alignItems: center;
 justifyContent: center;
 `
