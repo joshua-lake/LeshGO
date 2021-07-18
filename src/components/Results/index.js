@@ -56,8 +56,9 @@ const StyledView = styled.View`
 const StyledContent = styled.View`
 flex: 1;
 width: 100%;
-background-color: white;
+background-color: lightgrey;
 margin: 1%;
+border-radius: 50px;
 `
 
 export default Results
