@@ -50,7 +50,7 @@ console.log('app vehicle type', vehicleType)
 // ADD TO INLINE 32
 
 const StyledSelector = styled.View`
-flex: 2;
+flex: 1.5;
 alignItems: center;
 justifyContent: center;
 width: 100%;

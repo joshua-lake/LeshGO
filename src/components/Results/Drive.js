@@ -8,22 +8,23 @@ function Drive (props) {
   return (
     <StyledView>  
       <StyledIcon>    
-      <Icon name="car" size={30} color="#900" />
+       <Icon name="car" size={30} color="#900" />
       </StyledIcon>
       <FlexText>
-      <StyledText>
-      {props.vehicleType} 
-      {/* ? props.vehicleType
-      : 'Please select vehicle type'}: */}
-      </StyledText>
-      <StyledText>
-      Distance: {props.data.distanceKM}KM
-      </StyledText>
-      <StyledText>
-      Time: {props.data.durationMIN}Mins
-      </StyledText>
+       <StyledText>
+        Vehicle Type
+        {props.vehicleType} 
+        {/* ? props.vehicleType
+        : 'Please select vehicle type'}: */}
+       </StyledText>
+       <StyledText>
+        Distance: {props.data.distanceKM}KM
+       </StyledText>
+       <StyledText>
+        Time: {props.data.durationMIN} Mins
+       </StyledText>
       </FlexText>
-      </StyledView>
+    </StyledView>
   )
 
 
@@ -31,8 +32,10 @@ function Drive (props) {
 
 
 const StyledText = styled.Text`
+  flex: 1;
   color: green;
   font-size: 20px;
+  justifyContent: center;
 `
 
 const StyledView = styled.View`
@@ -44,11 +47,16 @@ alignItems: center;
 const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
+height: 100%;
+padding-top: 1%;
+padding-bottom: 1%;
 `
 
 const StyledIcon = styled.View`
-background-color: blue;
-flex: 1
+flex: 1;
+height: 100%;
+alignItems: center;
+justifyContent: center;
 `
 
 export default Drive

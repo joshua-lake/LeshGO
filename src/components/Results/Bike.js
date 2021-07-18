@@ -21,6 +21,7 @@ function Bike (props) {
 }
 
 const StyledText = styled.Text`
+  flex: 1;
   color: green;
   font-size: 20px;
 `
@@ -34,10 +35,17 @@ alignItems: center;
 const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
+height: 100%;
+padding-top: 4%;
+padding-bottom: 1%;
+justifyContent: center;
 `
 
 const StyledIcon = styled.View`
-flex: 1
+flex: 1;
+height: 100%;
+alignItems: center;
+justifyContent: center;
 `
 
 export default Bike
