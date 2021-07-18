@@ -37,10 +37,8 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
         fetchDetails={true}
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
-          console.log('on press!')
           const {lat: latitude, lng: longitude} = details.geometry.location
           updateState({latitude, longitude})
-          console.log(JSON.stringify({latitude, longitude}))
         }}
         getDefaultValue={() => ''}
         query={{
