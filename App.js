@@ -14,8 +14,8 @@ const App = () => {
 
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
-    console.log(origin)
-    console.log(destination)
+    // console.log(origin)
+    // console.log(destination)
   }, [])
 
   const [origin, setOrigin] = useState({})
@@ -23,7 +23,7 @@ const App = () => {
 
   const [markers, setMarkers] = useState([])
 
-  const [selectedRoute, setSelectedRoute] = useState()
+  const [selectedRoute, setSelectedRoute] = useState("walking")
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},

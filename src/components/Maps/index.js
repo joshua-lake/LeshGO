@@ -70,7 +70,7 @@ const Maps = (props) => {
   }
 
   // for testing
-    const selectedRoute = 'driving'
+    const selectedRoute = 'bicycling'
 
   return (
     <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"
@@ -93,7 +93,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor={selectedRoute === 'walking' ? "red" : "grey"}/>}
+                                       strokeColor={selectedRoute === 'walking' ? "red" : "transparent"}/>}
       {showRoute && <MapViewDirections onReady={result => handleDrivingData(result)}
                                        origin={props.origin}
                                        destination={props.destination}
@@ -102,7 +102,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor={selectedRoute === 'driving' ? "red" : "grey"}/>}
+                                       strokeColor={selectedRoute === 'driving' ? "red" : "transparent"}/>}
       {showRoute && <MapViewDirections onReady={result => handleTransitData(result)}
                                        origin={props.origin}
                                        destination={props.destination}
@@ -111,7 +111,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor={selectedRoute === 'transit' ? "red" : "grey"}/>}
+                                       strokeColor={selectedRoute === 'transit' ? "red" : "transparent"}/>}
       {showRoute && <MapViewDirections onReady={result => handleBicyclingData(result)}
                                        origin={props.origin}
                                        destination={props.destination}
@@ -120,7 +120,7 @@ const Maps = (props) => {
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
-                                       strokeColor={selectedRoute === 'bicycling' ? "red" : "grey"}/>}
+                                       strokeColor={selectedRoute === 'bicycling' ? "red" : "transparent"}/>}
     </MapView>
   )
 }
