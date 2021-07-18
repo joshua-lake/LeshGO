@@ -3,10 +3,10 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
 
-const GooglePlacesInput = ({placeHolderText, updateState}) => {
+const GooglePlacesInput = ({ placeHolderText, updateState }) => {
   return (
     <ScrollView keyboardShouldPersistTaps="always">
-       <GooglePlacesAutocomplete
+      <GooglePlacesAutocomplete
         placeholder={placeHolderText}
         styles={{
           container: {
@@ -22,8 +22,7 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
             elevation: 3,
             zIndex: 100,
           },
-          textInputContainer: {
-          },
+          textInputContainer: {},
           textInput: {
             backgroundColor: '#F9F5F4',
             borderRadius: 20,
@@ -37,8 +36,8 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
         fetchDetails={true}
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
-          const {lat: latitude, lng: longitude} = details.geometry.location
-          updateState({latitude, longitude})
+          const { lat: latitude, lng: longitude } = details.geometry.location
+          updateState({ latitude, longitude })
         }}
         getDefaultValue={() => ''}
         query={{
@@ -53,7 +52,7 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
         }}
         filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']}
         debounce={200}
-       />
+      />
     </ScrollView>
   )
 }

@@ -1,29 +1,28 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-
 import ToLocation from './ToLocation'
 import FromLocation from './FromLocation'
 import Vehicle from './Vehicle'
 import GooglePlacesInput from './GooglePlacesInput'
 
 function Selectors (props) {
-return (
-  <StyledView>
+  return (
+    <StyledView>
 
-    <StyledFrom>
-     <GooglePlacesInput placeHolderText={"Where are you coming from?"} updateState={props.setOrigin}/>
-     <FromLocation/>
-    </StyledFrom>
-    <StyledTo>
-     <GooglePlacesInput placeHolderText={"Where are you going?"} updateState={props.setDestination}/>
-     <ToLocation/>
-    </StyledTo>
-    <StyledVehicle>
-    <Vehicle setVehicleType={props.setVehicleType}/>
-    </StyledVehicle>
-  </StyledView>
-)
+      <StyledFrom>
+        <GooglePlacesInput placeHolderText={'Where are you coming from?'} updateState={props.setOrigin}/>
+        <FromLocation/>
+      </StyledFrom>
+      <StyledTo>
+        <GooglePlacesInput placeHolderText={'Where are you going?'} updateState={props.setDestination}/>
+        <ToLocation/>
+      </StyledTo>
+      <StyledVehicle>
+        <Vehicle setVehicleType={props.setVehicleType}/>
+      </StyledVehicle>
+    </StyledView>
+  )
 }
 
 const StyledView = styled.View`
@@ -36,24 +35,24 @@ const StyledView = styled.View`
 `
 
 const StyledTo = styled.View`
-flex: 1;
-background-color: yellow;
-padding: 5%;
-width: 100%;
+  flex: 1;
+  background-color: yellow;
+  padding: 5%;
+  width: 100%;
 `
 
 const StyledFrom = styled.View`
-flex: 1;
-background-color: pink;
-padding: 5%;
-width: 100%;
+  flex: 1;
+  background-color: pink;
+  padding: 5%;
+  width: 100%;
 `
 
 const StyledVehicle = styled.View`
-flex: 1;
-background-color: green;
-padding: 5%;
-width: 100%;
+  flex: 1;
+  background-color: green;
+  padding: 5%;
+  width: 100%;
 `
 
 export default Selectors

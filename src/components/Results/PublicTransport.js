@@ -7,10 +7,10 @@ function PublicTransport (props) {
   return (
     <View>
       <StyledText>
-        <Icon name="bus" size={30} color="#900" />
+        <Icon name="bus" size={30} color="#900"/>
         Public Transport:
-          Distance:{props.data.distanceKM}KM
-          Time:{props.data.durationMIN}Mins
+        Distance:{props.data.distanceKM}KM
+        Time:{props.data.durationMIN}Mins
       </StyledText>
     </View>
   )

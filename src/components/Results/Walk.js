@@ -7,10 +7,10 @@ function Walk (props) {
   return (
     <View>
       <StyledText>
-        <Icon name="walking" size={30} color="#900" />
+        <Icon name="walking" size={30} color="#900"/>
         Walking:
-          Distance:{props.data.distanceKM}KM
-          Time:{props.data.durationMIN}Mins
+        Distance:{props.data.distanceKM}KM
+        Time:{props.data.durationMIN}Mins
       </StyledText>
     </View>
   )

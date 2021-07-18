@@ -1,17 +1,22 @@
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
 import React, { useEffect, useState } from 'react'
-import { LogBox, SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { LogBox, SafeAreaView, ScrollView } from 'react-native'
 
 import Maps from './src/components/Maps/'
+import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
-import GooglePlacesInput from './src/components/Selectors/GooglePlacesInput'
-import Selectors from './src/components/Selectors'
 
 const App = () => {
 
   const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
   console.log('app vehicle type', vehicleType)
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+    console.log(origin)
+    console.log(destination)
+  }, [])
 
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
@@ -32,23 +37,21 @@ const App = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-    <ScrollView keyboardShouldPersistTaps='always'>
-    <StyledView>
-      <StyledSelector>
-        <GooglePlacesInput placeHolderText={'From...'} updateState={setOrigin}/>
-        <GooglePlacesInput placeHolderText={'To...'} updateState={setDestination}/>
-        {/*<Selectors setVehicleType={setVehicleType} setOrigin={setOrigin} setDestination={setDestination}/>*/}
-      </StyledSelector>
-      <StyledMap>
-        <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin} destination={destination}/>
-      </StyledMap>
-      <StyledResult>
-      <Results vehicleType={vehicleType}/>
-      </StyledResult>
-      <StatusBar style="auto"/>
-    </StyledView>
-    </ScrollView>
-   </SafeAreaView>
+      <ScrollView keyboardShouldPersistTaps="always">
+        <StyledView>
+          <StyledSelector>
+            <Selectors setVehicleType={setVehicleType} setOrigin={setOrigin} setDestination={setDestination}/>
+          </StyledSelector>
+          <StyledMap>
+            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin} destination={destination}/>
+          </StyledMap>
+          <StyledResult>
+            <Results vehicleType={vehicleType}/>
+          </StyledResult>
+          <StatusBar style="auto"/>
+        </StyledView>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
