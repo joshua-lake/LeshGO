@@ -48,7 +48,6 @@ const App = () => {
       .then(() => {
         Location.getCurrentPositionAsync()
           .then((location) => {
-            console.log('SETTING LOCATION!!')
           })
       }) // TODO: tidy this
   }, [])
@@ -65,8 +64,6 @@ const App = () => {
       setStateLocations({ latitude, longitude } )
     }
   })
-
-  console.log('State Locations: ', stateLocation)
 
   /**
    * listens for coord changes to set markers
