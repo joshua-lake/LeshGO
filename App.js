@@ -69,6 +69,7 @@ flex: 3;
 alignItems: center;
 justifyContent: center;
 width: 100%;
+background-color: #F0FFF0;
 `
 
 // const styles = StyleSheet.create({

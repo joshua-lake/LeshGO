@@ -29,18 +29,18 @@ const tempData = {
 
   return (
     <StyledView>
-      <StyledWalk>
+      <StyledContent>
       <Walk data={tempData.walk}/>
-      </StyledWalk>
-      <StyledBike>
+      </StyledContent>
+      <StyledContent>
       <Bike data={tempData.bike}/>
-      </StyledBike>
-      <StyledDrive>
+      </StyledContent>
+      <StyledContent>
       <Drive vehicleType={props.vehicleType} data={tempData.drive}/>
-      </StyledDrive>
-      <StyledPublicTransport>
+      </StyledContent>
+      <StyledContent>
       <PublicTransport data={tempData.publicTransport}/>
-      </StyledPublicTransport>
+      </StyledContent>
     </StyledView>
   )
 }
@@ -48,30 +48,16 @@ const tempData = {
 const StyledView = styled.View`
   flex: 1;
   flex-direction: column;
-  background-color: white;
   alignItems: center;
   justifyContent: center;
   width: 100%;
 `
 
-const StyledWalk = styled.View`
+const StyledContent = styled.View`
 flex: 1;
 width: 100%;
-`
-
-const StyledBike = styled.View`
-flex: 1;
-width: 100%;
-`
-
-const StyledDrive = styled.View`
-flex: 1;
-width: 100%;
-`
-
-const StyledPublicTransport = styled.View`
-flex: 1;
-width: 100%;
+background-color: white;
+margin: 1%;
 `
 
 export default Results
