@@ -46,7 +46,7 @@ const App = () => {
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin} destination={destination} selectedRoute={selectedRoute}/>
           </StyledMap>
           <StyledResult>
-            <Results vehicleType={vehicleType} mapRouteData={mapRouteData}/>
+            <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
           </StyledResult>
           <StatusBar style="auto"/>
         </StyledView>

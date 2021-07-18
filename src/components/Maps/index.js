@@ -10,7 +10,7 @@ const Maps = (props) => {
   const [transitData, setTransitData] = useState()
   const [bicyclingData, setBicyclingData] = useState()
 
-  const { setRouteData } = props
+  const { setRouteData, selectedRoute } = props
 
   const showRoute = Object.prototype.hasOwnProperty.call(props.origin, 'latitude') &&
     Object.prototype.hasOwnProperty.call(props.destination, 'latitude')
@@ -70,7 +70,7 @@ const Maps = (props) => {
   }
 
   // for testing
-    const selectedRoute = 'bicycling'
+    // const selectedRoute = 'bicycling'
 
   return (
     <MapView provider={PROVIDER_GOOGLE} style={styles.map} initialRegion={{ // showsTraffic="true"

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Pressable} from 'react-native'
 import styled from 'styled-components/native'
 
 import Walk from './Walk'
@@ -7,6 +8,8 @@ import Drive from './Drive'
 import PublicTransport from './PublicTransport'
 
 function Results (props) {
+  const {setSelectedRoute} = props
+
 
   const undefinedData = {
 
@@ -31,17 +34,29 @@ function Results (props) {
 
   return (
     <StyledView>
+
       <StyledWalk>
-        <Walk data={props} undefinedData={undefinedData}/>
+        <Pressable onPress={() => setSelectedRoute('walking')}>
+          <Walk data={props} undefinedData={undefinedData}/>
+        </Pressable>
       </StyledWalk>
+
       <StyledBike>
-        <Bike data={props} undefinedData={undefinedData}/>
+        <Pressable onPress={() => setSelectedRoute('bicycling')}>
+          <Bike data={props} undefinedData={undefinedData}/>
+        </Pressable>
       </StyledBike>
+
       <StyledDrive>
-        <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
+        <Pressable onPress={() => setSelectedRoute('driving')}>
+          <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType}/>
+        </Pressable>
       </StyledDrive>
+
       <StyledPublicTransport>
-        <PublicTransport data={props} undefinedData={undefinedData}/>
+        <Pressable onPress={() => setSelectedRoute('transit')}>
+          <PublicTransport data={props} undefinedData={undefinedData}/>
+        </Pressable>
       </StyledPublicTransport>
     </StyledView>
   )
