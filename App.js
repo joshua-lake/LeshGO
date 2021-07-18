@@ -5,7 +5,6 @@ import { LogBox, SafeAreaView, ScrollView } from 'react-native'
 import * as TaskManager from 'expo-task-manager'
 import * as Location from 'expo-location'
 
-
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
@@ -24,21 +23,17 @@ const App = () => {
   }
 
   const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
-
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
-
   const [markers, setMarkers] = useState([])
-
   const [selectedRoute, setSelectedRoute] = useState('walking')
+  const [stateLocation, setStateLocations] = useState({})
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},
     transit: {},
     bicycling: {}
   })
-
-  const [stateLocation, setStateLocations] = useState({})
 
   /**
    * initial mount useEffect, used for requesting location permission and setting location
@@ -53,6 +48,14 @@ const App = () => {
       }) // TODO: tidy this
   }, [])
 
+  /**
+   * listens for coord changes to set markers
+   */
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+    setMarkers([{ coord: origin }, { coord: destination }])
+  }, [origin, destination])
+
   TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (error) {
       return
@@ -62,33 +65,26 @@ const App = () => {
       const { coords } = locations[0]
       const { latitude, longitude } = coords // TODO: Tidy this?
 
-      setStateLocations({ latitude, longitude } )
+      setStateLocations({ latitude, longitude })
     }
   })
-
-  /**
-   * listens for coord changes to set markers
-   */
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
-    setMarkers([{ coord: origin }, { coord: destination }])
-  }, [origin, destination])
 
   return (
     <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
       <ScrollView keyboardShouldPersistTaps="always">
-          <StyledSelector>
-            {stateLocation !== undefined && <Selectors currentLocation={stateLocation} setVehicleType={setVehicleType} setOrigin={setOrigin}
-                       setDestination={setDestination}/> }
-          </StyledSelector>
-          <StyledMap>
-            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
-                  destination={destination} selectedRoute={selectedRoute}/>
-          </StyledMap>
-          <StyledResult>
-            <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
-          </StyledResult>
-          <StatusBar style="auto"/>
+        <StyledSelector>
+          {stateLocation !== undefined &&
+          <Selectors currentLocation={stateLocation} setVehicleType={setVehicleType} setOrigin={setOrigin}
+                     setDestination={setDestination}/>}
+        </StyledSelector>
+        <StyledMap>
+          <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
+                destination={destination} selectedRoute={selectedRoute}/>
+        </StyledMap>
+        <StyledResult>
+          <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
+        </StyledResult>
+        <StatusBar style="auto"/>
       </ScrollView>
     </SafeAreaView>
   )
@@ -106,10 +102,10 @@ const App = () => {
 // ADD TO INLINE 32
 
 const StyledSelector = styled.View`
-flex: 1.5;
-alignItems: center;
-justifyContent: center;
-width: 100%;
+  flex: 1.5;
+  alignItems: center;
+  justifyContent: center;
+  width: 100%;
 
 `
 
@@ -121,11 +117,11 @@ const StyledMap = styled.View`
 `
 
 const StyledResult = styled.View`
-flex: 3;
-alignItems: center;
-justifyContent: center;
-width: 100%;
-background-color: #F0FFF0;
+  flex: 3;
+  alignItems: center;
+  justifyContent: center;
+  width: 100%;
+  background-color: #F0FFF0;
 `
 
 // const styles = StyleSheet.create({
@@ -140,7 +136,5 @@ background-color: #F0FFF0;
 //     paddingRight: 30,
 //   }
 // })
-
-
 
 export default App
