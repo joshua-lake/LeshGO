@@ -8,8 +8,6 @@ import PublicTransport from './PublicTransport'
 
 function Results (props) {
 
-props.mapRouteData.walkingData && console.log('MRD', props.mapRouteData)
-
   const undefinedData = {
 
     walk: { // <=== hard coded default display data
