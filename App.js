@@ -17,7 +17,7 @@ const App = () => {
     walking: {},
     driving: {},
     transit: {},
-    bicyclng: {}
+    bicycling: {}
   })
 
   useEffect(() => {
