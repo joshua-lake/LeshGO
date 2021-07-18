@@ -1,9 +1,9 @@
 import React from 'react'
 import { View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import styled from 'styled-components/native'
 
 import RNPickerSelect from 'react-native-picker-select';
-
+import { Ionicons } from '@expo/vector-icons'
 
 function Vehicle (props) {
 
@@ -23,8 +23,9 @@ function Vehicle (props) {
   }
 
 return (
+  <VehiclePosition>
   <View>
-    <Icon name="search" size={10} color="#900" />
+      {/* <Ionicons name="chevron-down" size={32} color="pink" /> */}
     <RNPickerSelect
   onValueChange={(value) => props.setVehicleType(value)}
   items={[
@@ -34,8 +35,13 @@ return (
   ]}
 />
   </View>
+  </VehiclePosition>
 )
 }
 
+const VehiclePosition = styled.View`
+display: flex;
+flex-direction: row;
+`
 
 export default Vehicle

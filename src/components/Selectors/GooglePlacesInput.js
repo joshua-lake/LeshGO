@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 const GooglePlacesInput = ({placeHolderText, updateState}) => {
   return (
     <ScrollView keyboardShouldPersistTaps="always">
-      <Icon name="search" size={10} color="#900" />
+      {/* <Icon name="search" size={10} color='pink'/> */}
        <GooglePlacesAutocomplete 
         placeholder={placeHolderText}
         styles={{
@@ -27,7 +27,7 @@ const GooglePlacesInput = ({placeHolderText, updateState}) => {
           textInputContainer: {
           },
           textInput: {
-            backgroundColor: 'orange',
+            backgroundColor: '#FAF0E6',
             borderRadius: 20,
           }
         }}

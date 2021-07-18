@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, ScrollView, LogBox } from 'react-native'
+import { SafeAreaView, ScrollView, LogBox, StyleSheet } from 'react-native'
 
 
 import Maps from './src/components/Maps/'
@@ -42,19 +42,22 @@ console.log('app vehicle type', vehicleType)
   )
 }
 
-// flex: 1;
-// flex-direction: column;
 const StyledView = styled.View`
-background-color: pink;
+flex: 1;
+flex-direction: column;
+background-color: #F0FFF0;
 alignItems: center;
 justifyContent: center;
+margin: 5px;
+padding-top: 15px;
 `
 
-// flex: 2;
 const StyledSelector = styled.View`
+flex: 2;
 alignItems: center;
 justifyContent: center;
 width: 100%;
+
 `
 
 const StyledMap = styled.View`
@@ -70,6 +73,21 @@ alignItems: center;
 justifyContent: center;
 width: 100%;
 `
+
+// const styles = StyleSheet.create({
+//   dropDown: {
+//     fontSize: 14,
+//     paddingVertical: 10,
+//     paddingHorizontal: 12,
+//     borderWidth: 1,
+//     borderColor: 'green',
+//     borderRadius: 8,
+//     color: 'black',
+//     paddingRight: 30,
+//   }
+// })
+
+
 
 export default App
       

@@ -27,7 +27,7 @@ return (
 const StyledView = styled.View`
 flex: 1;
 flex-direction: column;
-background-color: pink;
+background-color: #F0FFF0;
 alignItems: center;
 width: 100%;
 justifyContent: center;
@@ -47,7 +47,7 @@ width: 100%;
 
 const StyledVehicle = styled.View`
 flex: 1;
-backgroundColor: orange;
+backgroundColor: #F0FFF0;
 padding: 5%;
 width: 100%;
 `
