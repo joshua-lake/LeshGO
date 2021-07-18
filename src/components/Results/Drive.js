@@ -4,9 +4,10 @@ import { View, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
+
   const { distance, duration } = props.undefinedData.drive
-  
-  const emmisionsCalculation = props.vehicleType.emmisions ? props.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
+
+  const emmisionsCalculation = (props.vehicleType.emmisions && props.data.mapRouteData.drivingData) ? props.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
   return (
     props.data.mapRouteData.drivingData
@@ -25,7 +26,7 @@ function Drive (props) {
         <StyledText>
           <Icon name="car" size={30} color="#900" />
           {props.vehicleType
-            ?props.vehicleType.name
+            ? props.vehicleType.name
             : 'Please select vehicle type'}:
             Distance:{distance}
             Time:{duration}
