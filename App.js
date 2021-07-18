@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, ScrollView, LogBox } from 'react-native'
+import { SafeAreaView, LogBox } from 'react-native'
 
 
 import Maps from './src/components/Maps/'
@@ -23,9 +23,7 @@ console.log('app vehicle type', vehicleType)
   const [destination, setDestination] = useState({})
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'purple' }}>
-    <ScrollView keyboardShouldPersistTaps='always'>
-    <StyledView>
+    <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
       <StyledSelector>
       <Selectors setVehicleType={setVehicleType} setOrigin={setOrigin} setDestination={setDestination}/>
       </StyledSelector>
@@ -35,21 +33,10 @@ console.log('app vehicle type', vehicleType)
       <StyledResult>
       <Results vehicleType={vehicleType}/>
       </StyledResult>
-      <StatusBar style="auto"/> 
-    </StyledView>
-  </ScrollView>
+      <StatusBar style="auto"/>
   </SafeAreaView>
   )
 }
-
-
-const StyledView = styled.View`
-flex: 1;
-flex-direction: column;
-background-color: grey;
-alignItems: center;
-justifyContent: center;
-`
 
 const StyledSelector = styled.View`
 flex: 2;
@@ -66,7 +53,7 @@ width: 100%;
 `
 
 const StyledResult = styled.View`
-flex: 4;
+flex: 3;
 alignItems: center;
 justifyContent: center;
 width: 100%;
