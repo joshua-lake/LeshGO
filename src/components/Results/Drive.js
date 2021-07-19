@@ -3,10 +3,11 @@ import styled from 'styled-components/native'
 // import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
-  const { distance, duration } = props.undefinedData.drive
 
-  return (
-    props.data.mapRouteData.drivingData
+  const { distance, duration } = props.undefinedData.drive
+  const { setTwoDecimals } = props
+
+  const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
     ? <StyledView>
         <StyledIcon>    
@@ -35,18 +36,19 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
          <StyledText>
-            {props.vehicleType} 
-            {/* ? props.vehicleType
-            : 'Please select vehicle type'}: */}
+            {props.data.vehicleType
+              ? props.data.vehicleType.name
+              : 'Please select vehicle type'}:
          </StyledText>
          <StyledText>
-         Distance:{distance}
+            Distance:{distance}
          </StyledText>
          <StyledText>
-         Time:{duration}
+            Time:{duration}
          </StyledText>
         </FlexText>
       </StyledView>
+  
   )
 }
 
@@ -78,8 +80,8 @@ alignItems: center;
 justifyContent: center;
 `
 const Image = styled.Image`
-height: 30px;
-width: 30px;
+height: 40%;
+width: 45%;
 `
 
 

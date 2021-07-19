@@ -9,39 +9,39 @@ function Vehicle (props) {
   const vehicles = {
     petrolCar: {
       name: 'Petrol Car',
-      eco: 'medium'
+      emmisions: 0.20
     },
     dieselCar: {
       name: 'Diesel Car',
-      eco: 'medium'
+      emmisions: 0.22
     },
     petrolUte: {
       name: 'Petrol Ute',
-      eco: 'high'
+      emmisions: 0.20
     },
     dieselUte: {
       name: 'Diesel Ute',
-      eco: 'high'
+      emmisions: 0.20
     },
     petrolMotorbike: {
       name: 'Petrol Motorbike',
-      eco: 'low'
+      emmisions: 0.10
     },
     dieselMotorbike: {
       name: 'Diesel Motorbike',
-      eco: 'low'
+      emmisions: 0.12
     },
     petroltruck: {
       name: 'Petrol Truck',
-      eco: 'high'
+      emmisions: 0.25
     },
     dieselTruck: {
       name: 'Diesel Truck',
-      eco: 'high'
+      emmisions: 0.29
     },
     hybrid: {
       name: 'hybrid',
-      eco: 'low'
+      emmisions: 0.05
     }
   }
 
@@ -51,15 +51,15 @@ function Vehicle (props) {
       <RNPickerSelect
         onValueChange={(value) => props.setVehicleType(value)}
         items={[
-          { label: vehicles.petrolCar.name, value: vehicles.petrolCar.name },
-          { label: vehicles.dieselCar.name, value: vehicles.dieselCar.name },
-          { label: vehicles.petrolUte.name, value: vehicles.petrolUte.name },
-          { label: vehicles.dieselUte.name, value: vehicles.dieselUte.name },
-          { label: vehicles.petrolMotorbike.name, value: vehicles.petrolMotorbike.name },
-          { label: vehicles.dieselMotorbike.name, value: vehicles.dieselMotorbike.name },
-          { label: vehicles.petroltruck.name, value: vehicles.petroltruck.name },
-          { label: vehicles.dieselTruck.name, value: vehicles.dieselTruck.name },
-          { label: vehicles.hybrid.name, value: vehicles.hybrid.name }
+          { label: vehicles.petrolCar.name, value: vehicles.petrolCar },
+          { label: vehicles.dieselCar.name, value: vehicles.dieselCar },
+          { label: vehicles.petrolUte.name, value: vehicles.petrolUte },
+          { label: vehicles.dieselUte.name, value: vehicles.dieselUte },
+          { label: vehicles.petrolMotorbike.name, value: vehicles.petrolMotorbike },
+          { label: vehicles.dieselMotorbike.name, value: vehicles.dieselMotorbike },
+          { label: vehicles.petroltruck.name, value: vehicles.petroltruck },
+          { label: vehicles.dieselTruck.name, value: vehicles.dieselTruck },
+          { label: vehicles.hybrid.name, value: vehicles.hybrid }
         ]}
       />
     </View>

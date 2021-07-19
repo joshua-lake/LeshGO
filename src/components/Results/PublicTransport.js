@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData.publicTransport
+  const { setTwoDecimals } = props
+
   return (
     props.data.mapRouteData.transitData
 
@@ -14,10 +16,10 @@ function PublicTransport (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            Distance: {props.data.mapRouteData.transitData.distanceKM}KM
+            Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)}KM
           </StyledText>
           <StyledText>
-            Time: {props.data.mapRouteData.transitData.durationMIN} mins
+            Time: {setTwoDecimals(props.data.mapRouteData.transitData.durationMIN)} mins
           </StyledText>
         </FlexText>
       </StyledView>
@@ -67,8 +69,8 @@ justifyContent: center;
 `
 
 const Image = styled.Image`
-height: 30px;
-width: 30px;
+height: 45%;
+width: 40%;
 `
 
 export default PublicTransport
