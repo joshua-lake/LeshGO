@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/native'
-// import Icon from 'react-native-vector-icons/FontAwesome'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData.publicTransport
@@ -11,7 +10,6 @@ function PublicTransport (props) {
 
     ? <StyledView>
         <StyledIcon>    
-          {/* <Icon name="bus" size={30} /> */}
           <Image source={require("../../../assets/train.gif")} size={30}/>
         </StyledIcon>
         <FlexText>
@@ -26,7 +24,6 @@ function PublicTransport (props) {
 
     : <StyledView>
         <StyledIcon>    
-          {/* <Icon name="bus" size={30} /> */}
           <Image source={require("../../../assets/train.png")}/>
         </StyledIcon>
         <FlexText>
