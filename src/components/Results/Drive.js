@@ -6,10 +6,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 function Drive (props) {
 
   const { distance, duration } = props.undefinedData.drive
-  // console.log('drive', props.vehicleType)
+  console.log('drive', props.data.vehicleType)
 
 
-  const emmisionsCalculation = (props.vehicleType && props.data.mapRouteData.drivingData) ? props.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
+  const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
   return (    
     props.data.mapRouteData.drivingData
@@ -19,8 +19,8 @@ function Drive (props) {
           </StyledIcon>
           <FlexText>
           <StyledText>
-            {props.vehicleType
-                ? <Text>{props.vehicleType.name} c02: {emmisionsCalculation} KG </Text>
+            {props.data.vehicleType
+                ? <Text>{props.data.vehicleType.name} c02: {emmisionsCalculation} KG </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
@@ -38,8 +38,8 @@ function Drive (props) {
           </StyledIcon>
         <FlexText>
          <StyledText>
-            {props.vehicleType
-              ? props.vehicleType.name
+            {props.data.vehicleType
+              ? props.data.vehicleType.name
               : 'Please select vehicle type'}:
          </StyledText>
          <StyledText>
