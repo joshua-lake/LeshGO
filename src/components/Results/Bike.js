@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData.bike
@@ -9,7 +9,8 @@ function Bike (props) {
     
     ? <StyledView>
         <StyledIcon>
-          <Icon name="bike" size={30} />
+          {/* <Icon name="bike" size={30} /> */}
+          <Image source={require("../../../assets/bike.gif")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -23,6 +24,7 @@ function Bike (props) {
     
     : <StyledView>
         <StyledIcon>
+        {/* <Icon name="bike" size={30} /> */}
         <Image source={require("../../../assets/bike.gif")}/>
         </StyledIcon>
         <FlexText>

@@ -33,18 +33,19 @@ width: 100%;
 justifyContent: center;
 `
 
-const StyledTo = styled.View`
+const StyledFrom = styled.View`
 flex: 1;
 alignItems: center;
 width: 100%;
 paddingTop: 2%
 `
 
-const StyledFrom = styled.View`
+const StyledTo = styled.View`
 flex: 1;
 alignItems: center;
 width: 100%;
 paddingTop: 2%
+paddingBottom: 1%;
 `
 
 const StyledVehicle = styled.View`
