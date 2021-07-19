@@ -71,7 +71,7 @@ justifyContent: center;
 
 const StyledIcon = styled.View`
 flex: 1;
-height: 100%;
+height: 60%;
 alignItems: center;
 justifyContent: center;
 padding-left: 5%;
