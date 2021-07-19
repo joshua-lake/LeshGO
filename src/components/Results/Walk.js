@@ -9,7 +9,7 @@ function Walk (props) {
 
     ? <StyledView>
         <StyledIcon>    
-          <Icon name="walking" size={30} />
+        <Image source={require("../../../assets/stickwalk.gif")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>

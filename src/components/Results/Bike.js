@@ -9,7 +9,7 @@ function Bike (props) {
     
     ? <StyledView>
         <StyledIcon>
-          <Icon name="bike" size={30} />
+        <Image source={require("../../../assets/bike.gif")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
