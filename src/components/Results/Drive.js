@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/native'
-// import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
 
@@ -14,7 +13,6 @@ function Drive (props) {
     props.data.mapRouteData.drivingData
     ? <StyledView>
         <StyledIcon>    
-          {/* <Icon name="car" size={30} /> */}
           <Image source={require("../../../assets/car.gif")}/>
         </StyledIcon>
         <FlexText>
@@ -32,7 +30,6 @@ function Drive (props) {
 
     : <StyledView>
         <StyledIcon>  
-          {/* <Icon name="car" size={30} /> */}
           <Image source={require("../../../assets/car.png")}/>
         </StyledIcon>
         <FlexText>

@@ -83,7 +83,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
                   <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
           </StyledMap>
           <StyledResult>
-            <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
+            <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
           </StyledResult>
           <StatusBar style="auto"/>
       </ScrollView>

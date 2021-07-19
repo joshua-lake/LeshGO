@@ -31,7 +31,6 @@ alignItems: center;
 width: 100%;
 justifyContent: center;
 `
-// background-color: #F0FFF0;
 
 const StyledFrom = styled.View`
 flex: 1;

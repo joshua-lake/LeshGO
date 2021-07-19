@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/native'
-// import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData.walk
@@ -11,7 +10,6 @@ function Walk (props) {
 
     ? <StyledView>
         <StyledIcon>    
-          {/* <Icon name="walking" size={30} /> */}
           <Image source={require("../../../assets/stickwalk.gif")}/>
         </StyledIcon>
         <FlexText>
@@ -26,7 +24,6 @@ function Walk (props) {
 
     : <StyledView>
         <StyledIcon>
-        {/* <Icon name="walking" size={30} />     */}
         <Image source={require("../../../assets/stickwalk.png")}/>
         </StyledIcon>
         <FlexText>
