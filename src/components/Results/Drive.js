@@ -9,6 +9,8 @@ function Drive (props) {
 
   const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
+  return (
+    props.data.mapRouteData.drivingData
     ? <StyledView>
         <StyledIcon>    
           {/* <Icon name="car" size={30} /> */}

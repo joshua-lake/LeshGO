@@ -28,7 +28,7 @@ function Walk (props) {
         <StyledIcon>
         {/* <Icon name="walking" size={30} />     */}
         <Image source={require("../../../assets/stickwalk.gif")}/>
-        </StyledIcon>s
+        </StyledIcon>
         <FlexText>
           <StyledText>
             Distance:{distance}
