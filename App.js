@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { LogBox, SafeAreaView, ScrollView } from 'react-native'
 import * as TaskManager from 'expo-task-manager'
 import * as Location from 'expo-location'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
@@ -24,7 +25,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   }
 
   const [vehicleMake, setVehicleMake] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
-  const [vehicle, setVehicle] = useState({})
+  const [vehicle, setVehicle] = useState()
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
   const [markers, setMarkers] = useState([])
@@ -83,6 +84,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
         <StyledMap>
           <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
                 destination={destination} selectedRoute={selectedRoute}/>
+                <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
         </StyledMap>
         <StyledResult>
           <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
@@ -93,23 +95,12 @@ const LOCATION_TASK_NAME = 'background-location-task'
   )
 }
 
-// const StyledView = styled.View`
-// flex: 1;
-// flex-direction: column;
-// background-color: #F0FFF0;
-// alignItems: center;
-// justifyContent: center;
-// margin: 5px;
-// padding-top: 15px;
-// `
-// ADD TO INLINE 32
-
 const StyledSelector = styled.View`
   flex: 1.5;
   alignItems: center;
   justifyContent: center;
   width: 100%;
-
+  borderBottomWidth: 1px;
 `
 
 const StyledMap = styled.View`
@@ -124,20 +115,9 @@ const StyledResult = styled.View`
   alignItems: center;
   justifyContent: center;
   width: 100%;
-  background-color: #F0FFF0;
+  borderTopWidth: 1px;
 `
 
-// const styles = StyleSheet.create({
-//   dropDown: {
-//     fontSize: 14,
-//     paddingVertical: 10,
-//     paddingHorizontal: 12,
-//     borderWidth: 1,
-//     borderColor: 'green',
-//     borderRadius: 8,
-//     color: 'black',
-//     paddingRight: 30,
-//   }
-// })
+  // background-color: #F0FFF0;
 
 export default App

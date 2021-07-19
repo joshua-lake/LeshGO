@@ -31,7 +31,7 @@ const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOr
           },
           textInputContainer: {},
           textInput: {
-            backgroundColor: '#FAF0E6',
+            backgroundColor: '#FFFFFF',
             borderRadius: 20,
           }
         }}

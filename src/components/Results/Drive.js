@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5'
+// import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
 
@@ -20,7 +20,7 @@ function Drive (props) {
     data.mapRouteData.drivingData
       ? <StyledView>
           <StyledIcon>    
-            <Icon name="car" size={30} />
+            <Image source={require("../../../assets/car.gif")}/>
           </StyledIcon>
           <FlexText>
           <StyledText>
@@ -37,10 +37,11 @@ function Drive (props) {
           </FlexText>
         </StyledView>
 
-      :<StyledView>
-          <StyledIcon>    
-            <Icon name="car" size={30} />
-          </StyledIcon>
+    : <StyledView>
+        <StyledIcon>  
+          {/* <Icon name="car" size={30} /> */}
+          <Image source={require("../../../assets/car.png")}/>
+        </StyledIcon>
         <FlexText>
          <StyledText>
             {currentVehicle
@@ -48,10 +49,10 @@ function Drive (props) {
               : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
-            Distance:{distance}
-         </StyledText>
-         <StyledText>
-            Time:{duration}
+         Distance: <GreyText>{distance}</GreyText>
+          </StyledText>
+          <StyledText>
+          Time: <GreyText>{duration}</GreyText>
          </StyledText>
         </FlexText>
       </StyledView>
@@ -62,8 +63,15 @@ function Drive (props) {
 
 const StyledText = styled.Text`
   flex: 1;
-  font-size: 20px;
+  font-size: 16px;
   justifyContent: center;
+`
+
+const GreyText = styled.Text`
+  flex: 1;
+  font-size: 16px;
+  padding: 1%;
+  color: lightgrey;
 `
 
 const StyledView = styled.View`
@@ -85,6 +93,13 @@ flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
+padding-left: 5%;
+padding-right: 5%;
 `
+const Image = styled.Image`
+height: 40%;
+width: 45%;
+`
+
 
 export default Drive

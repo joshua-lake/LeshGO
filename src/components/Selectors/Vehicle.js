@@ -27,9 +27,8 @@ function Vehicle (props) {
     return {label: car.Model, value: car}
   })
 
-
   return (
-    <View style={{ backgroundColor: '#FAF0E6', borderRadius: 20, height: '100%', width: '104%', justifyContent: 'center' }}>
+    <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, height: '250%', width: '103%', justifyContent: 'center' }}>
         {/* <Ionicons name="chevron-down" size={32} color="pink" /> */}
         <RNPickerSelect
         onValueChange={(value) => props.setVehicleMake(value)}
