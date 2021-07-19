@@ -56,8 +56,8 @@ const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
 height: 100%;
-padding-top: 4%;
-padding-bottom: 1%;
+padding-top: 2%;
+padding-bottom: 2%;
 justifyContent: center;
 `
 

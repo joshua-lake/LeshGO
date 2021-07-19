@@ -39,7 +39,7 @@ function Drive (props) {
          <StyledText>
             {props.data.vehicleType
               ? props.data.vehicleType.name
-              : 'Please select vehicle type'}:
+              : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
             Distance:{distance}
