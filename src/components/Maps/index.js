@@ -43,21 +43,22 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
         latitudeDelta: .015 * distance,
         longitudeDelta: .015 * distance,
       })
-    } else if (originSet && !destinationSet) {
-      setRegion({
-        latitude: origin.latitude,
-        longitude: origin.longitude,
-        latitudeDelta: .015,
-        longitudeDelta: .015,
-      })
-    } else if (!originSet && destinationSet) {
-      setRegion({
-        latitude: destination.latitude,
-        longitude: destination.longitude,
-        latitudeDelta: .015,
-        longitudeDelta: .015,
-      })
     }
+    // else if (originSet && !destinationSet) {
+    //   setRegion({
+    //     latitude: origin.latitude,
+    //     longitude: origin.longitude,
+    //     latitudeDelta: .015,
+    //     longitudeDelta: .015,
+    //   })
+    // } else if (!originSet && destinationSet) {
+    //   setRegion({
+    //     latitude: destination.latitude,
+    //     longitude: destination.longitude,
+    //     latitudeDelta: .015,
+    //     longitudeDelta: .015,
+    //   })
+    // }
   }, [origin, destination])
 
   useEffect(() => {
