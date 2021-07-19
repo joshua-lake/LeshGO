@@ -7,7 +7,6 @@ function Drive (props) {
 
   const { distance, duration } = props.undefinedData.drive
   const { setTwoDecimals } = props
-  console.log('drive', props.data.vehicleType)
 
 
   const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
