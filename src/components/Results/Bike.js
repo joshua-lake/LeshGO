@@ -43,7 +43,8 @@ function Bike (props) {
 
 const StyledText = styled.Text`
   flex: 1;
-  font-size: 20px;
+  font-size: 16px;
+  padding: 1%;
 `
 
 const StyledView = styled.View`
@@ -66,6 +67,8 @@ flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
+padding-left: 5%;
+padding-right: 5%;
 `
 
 const Image = styled.Image`

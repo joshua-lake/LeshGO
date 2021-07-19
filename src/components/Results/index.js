@@ -70,13 +70,17 @@ const StyledView = styled.View`
   alignItems: center;
   justifyContent: center;
   width: 100%;
+  margin-top: 2%;
 `
 
 const StyledContent = styled.View`
 flex: 1;
-width: 100%;
-background-color: white;
-margin: 1%;
+width: 95%;
+margin-top: 1%;
+margin-bottom: 1%;
+margin-left: 2%;
+margin-right: 2%;
+border: solid;
 border-radius: 50px;
 `
 

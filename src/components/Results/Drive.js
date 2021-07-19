@@ -38,7 +38,7 @@ function Drive (props) {
         <FlexText>
          <StyledText>
             {props.data.vehicleType
-              ? props.data.vehicleType.name
+              ? props.data.vehicleType
               : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
@@ -56,7 +56,7 @@ function Drive (props) {
 
 const StyledText = styled.Text`
   flex: 1;
-  font-size: 20px;
+  font-size: 16px;
   justifyContent: center;
 `
 
@@ -79,6 +79,8 @@ flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
+padding-left: 5%;
+padding-right: 5%;
 `
 const Image = styled.Image`
 height: 40%;
