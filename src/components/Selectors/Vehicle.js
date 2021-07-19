@@ -40,13 +40,13 @@ function Vehicle (props) {
       eco: 'high'
     },
     hybrid: {
-      name: 'hybrid',
+      name: 'Hybrid',
       eco: 'low'
     }
   }
 
   return (
-    <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, height: '250%', width: '103%', justifyContent: 'center' }}>
+    <View style={{ backgroundColor: '#FFFFFF', borderRadius: 100, height: '205%', width: '103%', justifyContent: 'center' }}>
         {/* <Ionicons name="chevron-down" size={32} color="pink" /> */}
       <RNPickerSelect
         onValueChange={(value) => props.setVehicleType(value)}

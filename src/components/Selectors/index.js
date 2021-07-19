@@ -27,7 +27,7 @@ const Selectors = ({ currentLocation, setDestination, setOrigin, setVehicleType 
 const StyledView = styled.View`
 flex: 1;
 flex-direction: column;
-background-color: #F0FFF0;
+background-color: brown;
 alignItems: center;
 width: 100%;
 justifyContent: center;
@@ -35,22 +35,24 @@ justifyContent: center;
 
 const StyledTo = styled.View`
 flex: 1;
+background-color: #F0FFF0;
 alignItems: center;
 width: 100%;
-paddingTop: 2%
+paddingTop: 3%
 `
 
 const StyledFrom = styled.View`
 flex: 1;
+background-color: #F0FFF0;
 alignItems: center;
 width: 100%;
-paddingTop: 2%
+paddingTop: 3%
 `
 
 const StyledVehicle = styled.View`
 flex: 1;
-backgroundColor: #F0FFF0;
-padding-top:5%;
+background-color: #F0FFF0;
+padding-top: 6%;
 padding-bottom: 6%;
 padding-left: 4%;
 padding-right: 4%;
