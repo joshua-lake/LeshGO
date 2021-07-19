@@ -42,10 +42,10 @@ function Drive (props) {
               : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
-            Distance:{distance}
-         </StyledText>
-         <StyledText>
-            Time:{duration}
+         Distance: <GreyText>{distance}</GreyText>
+          </StyledText>
+          <StyledText>
+          Time: <GreyText>{duration}</GreyText>
          </StyledText>
         </FlexText>
       </StyledView>
@@ -58,6 +58,13 @@ const StyledText = styled.Text`
   flex: 1;
   font-size: 16px;
   justifyContent: center;
+`
+
+const GreyText = styled.Text`
+  flex: 1;
+  font-size: 16px;
+  padding: 1%;
+  color: lightgrey;
 `
 
 const StyledView = styled.View`

@@ -31,10 +31,10 @@ function Bike (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-          Distance:{distance}
+          Distance: <GreyText>{distance}</GreyText>
           </StyledText>
           <StyledText>
-          Time:{duration}
+          Time: <GreyText>{duration}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -45,6 +45,13 @@ const StyledText = styled.Text`
   flex: 1;
   font-size: 16px;
   padding: 1%;
+`
+
+const GreyText = styled.Text`
+  flex: 1;
+  font-size: 16px;
+  padding: 1%;
+  color: lightgrey;
 `
 
 const StyledView = styled.View`
