@@ -17,20 +17,20 @@ function Results (props) {
   const undefinedData = {
 
     walk: { // <=== hard coded default display data
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     },
     bike: {
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     },
     drive: {
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     },
     publicTransport: {
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     }
 
   }

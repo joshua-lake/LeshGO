@@ -96,7 +96,7 @@ const StyledSelector = styled.View`
   alignItems: center;
   justifyContent: center;
   width: 100%;
-  borderBottomWidth: 1;
+  borderBottomWidth: 1px;
 `
 
 const StyledMap = styled.View`
@@ -111,7 +111,7 @@ const StyledResult = styled.View`
   alignItems: center;
   justifyContent: center;
   width: 100%;
-  borderTopWidth: 1;
+  borderTopWidth: 1px;
 `
 
   // background-color: #F0FFF0;

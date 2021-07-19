@@ -38,7 +38,7 @@ flex: 1;
 alignItems: center;
 width: 100%;
 paddingTop: 2%
-borderTopWidth: 1;
+borderTopWidth: 1px;
 `
 
 const StyledTo = styled.View`
@@ -47,7 +47,7 @@ alignItems: center;
 width: 100%;
 paddingTop: 2%
 paddingBottom: 1%;
-borderTopWidth: 1;
+borderTopWidth: 1px;
 `
 
 const StyledVehicle = styled.View`
@@ -59,7 +59,7 @@ padding-right: 4%;
 width: 100%;
 alignItems: center;
 justifyContent: center;
-borderTopWidth: 1;
+borderTopWidth: 1px;
 `
 
 export default Selectors

@@ -33,19 +33,19 @@ function Drive (props) {
     : <StyledView>
         <StyledIcon>  
           {/* <Icon name="car" size={30} /> */}
-          <Image source={require("../../../assets/car.gif")}/>
+          <Image source={require("../../../assets/car.png")}/>
         </StyledIcon>
         <FlexText>
          <StyledText>
             {props.data.vehicleType
-              ? props.data.vehicleType
+              ? props.data.vehicleType.name
               : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
-            Distance:{distance}
-         </StyledText>
-         <StyledText>
-            Time:{duration}
+         Distance: <GreyText>{distance}</GreyText>
+          </StyledText>
+          <StyledText>
+          Time: <GreyText>{duration}</GreyText>
          </StyledText>
         </FlexText>
       </StyledView>
@@ -58,6 +58,13 @@ const StyledText = styled.Text`
   flex: 1;
   font-size: 16px;
   justifyContent: center;
+`
+
+const GreyText = styled.Text`
+  flex: 1;
+  font-size: 16px;
+  padding: 1%;
+  color: lightgrey;
 `
 
 const StyledView = styled.View`
