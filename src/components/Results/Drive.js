@@ -10,7 +10,7 @@ function Drive (props) {
 
     ? <StyledView>
         <StyledIcon>    
-          <Icon name="car" size={30} />
+        <Image source={require("../../../assets/car.gif")}/>
         </StyledIcon>
         <FlexText>
          <StyledText>
@@ -76,8 +76,8 @@ alignItems: center;
 justifyContent: center;
 `
 const Image = styled.Image`
-height: 30px;
-width: 30px;
+height: 40%;
+width: 45%;
 `
 
 

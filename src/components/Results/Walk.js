@@ -9,7 +9,7 @@ function Walk (props) {
 
     ? <StyledView>
         <StyledIcon>    
-          <Icon name="walking" size={30} />
+        <Image source={require("../../../assets/stickwalk.gif")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -64,8 +64,8 @@ alignItems: center;
 justifyContent: center;
 `
 const Image = styled.Image`
-height: 40px;
-width: 40px;
+height: 65%;
+width: 65%;
 `
 
 

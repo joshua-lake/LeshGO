@@ -11,7 +11,7 @@ function PublicTransport (props) {
     ? <StyledView>
         <StyledIcon>    
           {/* <Icon name="bus" size={30} /> */}
-          {/* <Image source={require("../../../assets/train.gif")} size={30}/> */}
+          <Image source={require("../../../assets/train.gif")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -68,8 +68,8 @@ justifyContent: center;
 `
 
 const Image = styled.Image`
-height: 30px;
-width: 30px;
+height: 45%;
+width: 40%;
 `
 
 export default PublicTransport
