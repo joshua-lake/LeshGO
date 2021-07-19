@@ -27,7 +27,7 @@ function PublicTransport (props) {
     : <StyledView>
         <StyledIcon>    
           {/* <Icon name="bus" size={30} /> */}
-          <Image source={require("../../../assets/train.gif")}/>
+          <Image source={require("../../../assets/train.png")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>

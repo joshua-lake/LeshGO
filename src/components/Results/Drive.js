@@ -33,12 +33,12 @@ function Drive (props) {
     : <StyledView>
         <StyledIcon>  
           {/* <Icon name="car" size={30} /> */}
-          <Image source={require("../../../assets/car.gif")}/>
+          <Image source={require("../../../assets/car.png")}/>
         </StyledIcon>
         <FlexText>
          <StyledText>
             {props.data.vehicleType
-              ? props.data.vehicleType
+              ? props.data.vehicleType.name
               : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
