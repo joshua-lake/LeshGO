@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { LogBox, SafeAreaView, ScrollView } from 'react-native'
 import * as TaskManager from 'expo-task-manager'
 import * as Location from 'expo-location'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
@@ -79,6 +80,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
           <StyledMap>
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
                   destination={destination} selectedRoute={selectedRoute}/>
+                  <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
           </StyledMap>
           <StyledResult>
             <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
