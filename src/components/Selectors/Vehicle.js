@@ -40,7 +40,7 @@ function Vehicle (props) {
       emmisions: 0.29
     },
     hybrid: {
-      name: 'hybrid',
+      name: 'Hybrid',
       emmisions: 0.05
     }
   }
