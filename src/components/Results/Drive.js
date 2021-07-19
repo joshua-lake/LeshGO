@@ -5,18 +5,19 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
 
+  const {data} = props
   const { distance, duration } = props.undefinedData.drive
   const { setTwoDecimals } = props
 
   // calculates emmissions based on distance and vehicle, converts to KG
-  const emmisionsCalculation = (props.data.vehicle && props.data.mapRouteData.drivingData) ? props.data.vehicle.CO2Emissions * props.data.mapRouteData.drivingData.distanceKM : null
+  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
   const emmisionsKilogram = emmisionsCalculation / 1000
 
   // creates current vehicle make and model
-  const currentVehicle = props.data.vehicle ? `${props.data.vehicle.Make} ${props.data.vehicle.Model}` : null
+  const currentVehicle = data.vehicle ? `${data.vehicle.Make} ${data.vehicle.Model}` : null
 
   return (    
-    props.data.mapRouteData.drivingData
+    data.mapRouteData.drivingData
       ? <StyledView>
           <StyledIcon>    
             <Icon name="car" size={30} />
@@ -28,10 +29,10 @@ function Drive (props) {
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
-              Distance:{setTwoDecimals(props.data.mapRouteData.drivingData.distanceKM)}KM
+              Distance:{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-              Time:{setTwoDecimals(props.data.mapRouteData.drivingData.durationMIN)}Mins
+              Time:{setTwoDecimals(data.mapRouteData.drivingData.durationMIN)}Mins
           </StyledText>
           </FlexText>
         </StyledView>
