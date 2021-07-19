@@ -6,9 +6,13 @@ import * as TaskManager from 'expo-task-manager'
 import * as Location from 'expo-location'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
+// import Load from './src/components/Load'
+
+
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
+
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
@@ -91,13 +95,22 @@ const LOCATION_TASK_NAME = 'background-location-task'
   )
 }
 
-const StyledSelector = styled.View`
+// Styled Selector full
+const StyledSelector = styled.View`  
   flex: 1.5;
   alignItems: center;
   justifyContent: center;
   width: 100%;
   borderBottomWidth: 1px;
 `
+// Styled Selector Half
+// const StyledSelectorHalf = styled.View`
+// flex: 1.5;
+// alignItems: center;
+// justifyContent: center;
+// width: 50%;
+// borderBottomWidth: 1px;
+// `
 
 const StyledMap = styled.View`
   flex: 2;
@@ -113,7 +126,5 @@ const StyledResult = styled.View`
   width: 100%;
   borderTopWidth: 1px;
 `
-
-  // background-color: #F0FFF0;
 
 export default App
