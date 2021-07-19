@@ -71,6 +71,7 @@ justifyContent: center;
 const Image = styled.Image`
 height: 95%;
 width: 95%;
+borderRadius: 50;
 `
 
 
