@@ -1,76 +1,54 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Drive (props) {
 
   const { distance, duration } = props.undefinedData.drive
 
-  const emmisionsCalculation = (props.vehicleType.emmisions && props.data.mapRouteData.drivingData) ? props.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
+  const emmisionsCalculation = (props.vehicleType && props.data.mapRouteData.drivingData) ? props.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
-  return (
+  return (    
     props.data.mapRouteData.drivingData
-    ? <View>
-        <StyledText>
-          <Icon name="car" size={30} color="#900"/>
-          {props.vehicleType
-            ?  <Text>{props.vehicleType.name} c02: {emmisionsCalculation} KG </Text>
-            : 'Please select vehicle type'}:
-          Distance:{props.data.mapRouteData.drivingData.distanceKM}KM
-          Time:{props.data.mapRouteData.drivingData.durationMIN}Mins
-        </StyledText>
-      </View>
+      ? <StyledView>
+          <StyledIcon>    
+            <Icon name="car" size={30} />
+          </StyledIcon>
+          <FlexText>
+          <StyledText>
+            {props.vehicleType
+                ? <Text>{props.vehicleType.name} c02: {emmisionsCalculation} KG </Text>
+                : 'Please select vehicle type'}
+          </StyledText>
+          <StyledText>
+              Distance:{props.data.mapRouteData.drivingData.distanceKM}KM
+          </StyledText>
+          <StyledText>
+              Time:{props.data.mapRouteData.drivingData.durationMIN}Mins
+          </StyledText>
+          </FlexText>
+        </StyledView>
 
-    : <View>
-        <StyledText>
-          <Icon name="car" size={30} color="#900" />
-          {props.vehicleType
-            ? props.vehicleType.name
-            : 'Please select vehicle type'}:
+      :<StyledView>
+          <StyledIcon>    
+            <Icon name="car" size={30} />
+          </StyledIcon>
+        <FlexText>
+         <StyledText>
+            {props.vehicleType
+              ? props.vehicleType.name
+              : 'Please select vehicle type'}:
+         </StyledText>
+         <StyledText>
             Distance:{distance}
+         </StyledText>
+         <StyledText>
             Time:{duration}
-        </StyledText>
-    </View>
-  )
-
-    ? <StyledView>
-        <StyledIcon>    
-          <Icon name="car" size={30} />
-        </StyledIcon>
-        <FlexText>
-         <StyledText>
-            Vehicle Type: {props.vehicleType} 
-            {/* ? props.vehicleType
-            : 'Please select vehicle type'}: */}
-         </StyledText>
-         <StyledText>
-            Distance: {props.data.mapRouteData.drivingData.distanceKM}KM
-         </StyledText>
-         <StyledText>
-            Time: {props.data.mapRouteData.drivingData.durationMIN} mins
          </StyledText>
         </FlexText>
       </StyledView>
-
-    : <StyledView>
-              <StyledIcon>    
-          <Icon name="car" size={30} />
-        </StyledIcon>
-        <FlexText>
-         <StyledText>
-            {props.vehicleType} 
-            {/* ? props.vehicleType
-            : 'Please select vehicle type'}: */}
-         </StyledText>
-         <StyledText>
-         Distance:{distance}
-         </StyledText>
-         <StyledText>
-         Time:{duration}
-         </StyledText>
-        </FlexText>
-      </StyledView>
+  
   )
 }
 

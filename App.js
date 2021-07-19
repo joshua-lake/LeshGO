@@ -11,7 +11,7 @@ import Results from './src/components/Results'
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
-  const [vehicleType, setVehicleType] = useState({}) // <== Value of vehicle type, coming from selectors/vehicle
+  const App = () => {
 
   const requestPermissions = async () => {
     const { status } = await Location.requestBackgroundPermissionsAsync()
