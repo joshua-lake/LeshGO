@@ -8,25 +8,6 @@ function Drive (props) {
   const { distance, duration } = props.undefinedData.drive
   const { setTwoDecimals } = props
 
-
-    // ? <StyledView>
-    //     <StyledIcon>    
-    //     <Image source={require("../../../assets/car.gif")}/>
-    //     </StyledIcon>
-    //     <FlexText>
-    //      <StyledText>
-    //         Vehicle Type: {props.vehicleType} 
-    //         {/* ? props.vehicleType
-    //         : 'Please select vehicle type'}: */}
-    //      </StyledText>
-    //      <StyledText>
-    //         Distance: {props.data.mapRouteData.drivingData.distanceKM}KM
-    //      </StyledText>
-    //      <StyledText>
-    //         Time: {props.data.mapRouteData.drivingData.durationMIN} mins
-    //      </StyledText>
-    //     </FlexText>
-    //   </StyledView>
   const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
   return (    
@@ -50,10 +31,6 @@ function Drive (props) {
           </FlexText>
         </StyledView>
 
-    // : <StyledView>
-    //           <StyledIcon>    
-    //           <Image source={require("../../../assets/car.gif")}/>
-    //     </StyledIcon>
       :<StyledView>
           <StyledIcon>    
             <Icon name="car" size={30} />
