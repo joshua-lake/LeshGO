@@ -17,20 +17,20 @@ function Results (props) {
   const undefinedData = {
 
     walk: { // <=== hard coded default display data
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     },
     bike: {
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     },
     drive: {
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     },
     publicTransport: {
-      distance: 'please enter',
-      duration: 'please enter'
+      distance: 'please enter route',
+      duration: 'please enter route'
     }
 
   }
@@ -70,13 +70,17 @@ const StyledView = styled.View`
   alignItems: center;
   justifyContent: center;
   width: 100%;
+  margin-top: 2%;
 `
 
 const StyledContent = styled.View`
 flex: 1;
-width: 100%;
-background-color: white;
-margin: 1%;
+width: 95%;
+margin-top: 1%;
+margin-bottom: 1%;
+margin-left: 2%;
+margin-right: 2%;
+border: solid;
 border-radius: 50px;
 `
 

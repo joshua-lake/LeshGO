@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData.publicTransport
@@ -11,7 +11,8 @@ function PublicTransport (props) {
 
     ? <StyledView>
         <StyledIcon>    
-          <Icon name="bus" size={30} />
+          {/* <Icon name="bus" size={30} /> */}
+          <Image source={require("../../../assets/train.gif")} size={30}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -25,14 +26,15 @@ function PublicTransport (props) {
 
     : <StyledView>
         <StyledIcon>    
-          <Icon name="bus" size={30} />
+          {/* <Icon name="bus" size={30} /> */}
+          <Image source={require("../../../assets/train.png")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
-            Distance:{distance}
+          Distance: <GreyText>{distance}</GreyText>
           </StyledText>
           <StyledText>
-            Time:{duration}
+          Time: <GreyText>{duration}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -41,7 +43,15 @@ function PublicTransport (props) {
 
 const StyledText = styled.Text`
   flex: 1;
-  font-size: 20px;
+  font-size: 16px;
+  padding: 1%;
+`
+
+const GreyText = styled.Text`
+  flex: 1;
+  font-size: 16px;
+  padding: 1%;
+  color: lightgrey;
 `
 
 const StyledView = styled.View`
@@ -54,8 +64,8 @@ const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
 height: 100%;
-padding-top: 4%;
-padding-bottom: 1%;
+padding-top: 2%;
+padding-bottom: 2%;
 justifyContent: center;
 `
 
@@ -64,6 +74,13 @@ flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
+padding-left: 5%;
+padding-right: 5%;
+`
+
+const Image = styled.Image`
+height: 50%;
+width: 40%;
 `
 
 export default PublicTransport
