@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData.walk
+  const { setTwoDecimals } = props
+
   return (
     props.data.mapRouteData.walkingData
 
@@ -13,10 +15,10 @@ function Walk (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-              Distance: {props.data.mapRouteData.walkingData.distanceKM}KM
+              Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-              Time: {props.data.mapRouteData.walkingData.durationMIN} mins
+              Time: {setTwoDecimals(props.data.mapRouteData.walkingData.durationMIN)} mins
           </StyledText>
         </FlexText>
       </StyledView>

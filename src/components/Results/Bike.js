@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData.bike
+  const { setTwoDecimals } = props
+
   return (
     props.data.mapRouteData.bicyclingData
     
@@ -13,10 +15,10 @@ function Bike (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            Distance: {props.data.mapRouteData.bicyclingData.distanceKM}KM
+            Distance: {setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-            Time: {props.data.mapRouteData.bicyclingData.durationMIN} mins
+            Time: {setTwoDecimals(props.data.mapRouteData.bicyclingData.durationMIN)} mins
           </StyledText>
         </FlexText>
       </StyledView>

@@ -11,7 +11,7 @@ import Results from './src/components/Results'
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
-const App = () => {
+  const App = () => {
 
   const requestPermissions = async () => {
     const { status } = await Location.requestBackgroundPermissionsAsync()
