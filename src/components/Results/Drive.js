@@ -8,8 +8,12 @@ function Drive (props) {
   const { distance, duration } = props.undefinedData.drive
   const { setTwoDecimals } = props
 
+  // calculates emmissions based on distance and vehicle, converts to KG
+  const emmisionsCalculation = (props.data.vehicle && props.data.mapRouteData.drivingData) ? props.data.vehicle.CO2Emissions * props.data.mapRouteData.drivingData.distanceKM : null
+  const emmisionsKilogram = emmisionsCalculation / 1000
 
-  const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
+  // creates current vehicle make and model
+  const currentVehicle = props.data.vehicle ? `${props.data.vehicle.Make} ${props.data.vehicle.Model}` : null
 
   return (    
     props.data.mapRouteData.drivingData
@@ -19,8 +23,8 @@ function Drive (props) {
           </StyledIcon>
           <FlexText>
           <StyledText>
-            {props.data.vehicleType
-                ? <Text>{props.data.vehicleType.name} c02: {setTwoDecimals(emmisionsCalculation)} KG </Text>
+            {emmisionsKilogram
+                ? <Text>{currentVehicle} C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
@@ -38,9 +42,9 @@ function Drive (props) {
           </StyledIcon>
         <FlexText>
          <StyledText>
-            {props.data.vehicleType
-              ? props.data.vehicleType.name
-              : 'Please select vehicle type'}:
+            {currentVehicle
+              ? <Text>{currentVehicle}</Text>
+              : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
             Distance:{distance}
