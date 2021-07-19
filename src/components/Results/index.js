@@ -36,30 +36,29 @@ function Results (props) {
 
   return (
     <StyledView>
-
-      <StyledWalk>
+      <StyledContent>
         <Pressable onPress={() => setSelectedRoute('walking')}>
           <Walk data={props} undefinedData={undefinedData}/>
         </Pressable>
-      </StyledWalk>
+        </StyledContent>
 
-      <StyledBike>
+      <StyledContent>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
           <Bike data={props} undefinedData={undefinedData}/>
         </Pressable>
-      </StyledBike>
+        </StyledContent>
 
-      <StyledDrive>
+      <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
           <Drive data={props} undefinedData={undefinedData} />
         </Pressable>
-      </StyledDrive>
+        </StyledContent>
 
-      <StyledPublicTransport>
+      <StyledContent>
         <Pressable onPress={() => setSelectedRoute('transit')}>
           <PublicTransport data={props} undefinedData={undefinedData}/>
         </Pressable>
-      </StyledPublicTransport>
+        </StyledContent>
     </StyledView>
   )
 }
@@ -67,38 +66,17 @@ function Results (props) {
 const StyledView = styled.View`
   flex: 1;
   flex-direction: column;
-  background-color: white;
   alignItems: center;
   justifyContent: center;
   width: 100%;
 `
 
-const StyledWalk = styled.View`
-  flex: 1;
-  background-color: pink;
-  padding: 5%;
-  width: 100%;
-`
-
-const StyledBike = styled.View`
-  flex: 1;
-  background-color: yellow;
-  padding: 5%;
-  width: 100%;
-`
-
-const StyledDrive = styled.View`
-  flex: 1;
-  background-color: black;
-  padding: 5%;
-  width: 100%;
-`
-
-const StyledPublicTransport = styled.View`
-  flex: 1;
-  background-color: white;
-  padding: 5%;
-  width: 100%;
+const StyledContent = styled.View`
+flex: 1;
+width: 100%;
+background-color: white;
+margin: 1%;
+border-radius: 50px;
 `
 
 export default Results
