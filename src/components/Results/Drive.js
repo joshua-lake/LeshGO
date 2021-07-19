@@ -6,6 +6,7 @@ function Drive (props) {
 
   const { distance, duration } = props.undefinedData.drive
   const { setTwoDecimals } = props
+  // const vehicleType = props.data.vehicleType
 
   const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 
@@ -18,9 +19,7 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
          <StyledText>
-            Vehicle Type: {props.vehicleType} 
-            {/* ? props.vehicleType
-            : 'Please select vehicle type'}: */}
+            Vehicle Type: {props.data.vehicleType.name} 
          </StyledText>
          <StyledText>
             Distance: {props.data.mapRouteData.drivingData.distanceKM}KM
