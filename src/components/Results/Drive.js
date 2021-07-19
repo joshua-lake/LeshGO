@@ -8,8 +8,6 @@ function Drive (props) {
   const { distance, duration } = props.undefinedData.drive
   // console.log('drive', props.vehicleType)
 
-  console.log('drive vehicle name', props.data.vehicleType.name)
-
 
   const emmisionsCalculation = (props.vehicleType && props.data.mapRouteData.drivingData) ? props.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
 

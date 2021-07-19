@@ -13,9 +13,6 @@ const LOCATION_TASK_NAME = 'background-location-task'
 
   const App = () => {
 
-  const [vehicleType, setVehicleType] = useState() // <== Value of vehicle type, coming from selectors/vehicle
-
-  console.log('vehicleType', vehicleType)
   const requestPermissions = async () => {
     const { status } = await Location.requestBackgroundPermissionsAsync()
     if (status === 'granted') {
