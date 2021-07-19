@@ -51,7 +51,7 @@ function Results (props) {
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} vehicleType={props.vehicleType} setTwoDecimals={setTwoDecimals}/>
+          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
         </Pressable>
         </StyledContent>
 
