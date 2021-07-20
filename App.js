@@ -27,7 +27,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
   const [markers, setMarkers] = useState([])
-  const [selectedRoute, setSelectedRoute] = useState('walking')
+  const [selectedRoute, setSelectedRoute] = useState('')
   const [stateLocation, setStateLocations] = useState({})
   const [mapRouteData, setRouteData] = useState({
     walking: {},
@@ -75,7 +75,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
       <ScrollView keyboardShouldPersistTaps="always" >
           <StyledSelector>
             {stateLocation !== undefined && <Selectors currentLocation={stateLocation} setVehicleType={setVehicleType} setOrigin={setOrigin}
-                       setDestination={setDestination}/> }
+                       setDestination={setDestination} setSelectedRoute={setSelectedRoute}/> }
           </StyledSelector>
           <StyledMap>
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}

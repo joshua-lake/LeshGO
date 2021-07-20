@@ -3,14 +3,17 @@ import styled from 'styled-components/native'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData.walk
-  const { setTwoDecimals } = props
+  const { setTwoDecimals, selectedRoute } = props
 
   return (
     props.data.mapRouteData.walkingData
 
     ? <StyledView>
-        <StyledIcon>    
-          <Image source={require("../../../assets/stickwalk.gif")}/>
+        <StyledIcon>
+          {selectedRoute === 'walking'
+          ? <Image source={require("../../../assets/stickwalk.gif")}/>
+          : <Image source={require("../../../assets/stickwalk.png")}/>
+        } 
         </StyledIcon>
         <FlexText>
           <StyledText>

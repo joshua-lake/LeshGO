@@ -4,7 +4,7 @@ import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
 // import Icon from 'react-native-vector-icons/FontAwesome'
 
-const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin }) => {
+const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin, setSelectedRoute }) => {
   const current = isOrigin ? {
     description: 'Current Location',
     geometry: { location: { lat: currentLocation.latitude, lng: currentLocation.longitude } }
@@ -45,6 +45,7 @@ const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOr
         onPress={(data, details = null) => {
           const { lat: latitude, lng: longitude } = details.geometry.location
           updateState({ latitude, longitude })
+          setSelectedRoute('walking')
         }}
 
         predefinedPlaces={[current]}

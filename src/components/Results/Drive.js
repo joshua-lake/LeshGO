@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 function Drive (props) {
 
   const { distance, duration } = props.undefinedData.drive
-  const { setTwoDecimals } = props
+  const { setTwoDecimals, selectedRoute } = props
   // const vehicleType = props.data.vehicleType
 
   const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
@@ -13,7 +13,10 @@ function Drive (props) {
     props.data.mapRouteData.drivingData
     ? <StyledView>
         <StyledIcon>    
-          <Image source={require("../../../assets/car.gif")}/>
+          {selectedRoute === 'driving'
+          ? <Image source={require("../../../assets/car.gif")}/>
+          : <Image source={require("../../../assets/car.png")}/>
+          } 
         </StyledIcon>
         <FlexText>
          <StyledText>

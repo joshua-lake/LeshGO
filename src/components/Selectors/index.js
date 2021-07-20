@@ -6,17 +6,17 @@ import styled from 'styled-components/native'
 import Vehicle from './Vehicle'
 import GooglePlacesInput from './GooglePlacesInput'
 
-const Selectors = ({ currentLocation, setDestination, setOrigin, setVehicleType }) => (
+const Selectors = ({ currentLocation, setDestination, setOrigin, setVehicleType, setSelectedRoute }) => (
   <StyledView>
 
     <StyledFrom>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
-                         updateState={setOrigin} isOrigin={true}/>
+                         updateState={setOrigin} isOrigin={true} setSelectedRoute={setSelectedRoute}/>
       {/* <FromLocation/> */}
     </StyledFrom>
     <StyledTo>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you going?'}
-                         updateState={setDestination} isOrigin={false}/>
+                         updateState={setDestination} isOrigin={false} setSelectedRoute={setSelectedRoute}/>
       {/* <ToLocation/> */}
     </StyledTo>
     <StyledVehicle>

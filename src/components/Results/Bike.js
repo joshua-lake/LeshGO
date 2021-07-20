@@ -3,13 +3,16 @@ import styled from 'styled-components/native'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData.bike
-  const { setTwoDecimals } = props
+  const { setTwoDecimals, selectedRoute } = props
 
   return (
     props.data.mapRouteData.bicyclingData
     ? <StyledView>
         <StyledIcon>
-          <Image source={require("../../../assets/bike.gif")}/>
+          {selectedRoute === 'bicycling'
+          ? <Image source={require("../../../assets/bike.gif")}/>
+          : <Image source={require("../../../assets/bike.png")}/>
+        } 
         </StyledIcon>
         <FlexText>
           <StyledText>

@@ -3,14 +3,17 @@ import styled from 'styled-components/native'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData.publicTransport
-  const { setTwoDecimals } = props
+  const { setTwoDecimals, selectedRoute } = props
 
   return (
     props.data.mapRouteData.transitData
 
     ? <StyledView>
         <StyledIcon>    
-          <Image source={require("../../../assets/train.gif")} size={30}/>
+          {selectedRoute === 'transit'
+          ? <Image source={require("../../../assets/train.gif")}/>
+          : <Image source={require("../../../assets/train.png")}/>
+          } 
         </StyledIcon>
         <FlexText>
           <StyledText>
