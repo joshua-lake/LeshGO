@@ -99,7 +99,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   )
 }
 
-// Styled Selector full
+
 const StyledSelector = styled.View`  
   flex: 1.5;
   alignItems: center;
@@ -107,14 +107,6 @@ const StyledSelector = styled.View`
   width: 100%;
   borderBottomWidth: 1px;
 `
-// Styled Selector Half
-// const StyledSelectorHalf = styled.View`
-// flex: 1.5;
-// alignItems: center;
-// justifyContent: center;
-// width: 50%;
-// borderBottomWidth: 1px;
-// `
 
 const StyledMap = styled.View`
   flex: 2;
