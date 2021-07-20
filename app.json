@@ -1,10 +1,11 @@
 {
   "expo": {
     "name": "unnamed-eco-app",
-    "slug": "unnamed-eco-app",
+    "slug": "eco-app",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "sdkVersion": "42.0.0",
     "splash": {
       "image": "./assets/train.gif",
       "resizeMode": "contain",
@@ -17,6 +18,7 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "nz.eda.eco",
       "supportsTablet": true,
       "infoPlist": {
         "UIBackgroundModes": [
@@ -29,6 +31,7 @@
       }
     },
     "android": {
+      "package": "nz.eda.eco",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

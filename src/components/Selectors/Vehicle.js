@@ -1,7 +1,6 @@
 import React from 'react'
-import { View } from 'react-native'
 import RNPickerSelect from 'react-native-picker-select'
-// import styled from 'styled-components/native'
+import styled from 'styled-components/native'
 
 const data = require('../../data/emmisions.json')
 
@@ -28,31 +27,40 @@ function Vehicle (props) {
   })
 
   return (
-    <View style={{ backgroundColor: '#FFFFFF', borderRadius: 20, height: '250%', width: '103%', justifyContent: 'center' }}>
-        {/* <Ionicons name="chevron-down" size={32} color="pink" /> */}
+    <>
+    <Make>
         <RNPickerSelect
         onValueChange={(value) => props.setVehicleMake(value)}
         items={
           carMakes
         }
       />
+    </Make>
+    <Model>
        <RNPickerSelect
         onValueChange={(value) => props.setVehicle(value)}
         items={
           modelData
         }
       />
-      
-    </View>
+    </Model>
+    </>
   )
 
 }
 
+const Make = styled.View`
+width: 50%;
+height: 365%;
+justifyContent: center;
+`
 
-
-// const VehicleView = styled.View`
-// display: flex;
-// flex-direction: row;
-// `
+const Model = styled.View`
+width: 50%;
+borderLeftWidth: 1px;
+height: 365%;
+justifyContent: center;
+padding-left: 6%;
+`
 
 export default Vehicle
