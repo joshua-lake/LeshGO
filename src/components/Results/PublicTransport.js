@@ -1,13 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { setTwoDecimals, timeConversion } from './helper'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 function PublicTransport (props) {
-  const { distance, duration } = props.undefinedData.publicTransport
-  const { setTwoDecimals, selectedRoute } = props
+  const { distance, duration } = props.undefinedData
+
+  const busEmmissions = 0.68
+  const totalEmmisionsCalculation = (props.data.mapRouteData.drivingData) ? busEmmissions * props.data.mapRouteData.drivingData.distanceKM : null
+  const emmissionPerAverage = totalEmmisionsCalculation ? totalEmmisionsCalculation / 45 : null
+  const { selectedRoute } = props
+  
 
   return (
     props.data.mapRouteData.transitData
-
     ? <StyledView>
         <StyledIcon>    
           {selectedRoute === 'transit'
@@ -17,10 +23,13 @@ function PublicTransport (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)}KM
+            C02: {setTwoDecimals(emmissionPerAverage)} KG
           </StyledText>
           <StyledText>
-            Time: {setTwoDecimals(props.data.mapRouteData.transitData.durationMIN)} mins
+            Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)} KM
+          </StyledText>
+          <StyledText>
+            Time: { props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} minutes`}
           </StyledText>
         </FlexText>
       </StyledView>

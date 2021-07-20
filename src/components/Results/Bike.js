@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { setTwoDecimals, timeConversion } from './helper'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
-  const { distance, duration } = props.undefinedData.bike
-  const { setTwoDecimals, selectedRoute } = props
+  const { distance, duration } = props.undefinedData
+  const { selectedRoute } = props
 
   return (
     props.data.mapRouteData.bicyclingData
@@ -17,15 +19,15 @@ function Bike (props) {
         <FlexText>
         <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM</StyledTextRight>
+            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)} km</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.durationMIN)} mins</StyledTextRight>
+            <StyledTextRight>{ props.data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(props.data.mapRouteData.bicyclingData.durationMIN)} minutes`}</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
-    
+
     : <StyledView>
         <StyledIcon>
         <Image source={require("../../../assets/bike.png")}/>

@@ -10,43 +10,23 @@ import PublicTransport from './PublicTransport'
 function Results (props) {
   const {setSelectedRoute, selectedRoute} = props
 
-  function setTwoDecimals( value ){
-    return +parseFloat(value).toFixed( 2 );
-  }
-
-  const undefinedData = {
-
-    walk: { // <=== hard coded default display data
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    bike: {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    drive: {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    publicTransport: {
+  const undefinedData = {  // <=== hard coded default display data
       distance: 'please enter route',
       duration: 'please enter route'
     }
-
-  }
-
+    
   return (
     <StyledView>
         {selectedRoute === 'walking'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <Walk data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <Walk data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -54,13 +34,13 @@ function Results (props) {
         {selectedRoute === 'bicycling'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <Bike data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <Bike data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -68,13 +48,13 @@ function Results (props) {
         {selectedRoute === 'driving'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <Drive data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <Drive data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -82,13 +62,13 @@ function Results (props) {
         {selectedRoute === 'transit'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <PublicTransport data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} selectedRoute={selectedRoute}/>
+          <PublicTransport data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }

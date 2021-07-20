@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { setTwoDecimals, timeConversion } from './helper'
 
 function Walk (props) {
-  const { distance, duration } = props.undefinedData.walk
-  const { setTwoDecimals, selectedRoute } = props
+  const { distance, duration } = props.undefinedData
+  const { selectedRoute } = props
 
   return (
     props.data.mapRouteData.walkingData
@@ -18,11 +19,11 @@ function Walk (props) {
         <FlexText>
           <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM</StyledTextRight>
+            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)} km</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.durationMIN)} mins</StyledTextRight>
+            <StyledTextRight>{props.data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.walkingData.durationMIN) : `${Math.floor(props.data.mapRouteData.walkingData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -98,6 +99,5 @@ const Image = styled.Image`
 height: 65%;
 width: 65%;
 `
-
 
 export default Walk
