@@ -19,10 +19,12 @@ function Walk (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-              Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)} KM
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM</StyledTextRight>
           </StyledText>
           <StyledText>
-              Time: { props.data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.walkingData.durationMIN) : `${Math.floor(props.data.mapRouteData.walkingData.durationMIN)} minutes`}
+            <StyledTextLeft>Time: </StyledTextLeft>
+            <StyledTextRight>{props.data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.walkingData.durationMIN) : `${Math.floor(props.data.mapRouteData.walkingData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -33,27 +35,42 @@ function Walk (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-          Distance: <GreyText>{distance}</GreyText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <GreyText>{distance}</GreyText>
           </StyledText>
           <StyledText>
-          Time: <GreyText>{duration}</GreyText>
+            <StyledTextLeft>Time:</StyledTextLeft>
+            <GreyText>{duration}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
   )
 }
 
-const StyledText = styled.Text`
+const StyledText = styled.View`
   flex: 1;
+  flex-direction: row;
   font-size: 16px;
   padding: 1%;
 `
 
-const GreyText = styled.Text`
-  flex: 1;
+const StyledTextLeft = styled.Text`
+  flex: 0.7;
   font-size: 16px;
-  padding: 1%;
+  text-align: right;
+`
+
+const StyledTextRight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+`
+
+const GreyText = styled.Text`
+  flex: 2;
+  font-size: 16px;
   color: lightgrey;
+  padding-left: 6%;
 `
 
 const StyledView = styled.View`
@@ -66,9 +83,8 @@ const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
 height: 100%;
-padding-top: 2%;
-padding-bottom: 2%;
 justifyContent: center;
+padding: 1%;
 `
 
 const StyledIcon = styled.View`
@@ -76,9 +92,10 @@ flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
-padding-left: 5%;
-padding-right: 5%;
+padding-left: 3%;
+padding-right: 2%;
 `
+
 const Image = styled.Image`
 height: 65%;
 width: 65%;
