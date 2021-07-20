@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
+import Info from './src/components/Info/Index'
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
@@ -31,6 +32,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   const [markers, setMarkers] = useState([])
   const [selectedRoute, setSelectedRoute] = useState('')
   const [stateLocation, setStateLocations] = useState({})
+  const [infoClick, setInfoClick] = useState(false)
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},
@@ -79,7 +81,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
           <StyledSelector>
             {stateLocation !== undefined && 
             <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
-                       setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
+            setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
           </StyledSelector>
           <StyledMap>
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
@@ -89,6 +91,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
             <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
           </StyledResult>
           <StatusBar style="auto"/>
+      <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
       </ScrollView>
     </SafeAreaView>
   )
