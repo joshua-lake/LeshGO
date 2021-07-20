@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
-// import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import { setTwoDecimals, timeConversion } from './helper'
 
@@ -9,7 +8,7 @@ function Drive (props) {
 
   const {data} = props
   const { distance, duration } = props.undefinedData
-  // const vehicleType = props.data.vehicleType
+  const { selectedRoute } = props
 
   // calculates emmissions based on distance and vehicle, converts to KG
   const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
@@ -17,13 +16,17 @@ function Drive (props) {
 
   console.log('test', emmisionsKilogram)
 
-  return (    
+  return (
     data.mapRouteData.drivingData
-      ? <StyledView>
-          <StyledIcon>    
-            <Image source={require("../../../assets/car.gif")}/>
-          </StyledIcon>
-          <FlexText>
+    
+    ? <StyledView>
+        <StyledIcon>    
+          {selectedRoute === 'driving'
+          ? <Image source={require("../../../assets/car.gif")}/>
+          : <Image source={require("../../../assets/car.png")}/>
+          } 
+        </StyledIcon>
+        <FlexText>
           <StyledText>
             {data.vehicle
                 ? <Text>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
@@ -35,13 +38,12 @@ function Drive (props) {
           <StyledText>
               Time: { data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
           </StyledText>
-          </FlexText>
-        </StyledView>
+        </FlexText>
+      </StyledView>
 
-      : <StyledView>
-        <StyledIcon>
-          {/* <Icon name="car" size={30} /> */}
-          <Image source={require('../../../assets/car.png')}/>
+    : <StyledView>
+        <StyledIcon>  
+          <Image source={require("../../../assets/car.png")}/>
         </StyledIcon>
         <FlexText>
           <StyledText>

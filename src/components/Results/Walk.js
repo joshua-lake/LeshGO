@@ -5,14 +5,17 @@ import { setTwoDecimals, timeConversion } from './helper'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData
+  const { selectedRoute } = props
 
   return (
     props.data.mapRouteData.walkingData
 
     ? <StyledView>
         <StyledIcon>
-          {/* <Icon name="walking" size={30} /> */}
-          <Image source={require("../../../assets/stickwalk.gif")}/>
+          {selectedRoute === 'walking'
+          ? <Image source={require("../../../assets/stickwalk.gif")}/>
+          : <Image source={require("../../../assets/stickwalk.png")}/>
+        } 
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -26,7 +29,6 @@ function Walk (props) {
 
     : <StyledView>
         <StyledIcon>
-        {/* <Icon name="walking" size={30} />     */}
         <Image source={require("../../../assets/stickwalk.png")}/>
         </StyledIcon>
         <FlexText>

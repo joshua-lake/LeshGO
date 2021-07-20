@@ -5,14 +5,16 @@ import { setTwoDecimals, timeConversion } from './helper'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData
+  const { selectedRoute } = props
 
   return (
     props.data.mapRouteData.bicyclingData
-
     ? <StyledView>
         <StyledIcon>
-          {/* <Icon name="bike" size={30} /> */}
-          <Image source={require("../../../assets/bike.gif")}/>
+          {selectedRoute === 'bicycling'
+          ? <Image source={require("../../../assets/bike.gif")}/>
+          : <Image source={require("../../../assets/bike.png")}/>
+        } 
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -26,7 +28,6 @@ function Bike (props) {
 
     : <StyledView>
         <StyledIcon>
-        {/* <Icon name="bike" size={30} /> */}
         <Image source={require("../../../assets/bike.png")}/>
         </StyledIcon>
         <FlexText>
@@ -71,7 +72,7 @@ justifyContent: center;
 
 const StyledIcon = styled.View`
 flex: 1;
-height: 100%;
+height: 60%;
 alignItems: center;
 justifyContent: center;
 padding-left: 5%;
