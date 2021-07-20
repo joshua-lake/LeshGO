@@ -78,11 +78,10 @@ const LOCATION_TASK_NAME = 'background-location-task'
   return (
     <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
       <ScrollView keyboardShouldPersistTaps="always" >
-        <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
           <StyledSelector>
             {stateLocation !== undefined && 
             <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
-                       setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
+            setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
           </StyledSelector>
           <StyledMap>
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
@@ -92,6 +91,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
             <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
           </StyledResult>
           <StatusBar style="auto"/>
+      <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
       </ScrollView>
     </SafeAreaView>
   )
