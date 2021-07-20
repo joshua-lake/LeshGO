@@ -7,7 +7,8 @@ import * as Location from 'expo-location'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 // import Load from './src/components/Load'
-
+import { Asset } from 'expo-asset';
+import AppLoading from 'expo-app-loading';
 
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
@@ -16,7 +17,15 @@ import Results from './src/components/Results'
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const busyWait = async () => {
+  const result = await delay(5000)
+  return Promise.all(result);
+}
+
   const App = () => {
+    const [isReady, setIsReady] = useState(false)
+
 
     
   const requestPermissions = async () => {
@@ -64,6 +73,8 @@ const LOCATION_TASK_NAME = 'background-location-task'
     setMarkers([{ coord: origin }, { coord: destination }])
   }, [origin, destination])
 
+
+
   TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (error) {
       return
@@ -76,14 +87,23 @@ const LOCATION_TASK_NAME = 'background-location-task'
       setStateLocations({ latitude, longitude })
     }
   })
-
-  return (
-    <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
+  if (!isReady) {
+    return (
+      <AppLoading
+      startAsync={busyWait}
+      onFinish={() => setIsReady(!isReady)}
+      onError={console.warn}
+      />
+      )
+    }
+    
+    return (
+      <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
       <ScrollView keyboardShouldPersistTaps="always">
         <StyledSelector>
           {stateLocation !== undefined &&
           <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
-                     setDestination={setDestination} setVehicle={setVehicle} vehicle={vehicle}/>}
+          setDestination={setDestination} setVehicle={setVehicle} vehicle={vehicle}/>}
         </StyledSelector>
         <StyledMap>
           <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
@@ -98,6 +118,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
     </SafeAreaView>
   )
 }
+
 
 
 const StyledSelector = styled.View`  
