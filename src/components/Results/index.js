@@ -10,27 +10,11 @@ import PublicTransport from './PublicTransport'
 const Results = props => {
   const {setSelectedRoute} = props
 
-  const undefinedData = {
-
-    walk: { // <=== hard coded default display data
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    bike: {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    drive: {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    publicTransport: {
+  const undefinedData = {  // <=== hard coded default display data
       distance: 'please enter route',
       duration: 'please enter route'
     }
-
-  }
-
+    
   return (
     <StyledView>
       <StyledContent>

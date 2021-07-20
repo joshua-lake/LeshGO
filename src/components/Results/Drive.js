@@ -3,27 +3,19 @@ import styled from 'styled-components/native'
 import { Text } from 'react-native'
 // import Icon from 'react-native-vector-icons/FontAwesome5'
 
+import { setTwoDecimals, timeConversion } from './helper'
+
 function Drive (props) {
 
   const {data} = props
-  const { distance, duration } = props.undefinedData.drive
+  const { distance, duration } = props.undefinedData
   // const vehicleType = props.data.vehicleType
 
   // calculates emmissions based on distance and vehicle, converts to KG
   const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
   const emmisionsKilogram = emmisionsCalculation / 1000
 
-  // creates current vehicle make and model
-  const currentVehicle = data.vehicle ? `${data.vehicle.Make} ${data.vehicle.Model}` : null
-
-  function timeConversion (num) {
-    const time = num
-    const hours = time /60
-    const floorHours = Math.floor(hours)
-    const minutes = (hours - floorHours) * 60
-    const roundMinutes = Math.round(minutes)
-    return floorHours < 2 ? floorHours + ' hour and ' + roundMinutes + ' minutes' : floorHours + ' hours and ' + roundMinutes + ' minutes'
-  }
+  console.log('test', emmisionsKilogram)
 
   return (    
     data.mapRouteData.drivingData
@@ -33,8 +25,8 @@ function Drive (props) {
           </StyledIcon>
           <FlexText>
           <StyledText>
-            {emmisionsKilogram
-                ? <Text>{currentVehicle} C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
+            {data.vehicle
+                ? <Text>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
@@ -42,7 +34,6 @@ function Drive (props) {
           </StyledText>
           <StyledText>
               Time: { data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
-              {/* Time:{setTwoDecimals(data.mapRouteData.drivingData.durationMIN)}Mins */}
           </StyledText>
           </FlexText>
         </StyledView>
@@ -53,11 +44,6 @@ function Drive (props) {
           <Image source={require('../../../assets/car.png')}/>
         </StyledIcon>
         <FlexText>
-         <StyledText>
-            {currentVehicle
-              ? <Text>{currentVehicle}</Text>
-              : 'Please select vehicle type'}
-          </StyledText>
           <StyledText>
             Distance: <GreyText>{distance}</GreyText>
           </StyledText>

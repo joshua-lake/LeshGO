@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { setTwoDecimals } from './helper'
+import { setTwoDecimals, timeConversion } from './helper'
 // import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
-  const { distance, duration } = props.undefinedData.walk
+  const { distance, duration } = props.undefinedData
 
   return (
     props.data.mapRouteData.walkingData
@@ -19,7 +19,7 @@ function Walk (props) {
               Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-              Time: {Math.round(props.data.mapRouteData.walkingData.durationMIN)} mins
+              Time: { props.data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.walkingData.durationMIN) : `${Math.floor(props.data.mapRouteData.walkingData.durationMIN)} minutes`}
           </StyledText>
         </FlexText>
       </StyledView>
