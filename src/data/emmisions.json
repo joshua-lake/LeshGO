@@ -11902,6 +11902,23 @@
   {
     "Year": 2021,
     "Make": "Nissan",
+    "Model": "Leaf",
+    "Vehicle Class": "Full-size",
+    "Engine Size": "Unknown",
+    "Cylinders": "Unknown",
+    "Transmission": "Unknown",
+    "Fuel": "Electric",
+    "Fuel Consumption": 0,
+    "Fuel Consumption Hwy": 0,
+    "Fuel Consumption Comb L": 0,
+    "Fuel Consumption Comb MPG": 0,
+    "CO2Emissions": 0,
+    "CO2": 0,
+    "Smog": 0
+  },
+  {
+    "Year": 2021,
+    "Make": "Nissan",
     "Model": "Maxima",
     "Vehicle Class": "Mid-size",
     "Engine Size": 3.5,
@@ -13190,6 +13207,23 @@
     "CO2Emissions": 326,
     "CO2": 3,
     "Smog": 3
+  },
+  {
+    "Year": 2021,
+    "Make": "Porsche",
+    "Model": "Taycan",
+    "Vehicle Class": "Full-size",
+    "Engine Size": "Unknown",
+    "Cylinders": "Unknown",
+    "Transmission": "Unknown",
+    "Fuel": "Electric",
+    "Fuel Consumption": 0,
+    "Fuel Consumption Hwy": 0,
+    "Fuel Consumption Comb L": 0,
+    "Fuel Consumption Comb MPG": 0,
+    "CO2Emissions": 0,
+    "CO2": 0,
+    "Smog": 0
   },
   {
     "Year": 2021,
@@ -15213,23 +15247,6 @@
     "CO2Emissions": 245,
     "CO2": 5,
     "Smog": 7
-  },
-  {
-    "Year": "",
-    "Make": "",
-    "Model": "",
-    "Vehicle Class": "",
-    "Engine Size": "",
-    "Cylinders": "",
-    "Transmission": "",
-    "Fuel": "",
-    "Fuel Consumption": "",
-    "Fuel Consumption Hwy": "",
-    "Fuel Consumption Comb L": "",
-    "Fuel Consumption Comb MPG": "",
-    "CO2Emissions": "",
-    "CO2": "",
-    "Smog": ""
   },
   {
     "Year": "Year",

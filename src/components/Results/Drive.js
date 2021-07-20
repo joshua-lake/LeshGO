@@ -1,76 +1,108 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text } from 'react-native'
-// import Icon from 'react-native-vector-icons/FontAwesome5'
+
+import { setTwoDecimals, timeConversion } from './helper'
 
 function Drive (props) {
 
   const {data} = props
-  const { distance, duration } = props.undefinedData.drive
-  const { setTwoDecimals } = props
+  const { distance, duration } = props.undefinedData
+  const { selectedRoute } = props
 
   // calculates emmissions based on distance and vehicle, converts to KG
   const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
   const emmisionsKilogram = emmisionsCalculation / 1000
 
-  // creates current vehicle make and model
-  const currentVehicle = data.vehicle ? `${data.vehicle.Make} ${data.vehicle.Model}` : null
+  console.log('test', emmisionsKilogram)
 
-  return (    
+  return (
     data.mapRouteData.drivingData
-      ? <StyledView>
-          <StyledIcon>    
-            <Image source={require("../../../assets/car.gif")}/>
-          </StyledIcon>
-          <FlexText>
+    
+    ? <StyledView>
+        <StyledIcon>    
+          {selectedRoute === 'driving'
+          ? <Image source={require("../../../assets/car.gif")}/>
+          : <Image source={require("../../../assets/car.png")}/>
+          } 
+        </StyledIcon>
+        <FlexText>
           <StyledText>
-            {emmisionsKilogram
-                ? <Text>{currentVehicle} C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
-                : 'Please select vehicle type'}
+            <CO>CO2: </CO>
+              {data.vehicle
+                ? <CORight>{setTwoDecimals(emmisionsKilogram)} kg</CORight>
+                : <GreyText>Please select vehicle type</GreyText>}
           </StyledText>
           <StyledText>
-              Distance:{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)}KM
+            <StyledTextLeft>Time: </StyledTextLeft>
+            <StyledTextRight>{data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}</StyledTextRight>
           </StyledText>
           <StyledText>
-              Time:{setTwoDecimals(data.mapRouteData.drivingData.durationMIN)}Mins
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <StyledTextRight>{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} km</StyledTextRight>
           </StyledText>
-          </FlexText>
-        </StyledView>
+        </FlexText>
+      </StyledView>
 
     : <StyledView>
         <StyledIcon>  
           <Image source={require("../../../assets/car.png")}/>
         </StyledIcon>
         <FlexText>
-         <StyledText>
-            {currentVehicle
-              ? <Text>{currentVehicle}</Text>
-              : 'Please select vehicle type'}
-         </StyledText>
-         <StyledText>
-         Distance: <GreyText>{distance}</GreyText>
+        <StyledText>
+            <CO>CO2: </CO>
+            <GreyText>please select vehicle</GreyText>
           </StyledText>
           <StyledText>
-          Time: <GreyText>{duration}</GreyText>
-         </StyledText>
+            <StyledTextLeft>Time:</StyledTextLeft>
+            <GreyText>{duration}</GreyText>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <GreyText>{distance}</GreyText>
+          </StyledText>
         </FlexText>
       </StyledView>
-  
+
   )
 }
 
-
-const StyledText = styled.Text`
+const StyledText = styled.View`
   flex: 1;
+  flex-direction: row;
   font-size: 16px;
-  justifyContent: center;
+`
+
+const StyledTextLeft = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+`
+
+const CO = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+  font-weight: 900;
+`
+
+const StyledTextRight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+`
+
+const CORight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+  font-weight: 900;
 `
 
 const GreyText = styled.Text`
-  flex: 1;
+  flex: 2;
   font-size: 16px;
-  padding: 1%;
   color: lightgrey;
+  padding-left: 6%;
 `
 
 const StyledView = styled.View`
@@ -85,20 +117,21 @@ flex-direction: column;
 height: 100%;
 padding-top: 1%;
 padding-bottom: 1%;
+justifyContent: center;
 `
 
 const StyledIcon = styled.View`
 flex: 1;
-height: 100%;
+height: 140%;
 alignItems: center;
 justifyContent: center;
-padding-left: 5%;
-padding-right: 5%;
-`
-const Image = styled.Image`
-height: 40%;
-width: 45%;
+padding-left: 3%;
+padding-right: 2%;
 `
 
+const Image = styled.Image`
+height: 40%;
+width: 40%;
+`
 
 export default Drive

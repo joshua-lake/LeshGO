@@ -42,7 +42,7 @@ const busyWait = async () => {
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
   const [markers, setMarkers] = useState([])
-  const [selectedRoute, setSelectedRoute] = useState('walking')
+  const [selectedRoute, setSelectedRoute] = useState('')
   const [stateLocation, setStateLocations] = useState({})
   const [mapRouteData, setRouteData] = useState({
     walking: {},
@@ -87,7 +87,7 @@ const busyWait = async () => {
       setStateLocations({ latitude, longitude })
     }
   })
-  if (!isReady) {
+if (!isReady) {
     return (
       <AppLoading
       startAsync={busyWait}
@@ -96,24 +96,23 @@ const busyWait = async () => {
       />
       )
     }
-    
-    return (
-      <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
-      <ScrollView keyboardShouldPersistTaps="always">
-        <StyledSelector>
-          {stateLocation !== undefined &&
-          <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
-          setDestination={setDestination} setVehicle={setVehicle} vehicle={vehicle}/>}
-        </StyledSelector>
-        <StyledMap>
-          <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
-                destination={destination} selectedRoute={selectedRoute}/>
-                <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
-        </StyledMap>
-        <StyledResult>
-          <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
-        </StyledResult>
-        <StatusBar style="auto"/>
+
+  return (
+    <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+      <ScrollView keyboardShouldPersistTaps="always" >
+          <StyledSelector>
+            {stateLocation !== undefined && 
+            <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
+                       setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
+          </StyledSelector>
+          <StyledMap>
+            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
+                  destination={destination} selectedRoute={selectedRoute}/>
+          </StyledMap>
+          <StyledResult>
+            <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
+          </StyledResult>
+          <StatusBar style="auto"/>
       </ScrollView>
     </SafeAreaView>
   )

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Pressable, StyleSheet } from 'react-native'
+import React from 'react'
+import { Pressable } from 'react-native'
 import styled from 'styled-components/native'
 
 import Walk from './Walk'
@@ -10,43 +10,23 @@ import PublicTransport from './PublicTransport'
 function Results (props) {
   const {setSelectedRoute, selectedRoute} = props
 
-  function setTwoDecimals( value ){
-    return +parseFloat(value).toFixed( 2 );
-  }
-
-  const undefinedData = {
-
-    walk: { // <=== hard coded default display data
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    bike: {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    drive: {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    },
-    publicTransport: {
+  const undefinedData = {  // <=== hard coded default display data
       distance: 'please enter route',
       duration: 'please enter route'
     }
-
-  }
-
+    
   return (
     <StyledView>
         {selectedRoute === 'walking'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Walk data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Walk data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -54,13 +34,13 @@ function Results (props) {
         {selectedRoute === 'bicycling'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Bike data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Bike data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -68,13 +48,13 @@ function Results (props) {
         {selectedRoute === 'driving'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Drive data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Drive data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -82,13 +62,13 @@ function Results (props) {
         {selectedRoute === 'transit'
         ? <StyledContentTwo>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <PublicTransport data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContentTwo>
 
         : <StyledContent>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <PublicTransport data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
         </Pressable>
         </StyledContent>
         }
@@ -123,12 +103,8 @@ margin-top: 1%;
 margin-bottom: 1%;
 margin-left: 2%;
 margin-right: 2%;
-border: solid;
+border: solid 2.5px;
 border-radius: 50px;
-shadow-color: #fae8a2;
-shadow-opacity: 0.8;
-shadow-radius: 10px;
-background-color: white;
 `
 
 export default Results
