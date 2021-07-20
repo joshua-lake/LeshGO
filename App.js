@@ -78,7 +78,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
       <ScrollView keyboardShouldPersistTaps="always" >
           <StyledSelector>
             {stateLocation !== undefined && 
-            <Selectors currentLocation={stateLocation} setVehicleType={setVehicleType} setOrigin={setOrigin}
+            <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
                        setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
           </StyledSelector>
           <StyledMap>

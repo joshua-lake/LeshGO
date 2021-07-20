@@ -24,6 +24,7 @@ const Selectors = ({ currentLocation, setDestination, setOrigin, setSelectedRout
     </StyledVehicle>
   </StyledView>
 )
+
 const StyledView = styled.View`
 flex: 1;
 flex-direction: column;
@@ -51,8 +52,9 @@ borderTopWidth: 1px;
 
 const StyledVehicle = styled.View`
 flex: 1;
-padding-top:5%;
-padding-bottom: 6%;
+flex-direction: row;
+padding-top: 5.5%;
+padding-bottom: 5.5%;
 padding-left: 6%;
 padding-right: 4%;
 width: 100%;
