@@ -3,19 +3,21 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions'
 import { Dimensions, StyleSheet } from 'react-native'
 import { API_KEY } from '../../api'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => {
   const [walkingData, setWalkingData] = useState()
   const [drivingData, setDrivingData] = useState()
   const [transitData, setTransitData] = useState()
   const [bicyclingData, setBicyclingData] = useState()
-  const [region, setRegion] = useState({
+  const initialRegion = {
     latitude: -36.872036,
     longitude: 174.763428,
     latitudeDelta: 0.07,
     longitudeDelta: 0.04,
-  })
-
+  }
+  const [region, setRegion] = useState(initialRegion)
+  const [newRegion, setNewRegion] = useState(initialRegion)
   const originSet = Object.prototype.hasOwnProperty.call(origin, 'latitude')
   const destinationSet = Object.prototype.hasOwnProperty.call(destination, 'latitude')
   const showRoute = originSet && destinationSet
@@ -37,6 +39,12 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
   useEffect(() => {
     if (originSet && destinationSet) {
       const distance = getDistance(origin.latitude, origin.longitude, destination.latitude, destination.longitude)
+      setNewRegion({
+        latitude: (origin.latitude + destination.latitude) / 2,
+        longitude: (origin.longitude + destination.longitude) / 2,
+        latitudeDelta: .015 * distance,
+        longitudeDelta: .015 * distance,
+      })
       setRegion({
         latitude: (origin.latitude + destination.latitude) / 2,
         longitude: (origin.longitude + destination.longitude) / 2,
@@ -44,21 +52,6 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
         longitudeDelta: .015 * distance,
       })
     }
-    // else if (originSet && !destinationSet) {
-    //   setRegion({
-    //     latitude: origin.latitude,
-    //     longitude: origin.longitude,
-    //     latitudeDelta: .015,
-    //     longitudeDelta: .015,
-    //   })
-    // } else if (!originSet && destinationSet) {
-    //   setRegion({
-    //     latitude: destination.latitude,
-    //     longitude: destination.longitude,
-    //     latitudeDelta: .015,
-    //     longitudeDelta: .015,
-    //   })
-    // }
   }, [origin, destination])
 
   useEffect(() => {
@@ -114,8 +107,18 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
     })
   }
 
+  const recentre = () => {
+    if (originSet && destinationSet) {
+      setRegion(newRegion)
+    } else {
+      setRegion(initialRegion)
+    }
+  }
+
   return (
-    <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} initialRegion={region}>
+    <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} showsUserLocation={true} initialRegion={initialRegion} >
+      <Icon name="location-arrow" size={20} onPress={recentre}
+            style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
       {markers.map((marker, index) => (
         marker.coord.latitude !== undefined &&
         <Marker

@@ -80,7 +80,6 @@ const LOCATION_TASK_NAME = 'background-location-task'
           <StyledMap>
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
                   destination={destination} selectedRoute={selectedRoute}/>
-                  <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
           </StyledMap>
           <StyledResult>
             <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
