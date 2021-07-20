@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
+import Info from './src/components/Info/Index'
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
@@ -31,6 +32,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   const [markers, setMarkers] = useState([])
   const [selectedRoute, setSelectedRoute] = useState('')
   const [stateLocation, setStateLocations] = useState({})
+  const [infoClick, setInfoClick] = useState(false)
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},
@@ -76,6 +78,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   return (
     <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
       <ScrollView keyboardShouldPersistTaps="always" >
+        <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
           <StyledSelector>
             {stateLocation !== undefined && 
             <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
