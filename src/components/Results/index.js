@@ -103,7 +103,7 @@ margin-top: 1%;
 margin-bottom: 1%;
 margin-left: 2%;
 margin-right: 2%;
-border: solid 3px;
+border: solid 2.5px;
 border-radius: 50px;
 `
 

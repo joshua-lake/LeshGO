@@ -74,7 +74,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   })
 
   return (
-    <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
+    <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
       <ScrollView keyboardShouldPersistTaps="always" >
           <StyledSelector>
             {stateLocation !== undefined && 

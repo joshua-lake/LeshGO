@@ -22,16 +22,16 @@ function PublicTransport (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-          <StyledTextLeft>C02: </StyledTextLeft>
-          <StyledTextRight>{setTwoDecimals(emmissionPerAverage)} kg</StyledTextRight>
+          <CO>C02: </CO>
+          <CORight>{setTwoDecimals(emmissionPerAverage)} kg</CORight>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Time: </StyledTextLeft>
+            <StyledTextRight>{props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
             <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)} km</StyledTextRight>
-          </StyledText>
-            <StyledText>
-            <StyledTextLeft>Time: </StyledTextLeft>
-            <StyledTextRight>{props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -42,16 +42,16 @@ function PublicTransport (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            <StyledTextLeft>CO2: </StyledTextLeft>
+            <CO>CO2: </CO>
             <GreyText>please enter route</GreyText>
           </StyledText>  
           <StyledText>
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <GreyText>{distance}</GreyText>
-          </StyledText>
-          <StyledText>
             <StyledTextLeft>Time:</StyledTextLeft>
             <GreyText>{duration}</GreyText>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <GreyText>{distance}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -70,10 +70,24 @@ const StyledTextLeft = styled.Text`
   text-align: right;
 `
 
+const CO = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+  font-weight: 900;
+`
+
 const StyledTextRight = styled.Text`
   flex: 2;
   font-size: 16px;
   padding-left: 7%;
+`
+
+const CORight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+  font-weight: 900;
 `
 
 const GreyText = styled.Text`
@@ -100,7 +114,7 @@ justifyContent: center;
 
 const StyledIcon = styled.View`
 flex: 1;
-height: 100%;
+height: 130%;
 alignItems: center;
 justifyContent: center;
 padding-left: 3%;

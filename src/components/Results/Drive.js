@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text } from 'react-native'
 
 import { setTwoDecimals, timeConversion } from './helper'
 
@@ -28,18 +27,18 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            <StyledTextLeft>Co2: </StyledTextLeft>
+            <CO>CO2: </CO>
               {data.vehicle
-                ? <StyledTextRight>{setTwoDecimals(emmisionsKilogram)} kg</StyledTextRight>
+                ? <CORight>{setTwoDecimals(emmisionsKilogram)} kg</CORight>
                 : <GreyText>Please select vehicle type</GreyText>}
-          </StyledText>
-          <StyledText>
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} km</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
             <StyledTextRight>{data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}</StyledTextRight>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <StyledTextRight>{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} km</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -50,16 +49,16 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
         <StyledText>
-            <StyledTextLeft>CO2: </StyledTextLeft>
+            <CO>CO2: </CO>
             <GreyText>please select vehicle</GreyText>
-          </StyledText>  
-          <StyledText>
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <GreyText>{distance}</GreyText>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time:</StyledTextLeft>
             <GreyText>{duration}</GreyText>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <GreyText>{distance}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -79,10 +78,24 @@ const StyledTextLeft = styled.Text`
   text-align: right;
 `
 
+const CO = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+  font-weight: 900;
+`
+
 const StyledTextRight = styled.Text`
   flex: 2;
   font-size: 16px;
   padding-left: 7%;
+`
+
+const CORight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+  font-weight: 900;
 `
 
 const GreyText = styled.Text`
@@ -109,7 +122,7 @@ justifyContent: center;
 
 const StyledIcon = styled.View`
 flex: 1;
-height: 100%;
+height: 140%;
 alignItems: center;
 justifyContent: center;
 padding-left: 3%;

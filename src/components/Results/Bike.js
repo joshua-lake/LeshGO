@@ -9,36 +9,42 @@ function Bike (props) {
   return (
     props.data.mapRouteData.bicyclingData
     ? <StyledView>
-        <StyledIcon>
           {selectedRoute === 'bicycling'
-          ? <Image source={require("../../../assets/bike.gif")}/>
-          : <Image source={require("../../../assets/bike.png")}/>
+          ? <StyledGif><Gif source={require("../../../assets/bike.gif")}/></StyledGif>
+          : <StyledIcon><Icon source={require("../../../assets/bike.png")}/></StyledIcon>
         } 
-        </StyledIcon>
         <FlexText>
-        <StyledText>
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)} km</StyledTextRight>
+          <StyledText>
+            <StyledTextLeft>C02: </StyledTextLeft>
+            <StyledTextRight>0 kg</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
             <StyledTextRight>{ props.data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(props.data.mapRouteData.bicyclingData.durationMIN)} minutes`}</StyledTextRight>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)} km</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
 
     : <StyledView>
         <StyledIcon>
-        <Image source={require("../../../assets/bike.png")}/>
+        <Icon source={require("../../../assets/bike.png")}/>
         </StyledIcon>
         <FlexText>
+          <StyledText>
+            <StyledTextLeft>CO2: </StyledTextLeft>
+            <GreyText>please enter route</GreyText>
+          </StyledText> 
+        <StyledText>
+            <StyledTextLeft>Time:</StyledTextLeft>
+            <GreyText>{duration}</GreyText>
+          </StyledText>
         <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
             <GreyText>{distance}</GreyText>
-          </StyledText>
-          <StyledText>
-            <StyledTextLeft>Time:</StyledTextLeft>
-            <GreyText>{duration}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -49,7 +55,6 @@ const StyledText = styled.View`
   flex: 1;
   flex-direction: row;
   font-size: 16px;
-  padding: 1.5%;
 `
 
 const StyledTextLeft = styled.Text`
@@ -87,6 +92,15 @@ padding: 1%;
 
 const StyledIcon = styled.View`
 flex: 1;
+height: 90%;
+alignItems: center;
+justifyContent: center;
+padding-left: 3%;
+padding-right: 2%;
+`
+
+const StyledGif = styled.View`
+flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
@@ -94,9 +108,14 @@ padding-left: 3%;
 padding-right: 2%;
 `
 
-const Image = styled.Image`
+const Icon = styled.Image`
 height: 65%;
 width: 65%;
+`
+
+const Gif = styled.Image`
+height: 60%;
+width: 60%;
 `
 
 
