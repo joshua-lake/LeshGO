@@ -123,12 +123,8 @@ margin-top: 1%;
 margin-bottom: 1%;
 margin-left: 2%;
 margin-right: 2%;
-border: solid;
+border: solid 3px;
 border-radius: 50px;
-shadow-color: #fae8a2;
-shadow-opacity: 0.8;
-shadow-radius: 10px;
-background-color: white;
 `
 
 export default Results
