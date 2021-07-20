@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { setTwoDecimals } from './helper'
 // import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData.walk
-  const { setTwoDecimals } = props
 
   return (
     props.data.mapRouteData.walkingData
 
     ? <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           {/* <Icon name="walking" size={30} /> */}
           <Image source={require("../../../assets/stickwalk.gif")}/>
         </StyledIcon>
@@ -19,7 +19,7 @@ function Walk (props) {
               Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-              Time: {setTwoDecimals(props.data.mapRouteData.walkingData.durationMIN)} mins
+              Time: {Math.round(props.data.mapRouteData.walkingData.durationMIN)} mins
           </StyledText>
         </FlexText>
       </StyledView>
