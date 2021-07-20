@@ -7,45 +7,40 @@ const {infoClick, setInfoClick} = props
 
 
     return (
-        <View style={centeredView}>
+        <View >
             <Modal
                 animationType="slide"
-                transparent={true}
+                transparent={false}
                 visible={infoClick}
                 onRequestClose={() => {
                 Alert.alert("Modal has been closed.");
                 setInfoClick(!infoClick);
                 }}
                 >
-                <View style={centeredView}>
-                    <View style={modalView}>
-                        <StyledText>
-                            Car Emission data:
-                            <GreyText>
-                                car Co2 emission information is calculated based on a &quot;2021 Fuel Consumption Ratings&quot; dataset of over 
-                                900 vehicles, which includes their grams of tailpipe Co2 emmision per kilometre based on average fuel consumption
-                                in both city and highway driving scenarios. This data has been provided to the public by the canadian government.
-                            </GreyText>
-                        </StyledText>
-                        <StyledText>
-                            Public transport data:
-                            <GreyText>
-                                Co2 emissions of public transport routes is derived based on emmisions information from the Alexander Dennis Enviro200XLB,
-                                one of the most common bus models used throughout New Zealand and Auckland&apos;s public transport networks. While this vehicle doesnt apply to many public 
-                                transport routes, it does give us the most applicable statistics for the data we have access to, Which is then divided by 
-                                its average capacity to give a per person metric. 
-                            </GreyText>
-                        </StyledText>
-                        <Pressable style={[button, buttonClose]} onPress={() => setInfoClick(!infoClick)}
-                            >
-                            <GreyText >Close</GreyText>
-                        </Pressable>
-                    </View>
-                </View>
+                <StyledText>
+                    Car Emission data:
+                    <GreyText>
+                        car Co2 emission information is calculated based on a &quot;2021 Fuel Consumption Ratings&quot; dataset of over 
+                        900 vehicles, which includes their grams of tailpipe Co2 emmision per kilometre based on average fuel consumption
+                        in both city and highway driving scenarios. This data has been provided to the public by the canadian government.
+                    </GreyText>
+                </StyledText>
+                <StyledText>
+                    Public transport data:
+                    <GreyText>
+                        Co2 emissions of public transport routes is derived based on emmisions information from the Alexander Dennis Enviro200XLB,
+                        one of the most common bus models used throughout New Zealand and Auckland&apos;s public transport networks. While this vehicle doesnt apply to many public 
+                        transport routes, it does give us the most applicable statistics for the data we have access to, Which is then divided by 
+                        its average capacity to give a per person metric. 
+                    </GreyText>
+                </StyledText>
+                <Pressable  onPress={() => setInfoClick(!infoClick)}
+                    >
+                    <GreyText >Close</GreyText>
+                </Pressable>
             </Modal>
             <Pressable
                 onPress={() => setInfoClick(true)}
-                style={[button, buttonOpen]}
             >
                 <GreyText >click for model</GreyText>
             </Pressable>
@@ -59,15 +54,18 @@ const {infoClick, setInfoClick} = props
 export default Info
 
 const StyledText = styled.Text`
-  flex: 1;
   font-size: 16px;
-  padding: 1%;
+  padding: 30%;
 `
 const GreyText = styled.Text`
-  flex: 1;
   font-size: 16px;
-  padding: 1%;
   color: lightgrey;
+`
+const draftView = styled.View`
+    width: 80%;
+    height: 80%;
+    backgroundcolor: "orange";
+
 `
 
 const centeredView = styled.View`
