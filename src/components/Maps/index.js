@@ -130,6 +130,7 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
                                        destination={destination}
                                        apikey={API_KEY}
                                        mode="WALKING"
+                                       precision="high"
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
@@ -139,6 +140,7 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
                                        destination={destination}
                                        apikey={API_KEY}
                                        mode="DRIVING"
+                                       precision="high"
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
@@ -148,6 +150,7 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
                                        destination={destination}
                                        apikey={API_KEY}
                                        mode="TRANSIT"
+                                       precision="high"
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
@@ -157,6 +160,7 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
                                        destination={destination}
                                        apikey={API_KEY}
                                        mode="BICYCLING"
+                                       precision="high"
                                        timePrecision="now"
                                        showsUserLocation
                                        strokeWidth={3}
