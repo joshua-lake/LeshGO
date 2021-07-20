@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { setTwoDecimals } from './helper'
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData.bike
-  const { setTwoDecimals } = props
 
   return (
     props.data.mapRouteData.bicyclingData
-    
+
     ? <StyledView>
         <StyledIcon>
           {/* <Icon name="bike" size={30} /> */}
@@ -19,11 +19,11 @@ function Bike (props) {
             Distance: {setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-            Time: {Math.floor(props.data.mapRouteData.bicyclingData.durationMIN)} minutes
+            Time: {Math.round(props.data.mapRouteData.bicyclingData.durationMIN)} mins
           </StyledText>
         </FlexText>
       </StyledView>
-    
+
     : <StyledView>
         <StyledIcon>
         {/* <Icon name="bike" size={30} /> */}

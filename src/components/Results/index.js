@@ -7,21 +7,8 @@ import Bike from './Bike'
 import Drive from './Drive'
 import PublicTransport from './PublicTransport'
 
-function Results (props) {
+const Results = props => {
   const {setSelectedRoute} = props
-
-  function setTwoDecimals( value ){
-    return +parseFloat(value).toFixed( 2 );
-  }
-
-  function timeConversion (num) {
-    const time = num
-    const hours = time /60
-    const floorHours = Math.floor(hours)
-    const minutes = (hours - floorHours) * 60
-    const roundMinutes = Math.round(minutes)
-    return floorHours < 2 ? floorHours + ' hour and ' + roundMinutes + ' minutes' : floorHours + ' hours and ' + roundMinutes + ' minutes'
-  }
 
   const undefinedData = {
 
@@ -48,25 +35,25 @@ function Results (props) {
     <StyledView>
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} />
+          <Walk data={props} undefinedData={undefinedData}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} timeConversion={timeConversion}/>
+          <Bike data={props} undefinedData={undefinedData}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} timeConversion={timeConversion}/>
+          <Drive data={props} undefinedData={undefinedData}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} timeConversion={timeConversion}/>
+          <PublicTransport data={props} undefinedData={undefinedData}/>
         </Pressable>
         </StyledContent>
     </StyledView>

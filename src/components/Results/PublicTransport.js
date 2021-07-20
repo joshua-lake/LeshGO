@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { setTwoDecimals } from './helper'
 // import Icon from 'react-native-vector-icons/FontAwesome'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData.publicTransport
-  const { setTwoDecimals } = props
 
   return (
     props.data.mapRouteData.transitData
 
     ? <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           {/* <Icon name="bus" size={30} /> */}
           <Image source={require("../../../assets/train.gif")} size={30}/>
         </StyledIcon>
@@ -19,13 +19,13 @@ function PublicTransport (props) {
             Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)}KM
           </StyledText>
           <StyledText>
-            Time: {Math.floor(props.data.mapRouteData.transitData.durationMIN)} minutes
+            Time: {Math.round(props.data.mapRouteData.transitData.durationMIN)} mins
           </StyledText>
         </FlexText>
       </StyledView>
 
     : <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           {/* <Icon name="bus" size={30} /> */}
           <Image source={require("../../../assets/train.png")}/>
         </StyledIcon>
