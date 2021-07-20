@@ -14,6 +14,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
 
   const App = () => {
 
+    
   const requestPermissions = async () => {
     const { status } = await Location.requestBackgroundPermissionsAsync()
     if (status === 'granted') {
@@ -23,11 +24,12 @@ const LOCATION_TASK_NAME = 'background-location-task'
     }
   }
 
-  const [vehicleType, setVehicleType] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
+  const [vehicleMake, setVehicleMake] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
+  const [vehicle, setVehicle] = useState()
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
   const [markers, setMarkers] = useState([])
-  const [selectedRoute, setSelectedRoute] = useState('walking')
+  const [selectedRoute, setSelectedRoute] = useState('')
   const [stateLocation, setStateLocations] = useState({})
   const [mapRouteData, setRouteData] = useState({
     walking: {},
@@ -35,6 +37,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
     transit: {},
     bicycling: {}
   })
+
 
   /**
    * initial mount useEffect, used for requesting location permission and setting location
@@ -74,15 +77,16 @@ const LOCATION_TASK_NAME = 'background-location-task'
     <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
       <ScrollView keyboardShouldPersistTaps="always" >
           <StyledSelector>
-            {stateLocation !== undefined && <Selectors currentLocation={stateLocation} setVehicleType={setVehicleType} setOrigin={setOrigin}
-                       setDestination={setDestination}/> }
+            {stateLocation !== undefined && 
+            <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
+                       setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
           </StyledSelector>
           <StyledMap>
             <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
                   destination={destination} selectedRoute={selectedRoute}/>
           </StyledMap>
           <StyledResult>
-            <Results vehicleType={vehicleType} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute}/>
+            <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
           </StyledResult>
           <StatusBar style="auto"/>
       </ScrollView>
@@ -112,7 +116,5 @@ const StyledResult = styled.View`
   width: 100%;
   borderTopWidth: 1px;
 `
-
-  // background-color: #F0FFF0;
 
 export default App

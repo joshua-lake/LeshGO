@@ -6,24 +6,25 @@ import styled from 'styled-components/native'
 import Vehicle from './Vehicle'
 import GooglePlacesInput from './GooglePlacesInput'
 
-const Selectors = ({ currentLocation, setDestination, setOrigin, setVehicleType }) => (
+const Selectors = ({ currentLocation, setDestination, setOrigin, setSelectedRoute, setVehicleMake, vehicleMake, setVehicle, vehicle }) => (
   <StyledView>
 
     <StyledFrom>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
-                         updateState={setOrigin} isOrigin={true}/>
+                         updateState={setOrigin} isOrigin={true} setSelectedRoute={setSelectedRoute}/>
       {/* <FromLocation/> */}
     </StyledFrom>
     <StyledTo>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you going?'}
-                         updateState={setDestination} isOrigin={false}/>
+                         updateState={setDestination} isOrigin={false} setSelectedRoute={setSelectedRoute}/>
       {/* <ToLocation/> */}
     </StyledTo>
     <StyledVehicle>
-      <Vehicle setVehicleType={setVehicleType}/>
+      <Vehicle setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setVehicle={setVehicle} vehicle={vehicle}/>
     </StyledVehicle>
   </StyledView>
 )
+
 const StyledView = styled.View`
 flex: 1;
 flex-direction: column;
@@ -31,7 +32,6 @@ alignItems: center;
 width: 100%;
 justifyContent: center;
 `
-// background-color: #F0FFF0;
 
 const StyledFrom = styled.View`
 flex: 1;
@@ -52,8 +52,9 @@ borderTopWidth: 1px;
 
 const StyledVehicle = styled.View`
 flex: 1;
-padding-top:5%;
-padding-bottom: 6%;
+flex-direction: row;
+padding-top: 5.5%;
+padding-bottom: 5.5%;
 padding-left: 6%;
 padding-right: 4%;
 width: 100%;

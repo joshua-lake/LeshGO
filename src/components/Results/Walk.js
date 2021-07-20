@@ -1,18 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/native'
-// import Icon from 'react-native-vector-icons/FontAwesome5'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData.walk
-  const { setTwoDecimals } = props
+  const { setTwoDecimals, selectedRoute } = props
 
   return (
     props.data.mapRouteData.walkingData
 
     ? <StyledView>
-        <StyledIcon>    
-          {/* <Icon name="walking" size={30} /> */}
-          <Image source={require("../../../assets/stickwalk.gif")}/>
+        <StyledIcon>
+          {selectedRoute === 'walking'
+          ? <Image source={require("../../../assets/stickwalk.gif")}/>
+          : <Image source={require("../../../assets/stickwalk.png")}/>
+        } 
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -26,7 +27,6 @@ function Walk (props) {
 
     : <StyledView>
         <StyledIcon>
-        {/* <Icon name="walking" size={30} />     */}
         <Image source={require("../../../assets/stickwalk.png")}/>
         </StyledIcon>
         <FlexText>
