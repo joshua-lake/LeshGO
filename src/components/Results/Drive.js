@@ -1,16 +1,22 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { Text } from 'react-native'
 
 function Drive (props) {
 
+  const {data} = props
   const { distance, duration } = props.undefinedData.drive
   const { setTwoDecimals, selectedRoute } = props
-  // const vehicleType = props.data.vehicleType
 
-  const emmisionsCalculation = (props.data.vehicleType && props.data.mapRouteData.drivingData) ? props.data.vehicleType.emmisions * props.data.mapRouteData.drivingData.distanceKM : null
+  // calculates emmissions based on distance and vehicle, converts to KG
+  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
+  const emmisionsKilogram = emmisionsCalculation / 1000
+
+const currentVehicle = data.vehicle ? `${data.vehicle.Make} ${data.vehicle.Model}` : null
 
   return (
-    props.data.mapRouteData.drivingData
+    data.mapRouteData.drivingData
+    
     ? <StyledView>
         <StyledIcon>    
           {selectedRoute === 'driving'
@@ -19,15 +25,17 @@ function Drive (props) {
           } 
         </StyledIcon>
         <FlexText>
-         <StyledText>
-            Vehicle Type: {props.data.vehicleType.name} 
-         </StyledText>
-         <StyledText>
-            Distance: {props.data.mapRouteData.drivingData.distanceKM}KM
-         </StyledText>
-         <StyledText>
-            Time: {props.data.mapRouteData.drivingData.durationMIN} mins
-         </StyledText>
+        <StyledText>
+            {emmisionsKilogram
+                ? <Text>{currentVehicle} C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
+                : 'Please select vehicle type'}
+          </StyledText>
+          <StyledText>
+              Distance:{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)}KM
+          </StyledText>
+          <StyledText>
+              Time:{setTwoDecimals(data.mapRouteData.drivingData.durationMIN)}Mins
+          </StyledText>
         </FlexText>
       </StyledView>
 
@@ -37,8 +45,8 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
          <StyledText>
-            {props.data.vehicleType
-              ? props.data.vehicleType.name
+            {currentVehicle
+              ? <Text>{currentVehicle}</Text>
               : 'Please select vehicle type'}
          </StyledText>
          <StyledText>
