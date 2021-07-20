@@ -20,7 +20,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const busyWait = async () => {
-  const result = await delay(5000)
+  const result = await delay(6750)
   return Promise.all(result);
 }
 
@@ -89,6 +89,7 @@ const busyWait = async () => {
       setStateLocations({ latitude, longitude })
     }
   })
+
 if (!isReady) {
     return (
       <AppLoading
@@ -101,21 +102,22 @@ if (!isReady) {
 
   return (
     <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
-      <ScrollView keyboardShouldPersistTaps="always" >
-          <StyledSelector>
-            {stateLocation !== undefined && 
-            <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
-            setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
-          </StyledSelector>
-          <StyledMap>
-            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
-                  destination={destination} selectedRoute={selectedRoute}/>
-          </StyledMap>
-          <StyledResult>
-            <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
-          </StyledResult>
-          <StatusBar style="auto"/>
-      <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
+      <ScrollView keyboardShouldPersistTaps="always">
+        <StyledSelector>
+          {stateLocation !== undefined &&
+          <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
+                     setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/>}
+        </StyledSelector>
+        <StyledMap>
+          <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
+                destination={destination} selectedRoute={selectedRoute}/>
+                <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
+        </StyledMap>
+        <StyledResult>
+          <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
+        </StyledResult>
+        <StatusBar style="auto"/>
+        <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
       </ScrollView>
     </SafeAreaView>
   )
