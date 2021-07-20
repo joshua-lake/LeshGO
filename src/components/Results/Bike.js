@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { setTwoDecimals, timeConversion } from './helper'
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData
@@ -50,7 +49,7 @@ const StyledText = styled.View`
   flex: 1;
   flex-direction: row;
   font-size: 16px;
-  padding: 1%;
+  padding: 1.5%;
 `
 
 const StyledTextLeft = styled.Text`

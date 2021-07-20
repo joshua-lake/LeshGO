@@ -50,7 +50,7 @@ const StyledText = styled.View`
   flex: 1;
   flex-direction: row;
   font-size: 16px;
-  padding: 1%;
+  padding: 1.5%;
 `
 
 const StyledTextLeft = styled.Text`

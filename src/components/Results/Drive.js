@@ -28,15 +28,18 @@ function Drive (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            {data.vehicle
-                ? <Text>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
-                : 'Please select vehicle type'}
+            <StyledTextLeft>Co2: </StyledTextLeft>
+              {data.vehicle
+                ? <StyledTextRight>{setTwoDecimals(emmisionsKilogram)} kg</StyledTextRight>
+                : <GreyText>Please select vehicle type</GreyText>}
           </StyledText>
           <StyledText>
-              Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <StyledTextRight>{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} km</StyledTextRight>
           </StyledText>
           <StyledText>
-              Time: { data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
+            <StyledTextLeft>Time: </StyledTextLeft>
+            <StyledTextRight>{data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -46,11 +49,17 @@ function Drive (props) {
           <Image source={require("../../../assets/car.png")}/>
         </StyledIcon>
         <FlexText>
+        <StyledText>
+            <StyledTextLeft>CO2: </StyledTextLeft>
+            <GreyText>please select vehicle</GreyText>
+          </StyledText>  
           <StyledText>
-            Distance: <GreyText>{distance}</GreyText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <GreyText>{distance}</GreyText>
           </StyledText>
           <StyledText>
-            Time: <GreyText>{duration}</GreyText>
+            <StyledTextLeft>Time:</StyledTextLeft>
+            <GreyText>{duration}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -58,44 +67,58 @@ function Drive (props) {
   )
 }
 
-const StyledText = styled.Text`
+const StyledText = styled.View`
   flex: 1;
+  flex-direction: row;
   font-size: 16px;
-  justifyContent: center;
+`
+
+const StyledTextLeft = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+`
+
+const StyledTextRight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
 `
 
 const GreyText = styled.Text`
-  flex: 1;
+  flex: 2;
   font-size: 16px;
-  padding: 1%;
   color: lightgrey;
+  padding-left: 6%;
 `
 
 const StyledView = styled.View`
-  flex: 1;
-  flex-direction: row;
-  alignItems: center;
+flex: 1;
+flex-direction: row;
+alignItems: center;
 `
 
 const FlexText = styled.View`
-  flex: 4;
-  flex-direction: column;
-  height: 100%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+flex: 4;
+flex-direction: column;
+height: 100%;
+padding-top: 1%;
+padding-bottom: 1%;
+justifyContent: center;
 `
 
 const StyledIcon = styled.View`
-  flex: 1;
-  height: 100%;
-  alignItems: center;
-  justifyContent: center;
-  padding-left: 5%;
-  padding-right: 5%;
+flex: 1;
+height: 100%;
+alignItems: center;
+justifyContent: center;
+padding-left: 3%;
+padding-right: 2%;
 `
+
 const Image = styled.Image`
-  height: 40%;
-  width: 45%;
+height: 40%;
+width: 40%;
 `
 
 export default Drive
