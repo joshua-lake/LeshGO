@@ -19,7 +19,7 @@ function Walk (props) {
               Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM
           </StyledText>
           <StyledText>
-              Time: {setTwoDecimals(props.data.mapRouteData.walkingData.durationMIN)} mins
+              Time: {Math.floor(props.data.mapRouteData.walkingData.durationMIN)} minutes
           </StyledText>
         </FlexText>
       </StyledView>

@@ -14,6 +14,15 @@ function Results (props) {
     return +parseFloat(value).toFixed( 2 );
   }
 
+  function timeConversion (num) {
+    const time = num
+    const hours = time /60
+    const floorHours = Math.floor(hours)
+    const minutes = (hours - floorHours) * 60
+    const roundMinutes = Math.round(minutes)
+    return floorHours < 2 ? floorHours + ' hour and ' + roundMinutes + ' minutes' : floorHours + ' hours and ' + roundMinutes + ' minutes'
+  }
+
   const undefinedData = {
 
     walk: { // <=== hard coded default display data
@@ -39,25 +48,25 @@ function Results (props) {
     <StyledView>
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('walking')}>
-          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Walk data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} />
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('bicycling')}>
-          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Bike data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} timeConversion={timeConversion}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('driving')}>
-          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <Drive data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} timeConversion={timeConversion}/>
         </Pressable>
         </StyledContent>
 
       <StyledContent>
         <Pressable onPress={() => setSelectedRoute('transit')}>
-          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals}/>
+          <PublicTransport data={props} undefinedData={undefinedData} setTwoDecimals={setTwoDecimals} timeConversion={timeConversion}/>
         </Pressable>
         </StyledContent>
     </StyledView>

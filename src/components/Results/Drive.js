@@ -16,6 +16,15 @@ function Drive (props) {
   // creates current vehicle make and model
   const currentVehicle = data.vehicle ? `${data.vehicle.Make} ${data.vehicle.Model}` : null
 
+  function timeConversion (num) {
+    const time = num
+    const hours = time /60
+    const floorHours = Math.floor(hours)
+    const minutes = (hours - floorHours) * 60
+    const roundMinutes = Math.round(minutes)
+    return floorHours < 2 ? floorHours + ' hour and ' + roundMinutes + ' minutes' : floorHours + ' hours and ' + roundMinutes + ' minutes'
+  }
+
   return (    
     data.mapRouteData.drivingData
       ? <StyledView>
@@ -29,10 +38,11 @@ function Drive (props) {
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
-              Distance:{setTwoDecimals(data.mapRouteData.drivingData.distanceKM)}KM
+              Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
           </StyledText>
           <StyledText>
-              Time:{setTwoDecimals(data.mapRouteData.drivingData.durationMIN)}Mins
+              Time: { data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
+              {/* Time:{setTwoDecimals(data.mapRouteData.drivingData.durationMIN)}Mins */}
           </StyledText>
           </FlexText>
         </StyledView>

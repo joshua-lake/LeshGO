@@ -19,7 +19,7 @@ function PublicTransport (props) {
             Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)}KM
           </StyledText>
           <StyledText>
-            Time: {setTwoDecimals(props.data.mapRouteData.transitData.durationMIN)} mins
+            Time: {Math.floor(props.data.mapRouteData.transitData.durationMIN)} minutes
           </StyledText>
         </FlexText>
       </StyledView>
