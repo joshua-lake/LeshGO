@@ -19,7 +19,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const busyWait = async () => {
-  const result = await delay(5000)
+  const result = await delay(6750)
   return Promise.all(result);
 }
 
