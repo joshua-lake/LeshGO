@@ -8,10 +8,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo-enzyme"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "3.5.2",
@@ -19,6 +19,7 @@
     "@react-native-picker/picker": "1.16.1",
     "axios": "^0.21.1",
     "datetimepicker": "^0.1.39",
+    "enzyme": "^3.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "expo": "~42.0.1",
@@ -26,6 +27,8 @@
     "expo-location": "~12.1.2",
     "expo-status-bar": "~1.0.4",
     "expo-task-manager": "~9.2.2",
+    "jest-expo": "^42.0.1",
+    "jest-expo-enzyme": "^1.2.1",
     "prettier": "^2.3.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
