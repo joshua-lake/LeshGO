@@ -116,7 +116,7 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
   }
 
   return (
-    <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} showsUserLocation={true} initialRegion={initialRegion} >
+    <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} initialRegion={initialRegion} >
       <Icon name="location-arrow" size={20} onPress={recentre}
             style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
       {markers.map((marker, index) => (
