@@ -69,15 +69,11 @@ function Results (props) {
         ? selectedRoute === 'transit' 
         
           ? <StyledContentTwo>
-              {/* <Pressable onPress={() => setSelectedRoute('transit')}> */}
                 <PublicTransportUnavailable selectedRoute={selectedRoute}/> 
-              {/* </Pressable> */}
             </StyledContentTwo>
 
           : <StyledContent>
-              {/* <Pressable onPress={() => setSelectedRoute('transit')}> */}
                 <PublicTransportUnavailable selectedRoute={selectedRoute}/>
-              {/* </Pressable> */}
             </StyledContent>
           
         : selectedRoute === 'transit'
