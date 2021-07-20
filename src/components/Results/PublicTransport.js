@@ -26,7 +26,7 @@ function PublicTransport (props) {
             C02: {setTwoDecimals(emmissionPerAverage)} KG
           </StyledText>
           <StyledText>
-            Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)}KM
+            Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)} KM
           </StyledText>
           <StyledText>
             Time: { props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} minutes`}

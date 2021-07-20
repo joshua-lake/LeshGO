@@ -19,7 +19,7 @@ function Walk (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-              Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM
+              Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)} KM
           </StyledText>
           <StyledText>
               Time: { props.data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.walkingData.durationMIN) : `${Math.floor(props.data.mapRouteData.walkingData.durationMIN)} minutes`}

@@ -18,7 +18,7 @@ function Bike (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            Distance: {setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM
+            Distance: {setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)} KM
           </StyledText>
           <StyledText>
           Time: { props.data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(props.data.mapRouteData.bicyclingData.durationMIN)} minutes`}
