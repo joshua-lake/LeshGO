@@ -3,7 +3,7 @@ import React from 'react'
 import { Platform, StyleSheet, View } from 'react-native'
 
 it(`renders a view with a custom background`, () => {
-  const component = shallow(<View style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}/>)
+  const component = shallow(<View style={{ backgroundColor: '#FFFFFF' }}/>)
 
   // When snapshot testing, you should always try and be as concise as possible
   // here we are extracting the style prop from `View` on native and `div` on web
