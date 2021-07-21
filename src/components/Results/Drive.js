@@ -26,7 +26,7 @@ function Drive (props) {
         <FlexText>
           <StyledText>
             {data.vehicle
-                ? <Text testID='emissions'>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
+                ? <Text testID='emissions'>C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
