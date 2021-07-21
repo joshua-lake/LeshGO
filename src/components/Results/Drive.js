@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
 
-import { setTwoDecimals, timeConversion } from './helper'
+import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
 
 function Drive (props) {
 
@@ -10,11 +10,7 @@ function Drive (props) {
   const { distance, duration } = props.undefinedData
   const { selectedRoute } = props
 
-  // calculates emmissions based on distance and vehicle, converts to KG
-  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
-  const emmisionsKilogram = emmisionsCalculation / 1000
-
-  console.log('test', emmisionsKilogram)
+  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) && emissionsCalculator(data.vehicle.CO2Emissions, data.mapRouteData.drivingData.distanceKM)
 
   return (
     data.mapRouteData.drivingData
@@ -29,7 +25,7 @@ function Drive (props) {
         <FlexText>
           <StyledText>
             {data.vehicle
-                ? <Text>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
+                ? <Text>C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
