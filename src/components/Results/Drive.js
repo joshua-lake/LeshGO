@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
-import { fireEvent, render, waitFor } from '@testing-library/react-native' 
 
-import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
+import { emissionsCalculator, setTwoDecimals, timeConversion } from './helper'
 
 function Drive (props) {
 
-  const {data} = props
+  const { data } = props
   const { distance, duration } = props.undefinedData
   const { selectedRoute } = props
 
@@ -15,32 +14,32 @@ function Drive (props) {
 
   return (
     data.mapRouteData.drivingData
-    
-    ? <StyledView>
-        <StyledIcon>    
+
+      ? <StyledView>
+        <StyledIcon>
           {selectedRoute === 'driving'
-          ? <Image source={require("../../../assets/car.gif")}/>
-          : <Image source={require("../../../assets/car.png")}/>
-          } 
+            ? <Image source={require('../../../assets/car.gif')}/>
+            : <Image source={require('../../../assets/car.png')}/>
+          }
         </StyledIcon>
         <FlexText>
           <StyledText>
             {data.vehicle
-                ? <Text testID='emissions'>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
-                : 'Please select vehicle type'}
+              ? <Text testID="emissions">C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
+              : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
-              Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
+            Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
           </StyledText>
           <StyledText>
-              Time: { data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
+            Time: {data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
           </StyledText>
         </FlexText>
       </StyledView>
 
-    : <StyledView>
-        <StyledIcon>  
-          <Image source={require("../../../assets/car.png")}/>
+      : <StyledView>
+        <StyledIcon>
+          <Image source={require('../../../assets/car.png')}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
