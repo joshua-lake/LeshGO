@@ -84,7 +84,7 @@ const App = () => {
       const { locations } = data
       const { coords: { latitude, longitude } } = locations[0]
 
-      setStateLocations({ latitude, longitude })
+      setStateLocations({ latitude, longitude } )
     }
   })
 
