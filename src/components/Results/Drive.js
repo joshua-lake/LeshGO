@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
+import { fireEvent, render, waitFor } from '@testing-library/react-native' 
 
 import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
 
@@ -25,7 +26,7 @@ function Drive (props) {
         <FlexText>
           <StyledText>
             {data.vehicle
-                ? <Text>C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
+                ? <Text testID='emissions'>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
@@ -50,9 +51,16 @@ function Drive (props) {
           </StyledText>
         </FlexText>
       </StyledView>
-
   )
 }
+
+// test('examples of some things', async () => {
+//   const { getByTestId, getByText, queryByTestId, toJSON } = render(<Drive />)
+//   const emissionsToTest = 0.20
+//   const distanceToTest = 23
+
+//   const input = getByTestId('emissions')
+// })
 
 const StyledText = styled.Text`
   flex: 1;
@@ -95,3 +103,4 @@ const Image = styled.Image`
 `
 
 export default Drive
+
