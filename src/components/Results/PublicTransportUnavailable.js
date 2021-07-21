@@ -11,9 +11,11 @@ function PublicTransportUnavailable (props) {
          <Image source={require("../../../assets/train.png")}/>
       </StyledIcon>
     <FlexText>
+      <StyledText></StyledText>
       <StyledText>
         <GreyText>Transport not available</GreyText>
       </StyledText>
+      <StyledText></StyledText>
     </FlexText>
   </StyledView>
   )
@@ -32,7 +34,6 @@ const StyledText = styled.Text`
 const GreyText = styled.Text`
   flex: 1;
   font-size: 16px;
-  padding: 1%;
   color: lightgrey;
 `
 
@@ -46,8 +47,6 @@ const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
 height: 100%;
-padding-top: 2%;
-padding-bottom: 2%;
 justifyContent: center;
 `
 
@@ -56,8 +55,7 @@ flex: 1;
 height: 100%;
 alignItems: center;
 justifyContent: center;
-padding-left: 5%;
-padding-right: 5%;
+padding-left: 3%;
 `
 
 const Image = styled.Image`

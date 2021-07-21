@@ -6,15 +6,27 @@ import * as TaskManager from 'expo-task-manager'
 import * as Location from 'expo-location'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
+// import Load from './src/components/Load'
+import { Asset } from 'expo-asset';
+import AppLoading from 'expo-app-loading';
+
 import Maps from './src/components/Maps/'
 import Selectors from './src/components/Selectors/'
 import Results from './src/components/Results'
+import Info from './src/components/Info/Index'
+
 
 const LOCATION_TASK_NAME = 'background-location-task'
 
-  const App = () => {
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const busyWait = async () => {
+  const result = await delay(6750)
+  return Promise.all(result);
+}
 
-    
+const App = () => {
+  const [isReady, setIsReady] = useState(false)
+
   const requestPermissions = async () => {
     const { status } = await Location.requestBackgroundPermissionsAsync()
     if (status === 'granted') {
@@ -31,6 +43,7 @@ const LOCATION_TASK_NAME = 'background-location-task'
   const [markers, setMarkers] = useState([])
   const [selectedRoute, setSelectedRoute] = useState('')
   const [stateLocation, setStateLocations] = useState({})
+  const [infoClick, setInfoClick] = useState(false)
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},
@@ -60,6 +73,8 @@ const LOCATION_TASK_NAME = 'background-location-task'
     setMarkers([{ coord: origin }, { coord: destination }])
   }, [origin, destination])
 
+
+
   TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (error) {
       return
@@ -73,28 +88,40 @@ const LOCATION_TASK_NAME = 'background-location-task'
     }
   })
 
+   if (!isReady) {
+    return (
+      <AppLoading
+      startAsync={busyWait}
+      onFinish={() => setIsReady(!isReady)}
+      onError={console.warn}
+      />
+      )
+    }
+
   return (
-    <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
-      <ScrollView keyboardShouldPersistTaps="always" >
-          <StyledSelector>
-            {stateLocation !== undefined && 
-            <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
-                       setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/> }
-          </StyledSelector>
-          <StyledMap>
-            <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
-                  destination={destination} selectedRoute={selectedRoute}/>
-          </StyledMap>
-          <StyledResult>
-            <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
-          </StyledResult>
-          <StatusBar style="auto"/>
+    <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+      <ScrollView keyboardShouldPersistTaps="always">
+        <StyledSelector>
+          {stateLocation !== undefined &&
+          <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
+                     setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle} vehicle={vehicle}/>}
+        </StyledSelector>
+        <StyledMap>
+          <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
+                destination={destination} selectedRoute={selectedRoute}/>
+          <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
+        </StyledMap>
+        <StyledResult>
+          <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
+        </StyledResult>
+        <StatusBar style="auto"/>
+        <Info setInfoClick={setInfoClick} infoClick={infoClick}/>
       </ScrollView>
     </SafeAreaView>
   )
 }
 
-const StyledSelector = styled.View`
+const StyledSelector = styled.View`  
   flex: 1.5;
   alignItems: center;
   justifyContent: center;
