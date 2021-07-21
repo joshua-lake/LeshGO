@@ -1,5 +1,6 @@
 {
   "env": {
+    "jest": true,
     "browser": true,
     "es2021": true
   },
@@ -9,9 +10,15 @@
     "prettier"
   ],
   "plugins": [
+    "jest",
     "react",
     "prettier"
   ],
+  "settings": {
+    "jest": {
+      "version": 27
+    }
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
