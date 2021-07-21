@@ -2,7 +2,6 @@ import React from 'react'
 import {Alert, Pressable, SafeAreaView, Modal } from 'react-native'
 import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import { BlurView } from 'expo-blur'
 
 function Info (props) {
 const {infoClick, setInfoClick} = props
