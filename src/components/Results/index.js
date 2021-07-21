@@ -114,18 +114,14 @@ const StyledContent = styled.View`
 `
 
 const StyledContentTwo = styled.View`
-  flex: 1;
-  width: 95%;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  margin-left: 2%;
-  margin-right: 2%;
-  border: solid;
-  border-radius: 50px;
-  shadow-color: #fae8a2;
-  shadow-opacity: 0.8;
-  shadow-radius: 10px;
-  background-color: white;
+flex: 1;
+width: 95%;
+margin-top: 1%;
+margin-bottom: 1%;
+margin-left: 2%;
+margin-right: 2%;
+border: solid 2.5px;
+border-radius: 50px;
 `
 
 export default Results

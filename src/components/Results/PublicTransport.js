@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { setTwoDecimals, timeConversion } from './helper'
-// import Icon from 'react-native-vector-icons/FontAwesome'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData
@@ -23,13 +22,16 @@ function PublicTransport (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-            C02: {setTwoDecimals(emmissionPerAverage)} KG
+          <CO>C02: </CO>
+          <CORight>{setTwoDecimals(emmissionPerAverage)} kg</CORight>
           </StyledText>
           <StyledText>
-            Distance: {setTwoDecimals(data.mapRouteData.transitData.distanceKM)} KM
+            <StyledTextLeft>Time: </StyledTextLeft>
+            <StyledTextRight>{props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
           <StyledText>
-            Time: { data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(data.mapRouteData.transitData.durationMIN) : `${Math.floor(data.mapRouteData.transitData.durationMIN)} minutes`}
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)} km</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
@@ -40,27 +42,59 @@ function PublicTransport (props) {
         </StyledIcon>
         <FlexText>
           <StyledText>
-          Distance: <GreyText>{distance}</GreyText>
+            <CO>CO2: </CO>
+            <GreyText>please enter route</GreyText>
           </StyledText>
           <StyledText>
-          Time: <GreyText>{duration}</GreyText>
+            <StyledTextLeft>Time:</StyledTextLeft>
+            <GreyText>{duration}</GreyText>
+          </StyledText>
+          <StyledText>
+            <StyledTextLeft>Distance: </StyledTextLeft>
+            <GreyText>{distance}</GreyText>
           </StyledText>
         </FlexText>
       </StyledView>
   )
 }
 
-const StyledText = styled.Text`
+const StyledText = styled.View`
   flex: 1;
+  flex-direction: row;
   font-size: 16px;
-  padding: 1%;
+`
+
+const StyledTextLeft = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+`
+
+const CO = styled.Text`
+  flex: 0.7;
+  font-size: 16px;
+  text-align: right;
+  font-weight: 900;
+`
+
+const StyledTextRight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+`
+
+const CORight = styled.Text`
+  flex: 2;
+  font-size: 16px;
+  padding-left: 7%;
+  font-weight: 900;
 `
 
 const GreyText = styled.Text`
-  flex: 1;
+  flex: 2;
   font-size: 16px;
-  padding: 1%;
   color: lightgrey;
+  padding-left: 6%;
 `
 
 const StyledView = styled.View`
@@ -73,22 +107,22 @@ const FlexText = styled.View`
 flex: 4;
 flex-direction: column;
 height: 100%;
-padding-top: 2%;
-padding-bottom: 2%;
+padding-top: 1%;
+padding-bottom: 1%;
 justifyContent: center;
 `
 
 const StyledIcon = styled.View`
 flex: 1;
-height: 100%;
+height: 130%;
 alignItems: center;
 justifyContent: center;
-padding-left: 5%;
-padding-right: 5%;
+padding-left: 3%;
+padding-right: 2%;
 `
 
 const Image = styled.Image`
-height: 50%;
+height: 40%;
 width: 40%;
 `
 
