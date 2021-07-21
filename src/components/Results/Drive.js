@@ -6,9 +6,8 @@ import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
 
 function Drive (props) {
 
-  const {data} = props
   const { distance, duration } = props.undefinedData
-  const { selectedRoute } = props
+  const { selectedRoute, data } = props
 
   const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) && emissionsCalculator(data.vehicle.CO2Emissions, data.mapRouteData.drivingData.distanceKM)
 

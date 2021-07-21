@@ -5,6 +5,7 @@ import { setTwoDecimals, timeConversion } from './helper'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData
+  const { data } = props
 
   const busEmmissions = 0.68
   const totalEmmisionsCalculation = (props.data.mapRouteData.drivingData) ? busEmmissions * props.data.mapRouteData.drivingData.distanceKM : null
@@ -13,7 +14,7 @@ function PublicTransport (props) {
   
 
   return (
-    props.data.mapRouteData.transitData
+    data.mapRouteData.transitData
     ? <StyledView>
         <StyledIcon>    
           {selectedRoute === 'transit'
@@ -26,10 +27,10 @@ function PublicTransport (props) {
             C02: {setTwoDecimals(emmissionPerAverage)} KG
           </StyledText>
           <StyledText>
-            Distance: {setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)} KM
+            Distance: {setTwoDecimals(data.mapRouteData.transitData.distanceKM)} KM
           </StyledText>
           <StyledText>
-            Time: { props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} minutes`}
+            Time: { data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(data.mapRouteData.transitData.durationMIN) : `${Math.floor(data.mapRouteData.transitData.durationMIN)} minutes`}
           </StyledText>
         </FlexText>
       </StyledView>
