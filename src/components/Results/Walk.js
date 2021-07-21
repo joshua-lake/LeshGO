@@ -4,10 +4,10 @@ import { setTwoDecimals, timeConversion } from './helper'
 
 function Walk (props) {
   const { distance, duration } = props.undefinedData
-  const { selectedRoute } = props
+  const { selectedRoute, data } = props
 
   return (
-    props.data.mapRouteData.walkingData
+    data.mapRouteData.walkingData
 
     ? <StyledView>
           {selectedRoute === 'walking'
@@ -21,11 +21,11 @@ function Walk (props) {
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-            <StyledTextRight>{props.data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.walkingData.durationMIN) : `${Math.floor(props.data.mapRouteData.walkingData.durationMIN)} mins`}</StyledTextRight>
+            <StyledTextRight>{data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(data.mapRouteData.walkingData.durationMIN) : `${Math.floor(data.mapRouteData.walkingData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)} km</StyledTextRight>
+            <StyledTextRight>{setTwoDecimals(data.mapRouteData.walkingData.distanceKM)} km</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>

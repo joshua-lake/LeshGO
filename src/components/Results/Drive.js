@@ -1,33 +1,30 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { setTwoDecimals, timeConversion } from './helper'
+import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
 
 function Drive (props) {
 
-  const {data} = props
   const { distance, duration } = props.undefinedData
-  const { selectedRoute } = props
+  const { selectedRoute, data } = props
 
-  // calculates emmissions based on distance and vehicle, converts to KG
-  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
-  const emmisionsKilogram = emmisionsCalculation / 1000
+  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) && emissionsCalculator(data.vehicle.CO2Emissions, data.mapRouteData.drivingData.distanceKM)
 
   return (
     data.mapRouteData.drivingData
-    
-    ? <StyledView>
-        <StyledIcon>    
+
+      ? <StyledView>
+        <StyledIcon>
           {selectedRoute === 'driving'
-          ? <Image source={require("../../../assets/car.gif")}/>
-          : <Image source={require("../../../assets/car.png")}/>
-          } 
+            ? <Image source={require('../../../assets/car.gif')}/>
+            : <Image source={require('../../../assets/car.png')}/>
+          }
         </StyledIcon>
         <FlexText>
           <StyledText>
             <CO>CO2: </CO>
               {data.vehicle
-                ? <CORight>{setTwoDecimals(emmisionsKilogram)} kg</CORight>
+                ? <CORight>{setTwoDecimals(emmisionsCalculation)} kg</CORight>
                 : <GreyText>Please select vehicle type</GreyText>}
           </StyledText>
           <StyledText>
@@ -41,9 +38,9 @@ function Drive (props) {
         </FlexText>
       </StyledView>
 
-    : <StyledView>
-        <StyledIcon>  
-          <Image source={require("../../../assets/car.png")}/>
+      : <StyledView>
+        <StyledIcon>
+          <Image source={require('../../../assets/car.png')}/>
         </StyledIcon>
         <FlexText>
         <StyledText>
@@ -60,7 +57,6 @@ function Drive (props) {
           </StyledText>
         </FlexText>
       </StyledView>
-
   )
 }
 
@@ -133,3 +129,4 @@ width: 40%;
 `
 
 export default Drive
+

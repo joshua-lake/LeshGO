@@ -4,21 +4,21 @@ import { setTwoDecimals, timeConversion } from './helper'
 
 function PublicTransport (props) {
   const { distance, duration } = props.undefinedData
+  const { data } = props
 
   const busEmmissions = 0.68
   const totalEmmisionsCalculation = (props.data.mapRouteData.drivingData) ? busEmmissions * props.data.mapRouteData.drivingData.distanceKM : null
   const emmissionPerAverage = totalEmmisionsCalculation ? totalEmmisionsCalculation / 45 : null
   const { selectedRoute } = props
-  
 
   return (
-    props.data.mapRouteData.transitData
+    data.mapRouteData.transitData
     ? <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           {selectedRoute === 'transit'
           ? <Image source={require("../../../assets/train.gif")}/>
           : <Image source={require("../../../assets/train.png")}/>
-          } 
+          }
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -27,17 +27,17 @@ function PublicTransport (props) {
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-            <StyledTextRight>{props.data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.transitData.durationMIN) : `${Math.floor(props.data.mapRouteData.transitData.durationMIN)} mins`}</StyledTextRight>
+            <StyledTextRight>{data.mapRouteData.transitData.durationMIN > 60 ? timeConversion(data.mapRouteData.transitData.durationMIN) : `${Math.floor(data.mapRouteData.transitData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.transitData.distanceKM)} km</StyledTextRight>
+            <StyledTextRight>{setTwoDecimals(data.mapRouteData.transitData.distanceKM)} km</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>
 
     : <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           <Image source={require("../../../assets/train.png")}/>
         </StyledIcon>
         <FlexText>
