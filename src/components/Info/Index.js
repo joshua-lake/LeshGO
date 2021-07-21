@@ -9,7 +9,6 @@ const {infoClick, setInfoClick} = props
 
     return (
       <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
-        <BlurView intensity={100}>
         <Modal
           animationType="fade"
           transparent={true}
@@ -37,7 +36,6 @@ const {infoClick, setInfoClick} = props
             </Box>
           </StyledView>
         </Modal>
-        </BlurView>
         <Pressable onPress={() => setInfoClick(true)}>
         <IconBox><Icon name="info" testId="infoButton" size={22}/></IconBox>
         </Pressable>
