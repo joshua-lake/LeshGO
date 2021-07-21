@@ -12,3 +12,5 @@ web-build/
 .idea
 package-lock.json
 /coverage/
+yarn-error.log
+.yarn

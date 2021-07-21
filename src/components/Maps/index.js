@@ -19,8 +19,11 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
   }
   const [region, setRegion] = useState(initialRegion)
   const [newRegion, setNewRegion] = useState(initialRegion)
+  const [regionChanged, setRegionChanged] = useState(false)
+
   const originSet = Object.prototype.hasOwnProperty.call(origin, 'latitude')
   const destinationSet = Object.prototype.hasOwnProperty.call(destination, 'latitude')
+
   const showRoute = originSet && destinationSet
 
 
@@ -99,13 +102,14 @@ const Maps = ({ destination, markers, origin, selectedRoute, setRouteData }) => 
   const recentre = () => {
     if (originSet && destinationSet) {
       setRegion(newRegion)
+      setRegionChanged(false)
     } else {
       setRegion(initialRegion)
     }
   }
 
   return (
-    <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} initialRegion={initialRegion} >
+    <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={region} initialRegion={initialRegion} onRegionChangeComplete={() => setRegionChanged(true)}>
       <Icon name="location-arrow" size={20} onPress={recentre}
             style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
       {markers.map((marker, index) => (
