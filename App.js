@@ -18,31 +18,36 @@ LogBox.ignoreAllLogs(true) // TODO: Remove this
 const LOCATION_TASK_NAME = 'background-location-task'
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 const busyWait = async () => {
-  const result = await delay(6750)
-  return Promise.all(result)
+  const result = await delay(1)
+  return Promise.all([result])
 }
 
 const App = () => {
   const [isReady, setIsReady] = useState(false)
 
   const requestPermissions = async () => {
-    const { status } = await Location.requestBackgroundPermissionsAsync()
+    const { status } = await Location.requestForegroundPermissionsAsync()
     if (status === 'granted') {
       await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-        accuracy: Location.Accuracy.BestForNavigation,
+        accuracy: Location.Accuracy.Balanced,
       })
     }
   }
 
-  const [vehicleMake, setVehicleMake] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
-  const [vehicle, setVehicle] = useState()
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
+  const [initialLocation, setInitialLocation] = useState({})
+  const [stateLocation, setStateLocations] = useState({})
+
+  const [vehicleMake, setVehicleMake] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
+  const [vehicle, setVehicle] = useState()
+
+  const [infoClick, setInfoClick] = useState(false)
+
   const [markers, setMarkers] = useState([])
   const [selectedRoute, setSelectedRoute] = useState('')
-  const [stateLocation, setStateLocations] = useState({})
-  const [infoClick, setInfoClick] = useState(false)
   const [mapRouteData, setRouteData] = useState({
     walking: {},
     driving: {},
@@ -59,8 +64,9 @@ const App = () => {
       .then(() => {
         Location.getCurrentPositionAsync()
           .then((location) => {
+            setInitialLocation(location)
           })
-      }) // TODO: tidy this
+      })
   }, [])
 
   /**
@@ -80,7 +86,7 @@ const App = () => {
       const { coords } = locations[0]
       const { latitude, longitude } = coords // TODO: Tidy this?
 
-      setStateLocations({ latitude, longitude })
+      setStateLocations({ latitude, longitude } )
     }
   })
 

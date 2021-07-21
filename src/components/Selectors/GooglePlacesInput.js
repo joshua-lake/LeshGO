@@ -2,7 +2,6 @@ import React from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
-// import Icon from 'react-native-vector-icons/FontAwesome'
 
 const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin, setSelectedRoute }) => {
   const current = isOrigin ? {
@@ -12,8 +11,7 @@ const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOr
 
   return (
     <ScrollView keyboardShouldPersistTaps="always">
-      {/* <Icon name="search" size={10} color='pink'/> */}
-       <GooglePlacesAutocomplete 
+       <GooglePlacesAutocomplete
         placeholder={placeHolderText}
         styles={{
           container: {
