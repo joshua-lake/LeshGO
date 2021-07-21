@@ -2,13 +2,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
 
-import { emissionsCalculator, setTwoDecimals, timeConversion } from './helper'
+import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
 
 function Drive (props) {
 
-  const { data } = props
   const { distance, duration } = props.undefinedData
-  const { selectedRoute } = props
+  const { selectedRoute, data } = props
 
   const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) && emissionsCalculator(data.vehicle.CO2Emissions, data.mapRouteData.drivingData.distanceKM)
 
@@ -25,8 +24,8 @@ function Drive (props) {
         <FlexText>
           <StyledText>
             {data.vehicle
-              ? <Text testID="emissions">C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
-              : 'Please select vehicle type'}
+                ? <Text>C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
+                : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
             Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
