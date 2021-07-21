@@ -24,11 +24,9 @@ const busyWait = async () => {
   return Promise.all(result);
 }
 
-  const App = () => {
-    const [isReady, setIsReady] = useState(false)
+const App = () => {
+  const [isReady, setIsReady] = useState(false)
 
-
-    
   const requestPermissions = async () => {
     const { status } = await Location.requestBackgroundPermissionsAsync()
     if (status === 'granted') {
@@ -90,7 +88,7 @@ const busyWait = async () => {
     }
   })
 
-if (!isReady) {
+   if (!isReady) {
     return (
       <AppLoading
       startAsync={busyWait}
@@ -111,7 +109,7 @@ if (!isReady) {
         <StyledMap>
           <Maps markers={markers} setRouteData={setRouteData} mapRouteData={mapRouteData} origin={origin}
                 destination={destination} selectedRoute={selectedRoute}/>
-                <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
+          <Icon name="location-arrow" size={20} onPress={e => console.log('button pressed!')} style={{ position: 'absolute', right: '5%', bottom: '5%' }}/>
         </StyledMap>
         <StyledResult>
           <Results vehicle={vehicle} mapRouteData={mapRouteData} setSelectedRoute={setSelectedRoute} selectedRoute={selectedRoute}/>
@@ -122,8 +120,6 @@ if (!isReady) {
     </SafeAreaView>
   )
 }
-
-
 
 const StyledSelector = styled.View`  
   flex: 1.5;

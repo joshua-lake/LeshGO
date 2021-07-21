@@ -8,7 +8,6 @@ import GooglePlacesInput from './GooglePlacesInput'
 
 const Selectors = ({ currentLocation, setDestination, setOrigin, setSelectedRoute, setVehicleMake, vehicleMake, setVehicle, vehicle }) => (
   <StyledView>
-
     <StyledFrom>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
                          updateState={setOrigin} isOrigin={true} setSelectedRoute={setSelectedRoute}/>
