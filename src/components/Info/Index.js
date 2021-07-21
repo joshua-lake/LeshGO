@@ -40,7 +40,7 @@ const {infoClick, setInfoClick} = props
         </Modal>
         </BlurView>
         <Pressable onPress={() => setInfoClick(true)}>
-        <IconBox><Icon name="info" size={22}/></IconBox>
+        <IconBox><Icon name="info" testId="infoButton" size={22}/></IconBox>
         </Pressable>
       </SafeAreaView>
     )

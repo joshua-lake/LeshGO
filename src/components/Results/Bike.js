@@ -14,46 +14,17 @@ function Bike (props) {
           : <StyledIcon><Icon source={require("../../../assets/bike.png")}/></StyledIcon>
         } 
         <FlexText>
-<<<<<<< HEAD
-        <StyledText>
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(data.mapRouteData.bicyclingData.distanceKM)}KM</StyledTextRight>
-||||||| merged common ancestors
-<<<<<<<<< Temporary merge branch 1
-        <StyledText>
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM</StyledTextRight>
-||||||||| merged common ancestors
-          <StyledText>
-            Distance: {setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM
-=========
-          <StyledText>
-            Distance: {setTwoDecimals(data.mapRouteData.bicyclingData.distanceKM)} KM
->>>>>>>>> Temporary merge branch 2
-=======
           <StyledText>
             <StyledTextLeft>C02: </StyledTextLeft>
             <StyledTextRight>0 kg</StyledTextRight>
->>>>>>> 22a19d74a6e6cde42066da0b47a5a85d5682f69a
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-<<<<<<< HEAD
-            <StyledTextRight>{data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(data.mapRouteData.bicyclingData.durationMIN)} minutes`}</StyledTextRight>
-||||||| merged common ancestors
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.durationMIN)} mins</StyledTextRight>
-||||||||| merged common ancestors
-            Time: {setTwoDecimals(props.data.mapRouteData.bicyclingData.durationMIN)} mins
-=========
-          Time: { data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(data.mapRouteData.bicyclingData.durationMIN)} minutes`}
->>>>>>>>> Temporary merge branch 2
-=======
             <StyledTextRight>{data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(data.mapRouteData.bicyclingData.durationMIN)} minutes`}</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
             <StyledTextRight>{setTwoDecimals(data.mapRouteData.bicyclingData.distanceKM)} km</StyledTextRight>
->>>>>>> 22a19d74a6e6cde42066da0b47a5a85d5682f69a
           </StyledText>
         </FlexText>
       </StyledView>

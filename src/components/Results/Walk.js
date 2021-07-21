@@ -16,41 +16,16 @@ function Walk (props) {
         } 
         <FlexText>
           <StyledText>
-<<<<<<< HEAD
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(data.mapRouteData.walkingData.distanceKM)}KM</StyledTextRight>
-||||||| merged common ancestors
-<<<<<<<<< Temporary merge branch 1
-            <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM</StyledTextRight>
-||||||||| merged common ancestors
-              Distance: {setTwoDecimals(props.data.mapRouteData.walkingData.distanceKM)}KM
-=========
-              Distance: {setTwoDecimals(data.mapRouteData.walkingData.distanceKM)} KM
->>>>>>>>> Temporary merge branch 2
-=======
             <StyledTextLeft>C02: </StyledTextLeft>
             <StyledTextRight>0 kg</StyledTextRight>
->>>>>>> 22a19d74a6e6cde42066da0b47a5a85d5682f69a
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-<<<<<<< HEAD
-            <StyledTextRight>{data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(data.mapRouteData.walkingData.durationMIN) : `${Math.floor(data.mapRouteData.walkingData.durationMIN)} mins`}</StyledTextRight>
-||||||| merged common ancestors
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.walkingData.durationMIN)} mins</StyledTextRight>
-||||||||| merged common ancestors
-              Time: {setTwoDecimals(props.data.mapRouteData.walkingData.durationMIN)} mins
-=========
-              Time: { data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(data.mapRouteData.walkingData.durationMIN) : `${Math.floor(data.mapRouteData.walkingData.durationMIN)} minutes`}
->>>>>>>>> Temporary merge branch 2
-=======
             <StyledTextRight>{data.mapRouteData.walkingData.durationMIN > 60 ? timeConversion(data.mapRouteData.walkingData.durationMIN) : `${Math.floor(data.mapRouteData.walkingData.durationMIN)} mins`}</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
             <StyledTextRight>{setTwoDecimals(data.mapRouteData.walkingData.distanceKM)} km</StyledTextRight>
->>>>>>> 22a19d74a6e6cde42066da0b47a5a85d5682f69a
           </StyledText>
         </FlexText>
       </StyledView>

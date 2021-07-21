@@ -23,5 +23,5 @@ test('drive emmisionsKilogram returns number to two decimals', () => {
 
   const { getByText } = render(<Drive data={data} undefinedData={undefinedData}/>)
 
-  expect(getByText(/C02: 1.17/)).toBeTruthy()
+  expect(getByText(/1.17/)).toBeTruthy()
 })
