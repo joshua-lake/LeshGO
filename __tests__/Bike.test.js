@@ -1,33 +1,23 @@
 import React from 'react'
-import { Platform, StyleSheet, View } from 'react-native'
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
-import Drive from '../src/components/Results/Drive'
-import { isTaskDefined } from 'expo-task-manager'
+import { render } from '@testing-library/react-native'
 import Bike from '../src/components/Results/Bike'
 
-// it(`Co2 for specific vehicle returns correct data`, () => {
-//     const
-// })
-
 test('drive emmisionsKilogram returns number to two decimals', () => {
-    const data = {
-      mapRouteData: {
-        bicyclingData: {
-          durationMIN: 18,
-          distanceKM: 4
-        }
+  const data = {
+    mapRouteData: {
+      bicyclingData: {
+        durationMIN: 18,
+        distanceKM: 4
       }
     }
-    const undefinedData = {
-      distance: 'please enter route',
-      duration: 'please enter route'
-    }
-    
-    const { getByTestId, getByText, queryByTestId, toJSON } = render(<Bike data={data} undefinedData={undefinedData} />)
+  }
 
-    // const input = getByTestId('emissions')
+  const undefinedData = {
+    distance: 'please enter route',
+    duration: 'please enter route'
+  }
 
-    expect(getByText(/18/)).toBeTruthy()
+  const { getByText } = render(<Bike data={data} undefinedData={undefinedData}/>)
 
-
+  expect(getByText(/18/)).toBeTruthy()
 })
