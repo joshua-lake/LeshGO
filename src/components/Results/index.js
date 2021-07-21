@@ -9,16 +9,15 @@ import PublicTransport from './PublicTransport'
 import PublicTransportUnavailable from './PublicTransportUnavailable'
 
 function Results (props) {
-  const {setSelectedRoute, selectedRoute} = props
-  const {mapRouteData} = props
+  const {setSelectedRoute, selectedRoute, mapRouteData: {walkingData, transitData}} = props
 
   const undefinedData = {  // <=== hard coded default display data
       distance: 'please enter route',
       duration: 'please enter route'
     }
-    
-    const walkingTime = mapRouteData.walkingData ? mapRouteData.walkingData.durationMIN : 1
-    const transitTime = mapRouteData.transitData ? mapRouteData.transitData.durationMIN : 2
+
+    const walkingTime = walkingData ? walkingData.durationMIN : 1
+    const transitTime = transitData ? transitData.durationMIN : 2
 
   return (
     <StyledView>
@@ -49,7 +48,7 @@ function Results (props) {
             </Pressable>
           </StyledContent>
         }
-        
+
         {selectedRoute === 'driving'
         ? <StyledContentTwo>
             <Pressable onPress={() => setSelectedRoute('driving')}>
@@ -63,19 +62,19 @@ function Results (props) {
             </Pressable>
           </StyledContent>
         }
-        
+
         {walkingTime === transitTime
 
-        ? selectedRoute === 'transit' 
-        
+        ? selectedRoute === 'transit'
+
           ? <StyledContentTwo>
-                <PublicTransportUnavailable selectedRoute={selectedRoute}/> 
+                <PublicTransportUnavailable selectedRoute={selectedRoute}/>
             </StyledContentTwo>
 
           : <StyledContent>
                 <PublicTransportUnavailable selectedRoute={selectedRoute}/>
             </StyledContent>
-          
+
         : selectedRoute === 'transit'
 
             ? <StyledContentTwo>
@@ -83,7 +82,7 @@ function Results (props) {
                   <PublicTransport data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
                 </Pressable>
               </StyledContentTwo>
-  
+
             : <StyledContent>
                 <Pressable onPress={() => setSelectedRoute('transit')}>
                   <PublicTransport data={props} undefinedData={undefinedData} selectedRoute={selectedRoute}/>
