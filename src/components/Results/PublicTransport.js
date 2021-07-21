@@ -10,16 +10,15 @@ function PublicTransport (props) {
   const totalEmmisionsCalculation = (props.data.mapRouteData.drivingData) ? busEmmissions * props.data.mapRouteData.drivingData.distanceKM : null
   const emmissionPerAverage = totalEmmisionsCalculation ? totalEmmisionsCalculation / 45 : null
   const { selectedRoute } = props
-  
 
   return (
     props.data.mapRouteData.transitData
     ? <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           {selectedRoute === 'transit'
           ? <Image source={require("../../../assets/train.gif")}/>
           : <Image source={require("../../../assets/train.png")}/>
-          } 
+          }
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -35,7 +34,7 @@ function PublicTransport (props) {
       </StyledView>
 
     : <StyledView>
-        <StyledIcon>    
+        <StyledIcon>
           <Image source={require("../../../assets/train.png")}/>
         </StyledIcon>
         <FlexText>
