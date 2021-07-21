@@ -2,15 +2,17 @@ import React from 'react'
 import {Alert, Pressable, SafeAreaView, Modal } from 'react-native'
 import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import { BlurView } from 'expo-blur'
 
 function Info (props) {
 const {infoClick, setInfoClick} = props
 
 
     return (
-      <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+      <SafeAreaView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
+        <BlurView intensity={100}>
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           presentationStyle='overFullScreen'
           visible={infoClick}
@@ -36,6 +38,7 @@ const {infoClick, setInfoClick} = props
             </Box>
           </StyledView>
         </Modal>
+        </BlurView>
         <Pressable onPress={() => setInfoClick(true)}>
         <IconBox><Icon name="info" size={22}/></IconBox>
         </Pressable>
@@ -75,15 +78,15 @@ const StyledView = styled.View`
 flex: 1;
 alignItems: center;
 width: 100%;
-height: 100%;
+height: 50%;
 justifyContent: center;
+backgroundColor: rgba(0,0,0,0.3);
 `
 
 const Box = styled.View`
 flex: 0.75;
 alignItems: center;
 width: 80%;
-height: 50px;
 justifyContent: center;
 border: solid;
 background-color: white

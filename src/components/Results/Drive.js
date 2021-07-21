@@ -13,8 +13,6 @@ function Drive (props) {
   const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
   const emmisionsKilogram = emmisionsCalculation / 1000
 
-  console.log('test', emmisionsKilogram)
-
   return (
     data.mapRouteData.drivingData
     
