@@ -5,10 +5,10 @@ import { setTwoDecimals, timeConversion } from './helper'
 
 function Bike (props) {
   const { distance, duration } = props.undefinedData
-  const { selectedRoute } = props
+  const { selectedRoute, data } = props
 
   return (
-    props.data.mapRouteData.bicyclingData
+    data.mapRouteData.bicyclingData
     ? <StyledView>
         <StyledIcon>
           {selectedRoute === 'bicycling'
@@ -19,11 +19,11 @@ function Bike (props) {
         <FlexText>
         <StyledText>
             <StyledTextLeft>Distance: </StyledTextLeft>
-            <StyledTextRight>{setTwoDecimals(props.data.mapRouteData.bicyclingData.distanceKM)}KM</StyledTextRight>
+            <StyledTextRight>{setTwoDecimals(data.mapRouteData.bicyclingData.distanceKM)}KM</StyledTextRight>
           </StyledText>
           <StyledText>
             <StyledTextLeft>Time: </StyledTextLeft>
-            <StyledTextRight>{props.data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(props.data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(props.data.mapRouteData.bicyclingData.durationMIN)} minutes`}</StyledTextRight>
+            <StyledTextRight>{data.mapRouteData.bicyclingData.durationMIN > 60 ? timeConversion(data.mapRouteData.bicyclingData.durationMIN) : `${Math.floor(data.mapRouteData.bicyclingData.durationMIN)} minutes`}</StyledTextRight>
           </StyledText>
         </FlexText>
       </StyledView>

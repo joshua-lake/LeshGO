@@ -7,21 +7,36 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|@react-native-picker|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
   },
   "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.14.5",
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-native-community/geolocation": "^2.0.2",
     "@react-native-picker/picker": "1.16.1",
+    "@testing-library/react-native": "^7.2.0",
     "axios": "^0.21.1",
     "datetimepicker": "^0.1.39",
+    "enzyme": "^3.11.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-prettier": "^3.4.0",
     "expo": "~42.0.1",
     "expo-cli": "^4.8.1",
     "expo-location": "~12.1.2",
     "expo-status-bar": "~1.0.4",
     "expo-task-manager": "~9.2.2",
+    "jest": "^27.0.6",
+    "jest-expo": "^42.0.1",
+    "jest-expo-enzyme": "^1.2.1",
     "prettier": "^2.3.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -45,7 +60,13 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
+    "react-test-renderer": "^17.0.2",
     "yarn": "^1.22.10"
+  },
+  "peerDependencies": {
+    "jest": ">=22.0.0",
+    "jquery": ">=1.0.0",
+    "react-is": ">=16.8.0"
   },
   "resolutions": {
     "styled-components": "^5"

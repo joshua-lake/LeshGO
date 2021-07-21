@@ -7,3 +7,7 @@ export function timeConversion (num) {
   const roundMinutes = Math.round(minutes)
   return floorHours < 2 ? floorHours + ' hour and ' + roundMinutes + ' minutes' : floorHours + ' hours and ' + roundMinutes + ' minutes'
 }
+
+export function emissionsCalculator (emissions, distance) {
+  return emissions * distance / 1000
+}

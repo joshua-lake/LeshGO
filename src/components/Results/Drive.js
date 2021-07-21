@@ -2,48 +2,43 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { Text } from 'react-native'
 
-import { setTwoDecimals, timeConversion } from './helper'
+import { setTwoDecimals, timeConversion, emissionsCalculator } from './helper'
 
 function Drive (props) {
 
-  const {data} = props
   const { distance, duration } = props.undefinedData
-  const { selectedRoute } = props
+  const { selectedRoute, data } = props
 
-  // calculates emmissions based on distance and vehicle, converts to KG
-  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) ? data.vehicle.CO2Emissions * data.mapRouteData.drivingData.distanceKM : null
-  const emmisionsKilogram = emmisionsCalculation / 1000
-
-  console.log('test', emmisionsKilogram)
+  const emmisionsCalculation = (data.vehicle && data.mapRouteData.drivingData) && emissionsCalculator(data.vehicle.CO2Emissions, data.mapRouteData.drivingData.distanceKM)
 
   return (
     data.mapRouteData.drivingData
-    
-    ? <StyledView>
-        <StyledIcon>    
+
+      ? <StyledView>
+        <StyledIcon>
           {selectedRoute === 'driving'
-          ? <Image source={require("../../../assets/car.gif")}/>
-          : <Image source={require("../../../assets/car.png")}/>
-          } 
+            ? <Image source={require('../../../assets/car.gif')}/>
+            : <Image source={require('../../../assets/car.png')}/>
+          }
         </StyledIcon>
         <FlexText>
           <StyledText>
             {data.vehicle
-                ? <Text>C02: {setTwoDecimals(emmisionsKilogram)} KGs </Text>
+                ? <Text>C02: {setTwoDecimals(emmisionsCalculation)} KGs </Text>
                 : 'Please select vehicle type'}
           </StyledText>
           <StyledText>
-              Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
+            Distance: {setTwoDecimals(data.mapRouteData.drivingData.distanceKM)} KM
           </StyledText>
           <StyledText>
-              Time: { data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
+            Time: {data.mapRouteData.drivingData.durationMIN > 60 ? timeConversion(data.mapRouteData.drivingData.durationMIN) : `${Math.floor(data.mapRouteData.drivingData.durationMIN)} minutes`}
           </StyledText>
         </FlexText>
       </StyledView>
 
-    : <StyledView>
-        <StyledIcon>  
-          <Image source={require("../../../assets/car.png")}/>
+      : <StyledView>
+        <StyledIcon>
+          <Image source={require('../../../assets/car.png')}/>
         </StyledIcon>
         <FlexText>
           <StyledText>
@@ -54,9 +49,16 @@ function Drive (props) {
           </StyledText>
         </FlexText>
       </StyledView>
-
   )
 }
+
+// test('examples of some things', async () => {
+//   const { getByTestId, getByText, queryByTestId, toJSON } = render(<Drive />)
+//   const emissionsToTest = 0.20
+//   const distanceToTest = 23
+
+//   const input = getByTestId('emissions')
+// })
 
 const StyledText = styled.Text`
   flex: 1;
@@ -99,3 +101,4 @@ const Image = styled.Image`
 `
 
 export default Drive
+

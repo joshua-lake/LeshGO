@@ -12,12 +12,10 @@ const Selectors = ({ currentLocation, setDestination, setOrigin, setSelectedRout
     <StyledFrom>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
                          updateState={setOrigin} isOrigin={true} setSelectedRoute={setSelectedRoute}/>
-      {/* <FromLocation/> */}
     </StyledFrom>
     <StyledTo>
       <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you going?'}
                          updateState={setDestination} isOrigin={false} setSelectedRoute={setSelectedRoute}/>
-      {/* <ToLocation/> */}
     </StyledTo>
     <StyledVehicle>
       <Vehicle setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setVehicle={setVehicle} vehicle={vehicle}/>
