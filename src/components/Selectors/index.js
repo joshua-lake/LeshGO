@@ -1,20 +1,18 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-// import ToLocation from './ToLocation'
-// import FromLocation from './FromLocation'
 import Vehicle from './Vehicle'
 import GooglePlacesInput from './GooglePlacesInput'
 
-const Selectors = ({ currentLocation, setDestination, setOrigin, setSelectedRoute, setVehicleMake, vehicleMake, setVehicle, vehicle }) => (
+const Selectors = ({ setDestination, setOrigin, setSelectedRoute, setVehicleMake, vehicleMake, setVehicle, vehicle }) => (
   <StyledView>
     <StyledFrom>
-      <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you coming from?'}
-                         updateState={setOrigin} isOrigin={true} setSelectedRoute={setSelectedRoute}/>
+      <GooglePlacesInput placeHolderText={'Where are you coming from?'}
+                         updateState={setOrigin} setSelectedRoute={setSelectedRoute}/>
     </StyledFrom>
     <StyledTo>
-      <GooglePlacesInput currentLocation={currentLocation} placeHolderText={'Where are you going?'}
-                         updateState={setDestination} isOrigin={false} setSelectedRoute={setSelectedRoute}/>
+      <GooglePlacesInput placeHolderText={'Where are you going?'}
+                         updateState={setDestination} setSelectedRoute={setSelectedRoute}/>
     </StyledTo>
     <StyledVehicle>
       <Vehicle setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setVehicle={setVehicle} vehicle={vehicle}/>

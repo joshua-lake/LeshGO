@@ -3,11 +3,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { API_KEY } from '../../api'
 import { Dimensions, ScrollView } from 'react-native'
 
-const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOrigin, setSelectedRoute }) => {
-  const current = isOrigin ? {
-    description: 'Current Location',
-    geometry: { location: { lat: currentLocation.latitude, lng: currentLocation.longitude } }
-  } : null
+const GooglePlacesInput = ({ placeHolderText, updateState, setSelectedRoute }) => {
 
   return (
     <ScrollView keyboardShouldPersistTaps="always">
@@ -45,8 +41,6 @@ const GooglePlacesInput = ({ currentLocation, placeHolderText, updateState, isOr
           updateState({ latitude, longitude })
           setSelectedRoute('walking')
         }}
-
-        predefinedPlaces={[current]}
 
         getDefaultValue={() => ''}
         query={{

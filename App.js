@@ -2,9 +2,6 @@ import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
 import React, { useEffect, useState } from 'react'
 import { LogBox, SafeAreaView, ScrollView } from 'react-native'
-import * as TaskManager from 'expo-task-manager'
-import * as Location from 'expo-location'
-import Icon from 'react-native-vector-icons/FontAwesome5'
 import AppLoading from 'expo-app-loading'
 
 import Maps from './src/components/Maps/'
@@ -14,7 +11,6 @@ import Info from './src/components/Info/Index'
 
 LogBox.ignoreAllLogs(true) // TODO: Remove this
 
-const LOCATION_TASK_NAME = 'background-location-task'
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -26,18 +22,8 @@ const busyWait = async () => {
 const App = () => {
   const [isReady, setIsReady] = useState(false)
 
-  const requestPermissions = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync()
-    if (status === 'granted') {
-      await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-        accuracy: Location.Accuracy.Balanced,
-      })
-    }
-  }
-
   const [origin, setOrigin] = useState({})
   const [destination, setDestination] = useState({})
-  const [initialLocation, setInitialLocation] = useState({})
   const [stateLocation, setStateLocations] = useState({})
 
   const [vehicleMake, setVehicleMake] = useState('') // <== Value of vehicle type, coming from selectors/vehicle
@@ -54,19 +40,6 @@ const App = () => {
     bicycling: {}
   })
 
-  /**
-   * initial mount useEffect, used for requesting location permission and setting location
-   */
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
-    requestPermissions()
-      .then(() => {
-        Location.getCurrentPositionAsync()
-          .then((location) => {
-            setInitialLocation(location)
-          })
-      })
-  }, [])
 
   /**
    * listens for coord changes to set markers
@@ -75,18 +48,6 @@ const App = () => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
     setMarkers([{ coord: origin }, { coord: destination }])
   }, [origin, destination])
-
-  TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
-    if (error) {
-      return
-    }
-    if (data) {
-      const { locations } = data
-      const { coords: { latitude, longitude } } = locations[0]
-
-      setStateLocations({ latitude, longitude } )
-    }
-  })
 
   if (!isReady) {
     return (
@@ -103,8 +64,7 @@ const App = () => {
       <ScrollView keyboardShouldPersistTaps="always">
         <StyledSelector>
           {stateLocation !== undefined &&
-          <Selectors currentLocation={stateLocation} setVehicleMake={setVehicleMake} vehicleMake={vehicleMake}
-                     setOrigin={setOrigin}
+          <Selectors setVehicleMake={setVehicleMake} vehicleMake={vehicleMake} setOrigin={setOrigin}
                      setDestination={setDestination} setSelectedRoute={setSelectedRoute} setVehicle={setVehicle}
                      vehicle={vehicle}/>}
         </StyledSelector>
