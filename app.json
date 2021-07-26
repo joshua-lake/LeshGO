@@ -1,12 +1,13 @@
 {
   "expo": {
-    "name": "ReactNativeBosh",
-    "slug": "ReactNativeBosh",
-    "version": "1.0.0",
+    "name": "unnamed-eco-app",
+    "slug": "eco-app",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "sdkVersion": "42.0.0",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/beautiful.gif",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,9 +18,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "nz.eda.eco",
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ],
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "unnamed-eco-app can access your location to fill the starting point.",
+        "NSLocationAlwaysUsageDescription": "unnamed-eco-app can access your location to fill the starting point.",
+        "NSLocationWhenInUseUsageDescription": "unnamed-eco-app can access your location to fill the starting point."
+      }
     },
     "android": {
+      "package": "nz.eda.eco",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

@@ -1,7 +1,8 @@
 
-# unnamed-eco-app 🌱
+# 🚗 LeshGO
 
-React native eco travel app that we still need to name™️
+An expo react-native app to quickly estimate carbon emissions for travel options between 2 places.
+Bult in 1 week by students as a final project for [EDA](https://devacademy.co.nz/)
 
 ## Installation
 
@@ -11,29 +12,41 @@ git clone https://github.com/bosh-code/unnamed-eco-app.git
 cd unnamed-eco-app
 ```
 
-Use npm to install `expo-cli` globally if you have not already
+Use npm to install `expo-cli` and `yarn` globally if you have not already
 
 ```shell
 npm i expo-cli -g
+npm i yarn -g
 ```
 
-Then use npm to install dependencies
+Then use yarn or npm to install dependencies
 
 ```shell
+# with yarn
+yarn install
+```
+
+```shell
+# with npm
+rm yarn.lock
 npm install
 ```
 
 ## Usage
 
-To start the development server on your machine use the `start` script
+To start the expo development server on your machine use the `start` script
+
 ```shell
+# with yarn
+yarn start
+```
+
+```shell
+# with npm
 npm run start
 ```
 
-To shut down nicely, use the `eject` script
-```shell
-npm run eject
-```
+## For now, this only works on the iOS simulator.
 
 # Details
 
@@ -58,6 +71,9 @@ npm run eject
 </p>
 </details> 
 
-### TODO:
-- Tidy up the readme
-- make app lul
+### Credits:
+- [Ryan Bosher](https://github.com/bosh-code/)
+- [Suji Cho](https://github.com/sujicho)
+- [Joshua Lake](https://github.com/joshua-lake)
+- [James Pearce](https://github.com/shwimmy-James-shwee)
+- [Eleanor Woodhouse](https://github.com/eleanor-woodhouse-matai-21)
