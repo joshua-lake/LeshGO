@@ -8,7 +8,7 @@ Bult in 1 week by students as a final project for [EDA](https://devacademy.co.nz
 
 Clone and cd into this repo
 ```shell
-git clone https://github.com/bosh-code/unnamed-eco-app.git
+git clone https://github.com/bosh-code/LeshGO
 cd unnamed-eco-app
 ```
 
